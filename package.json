@@ -55,7 +55,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "ethers": "5.0.31",
     "hardhat": "^2.0.3",
-    "hardhat-typechain": "^0.3.3",
+    "hardhat-typechain": "^0.3.5",
     "husky": "^7.0.4",
     "jest": "^26.1.0",
     "prettier": "2.5.1",
