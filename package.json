@@ -38,7 +38,8 @@
     "prettier:write": "prettier --write 'src/**/*.ts' 'benchmarks/**/*.js'",
     "compile": "SKIP_LOAD=true hardhat compile",
     "release": "standard-version",
-    "release:prod": "yarn release --message \"chore(release): Release v%s :tada:\" --skip.tag"
+    "release:prod": "yarn release --message \"chore(release): Release v%s :tada:\" --skip.tag",
+    "precommit": "npm run link && npm run prettier:write"
   },
   "devDependencies": {
     "@openzeppelin/contracts": "^4.3.3",
@@ -78,7 +79,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "npm run precommit"
     }
   },
   "prettier": {

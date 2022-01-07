@@ -9,69 +9,69 @@ import {
   BigNumber,
   BigNumberish,
   PopulatedTransaction,
-} from "ethers";
+} from 'ethers';
 import {
   Contract,
   ContractTransaction,
   Overrides,
   PayableOverrides,
   CallOverrides,
-} from "@ethersproject/contracts";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
+} from '@ethersproject/contracts';
+import { BytesLike } from '@ethersproject/bytes';
+import { Listener, Provider } from '@ethersproject/providers';
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
 
 interface IWETHGatewayInterface extends ethers.utils.Interface {
   functions: {
-    "auctionETH(address,uint256,address)": FunctionFragment;
-    "borrowETH(uint256,address,uint256,address,uint16)": FunctionFragment;
-    "depositETH(address,uint16)": FunctionFragment;
-    "liquidateETH(address,uint256)": FunctionFragment;
-    "redeemETH(address,uint256)": FunctionFragment;
-    "repayETH(address,uint256,uint256)": FunctionFragment;
-    "withdrawETH(uint256,address)": FunctionFragment;
+    'auctionETH(address,uint256,address)': FunctionFragment;
+    'borrowETH(uint256,address,uint256,address,uint16)': FunctionFragment;
+    'depositETH(address,uint16)': FunctionFragment;
+    'liquidateETH(address,uint256)': FunctionFragment;
+    'redeemETH(address,uint256)': FunctionFragment;
+    'repayETH(address,uint256,uint256)': FunctionFragment;
+    'withdrawETH(uint256,address)': FunctionFragment;
   };
 
   encodeFunctionData(
-    functionFragment: "auctionETH",
+    functionFragment: 'auctionETH',
     values: [string, BigNumberish, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "borrowETH",
+    functionFragment: 'borrowETH',
     values: [BigNumberish, string, BigNumberish, string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "depositETH",
+    functionFragment: 'depositETH',
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "liquidateETH",
+    functionFragment: 'liquidateETH',
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "redeemETH",
+    functionFragment: 'redeemETH',
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "repayETH",
+    functionFragment: 'repayETH',
     values: [string, BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "withdrawETH",
+    functionFragment: 'withdrawETH',
     values: [BigNumberish, string]
   ): string;
 
-  decodeFunctionResult(functionFragment: "auctionETH", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "borrowETH", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "depositETH", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'auctionETH', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'borrowETH', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'depositETH', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "liquidateETH",
+    functionFragment: 'liquidateETH',
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "redeemETH", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "repayETH", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'redeemETH', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'repayETH', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "withdrawETH",
+    functionFragment: 'withdrawETH',
     data: BytesLike
   ): Result;
 
@@ -99,7 +99,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    "auctionETH(address,uint256,address)"(
+    'auctionETH(address,uint256,address)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       onBehalfOf: string,
@@ -115,7 +115,7 @@ export class IWETHGateway extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "borrowETH(uint256,address,uint256,address,uint16)"(
+    'borrowETH(uint256,address,uint256,address,uint16)'(
       amount: BigNumberish,
       nftAsset: string,
       nftTokenId: BigNumberish,
@@ -130,7 +130,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    "depositETH(address,uint16)"(
+    'depositETH(address,uint16)'(
       onBehalfOf: string,
       referralCode: BigNumberish,
       overrides?: PayableOverrides
@@ -142,7 +142,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    "liquidateETH(address,uint256)"(
+    'liquidateETH(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: PayableOverrides
@@ -154,7 +154,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    "redeemETH(address,uint256)"(
+    'redeemETH(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: PayableOverrides
@@ -167,7 +167,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    "repayETH(address,uint256,uint256)"(
+    'repayETH(address,uint256,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       amount: BigNumberish,
@@ -180,7 +180,7 @@ export class IWETHGateway extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "withdrawETH(uint256,address)"(
+    'withdrawETH(uint256,address)'(
       amount: BigNumberish,
       to: string,
       overrides?: Overrides
@@ -194,7 +194,7 @@ export class IWETHGateway extends Contract {
     overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
-  "auctionETH(address,uint256,address)"(
+  'auctionETH(address,uint256,address)'(
     nftAsset: string,
     nftTokenId: BigNumberish,
     onBehalfOf: string,
@@ -210,7 +210,7 @@ export class IWETHGateway extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "borrowETH(uint256,address,uint256,address,uint16)"(
+  'borrowETH(uint256,address,uint256,address,uint16)'(
     amount: BigNumberish,
     nftAsset: string,
     nftTokenId: BigNumberish,
@@ -225,7 +225,7 @@ export class IWETHGateway extends Contract {
     overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
-  "depositETH(address,uint16)"(
+  'depositETH(address,uint16)'(
     onBehalfOf: string,
     referralCode: BigNumberish,
     overrides?: PayableOverrides
@@ -237,7 +237,7 @@ export class IWETHGateway extends Contract {
     overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
-  "liquidateETH(address,uint256)"(
+  'liquidateETH(address,uint256)'(
     nftAsset: string,
     nftTokenId: BigNumberish,
     overrides?: PayableOverrides
@@ -249,7 +249,7 @@ export class IWETHGateway extends Contract {
     overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
-  "redeemETH(address,uint256)"(
+  'redeemETH(address,uint256)'(
     nftAsset: string,
     nftTokenId: BigNumberish,
     overrides?: PayableOverrides
@@ -262,7 +262,7 @@ export class IWETHGateway extends Contract {
     overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
-  "repayETH(address,uint256,uint256)"(
+  'repayETH(address,uint256,uint256)'(
     nftAsset: string,
     nftTokenId: BigNumberish,
     amount: BigNumberish,
@@ -275,7 +275,7 @@ export class IWETHGateway extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "withdrawETH(uint256,address)"(
+  'withdrawETH(uint256,address)'(
     amount: BigNumberish,
     to: string,
     overrides?: Overrides
@@ -289,7 +289,7 @@ export class IWETHGateway extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "auctionETH(address,uint256,address)"(
+    'auctionETH(address,uint256,address)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       onBehalfOf: string,
@@ -305,7 +305,7 @@ export class IWETHGateway extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "borrowETH(uint256,address,uint256,address,uint16)"(
+    'borrowETH(uint256,address,uint256,address,uint16)'(
       amount: BigNumberish,
       nftAsset: string,
       nftTokenId: BigNumberish,
@@ -320,7 +320,7 @@ export class IWETHGateway extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "depositETH(address,uint16)"(
+    'depositETH(address,uint16)'(
       onBehalfOf: string,
       referralCode: BigNumberish,
       overrides?: CallOverrides
@@ -332,7 +332,7 @@ export class IWETHGateway extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "liquidateETH(address,uint256)"(
+    'liquidateETH(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -344,7 +344,7 @@ export class IWETHGateway extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "redeemETH(address,uint256)"(
+    'redeemETH(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -360,7 +360,7 @@ export class IWETHGateway extends Contract {
       1: boolean;
     }>;
 
-    "repayETH(address,uint256,uint256)"(
+    'repayETH(address,uint256,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       amount: BigNumberish,
@@ -376,7 +376,7 @@ export class IWETHGateway extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "withdrawETH(uint256,address)"(
+    'withdrawETH(uint256,address)'(
       amount: BigNumberish,
       to: string,
       overrides?: CallOverrides
@@ -393,7 +393,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<BigNumber>;
 
-    "auctionETH(address,uint256,address)"(
+    'auctionETH(address,uint256,address)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       onBehalfOf: string,
@@ -409,7 +409,7 @@ export class IWETHGateway extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "borrowETH(uint256,address,uint256,address,uint16)"(
+    'borrowETH(uint256,address,uint256,address,uint16)'(
       amount: BigNumberish,
       nftAsset: string,
       nftTokenId: BigNumberish,
@@ -424,7 +424,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<BigNumber>;
 
-    "depositETH(address,uint16)"(
+    'depositETH(address,uint16)'(
       onBehalfOf: string,
       referralCode: BigNumberish,
       overrides?: PayableOverrides
@@ -436,7 +436,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<BigNumber>;
 
-    "liquidateETH(address,uint256)"(
+    'liquidateETH(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: PayableOverrides
@@ -448,7 +448,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<BigNumber>;
 
-    "redeemETH(address,uint256)"(
+    'redeemETH(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: PayableOverrides
@@ -461,7 +461,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<BigNumber>;
 
-    "repayETH(address,uint256,uint256)"(
+    'repayETH(address,uint256,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       amount: BigNumberish,
@@ -474,7 +474,7 @@ export class IWETHGateway extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "withdrawETH(uint256,address)"(
+    'withdrawETH(uint256,address)'(
       amount: BigNumberish,
       to: string,
       overrides?: Overrides
@@ -489,7 +489,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
-    "auctionETH(address,uint256,address)"(
+    'auctionETH(address,uint256,address)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       onBehalfOf: string,
@@ -505,7 +505,7 @@ export class IWETHGateway extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "borrowETH(uint256,address,uint256,address,uint16)"(
+    'borrowETH(uint256,address,uint256,address,uint16)'(
       amount: BigNumberish,
       nftAsset: string,
       nftTokenId: BigNumberish,
@@ -520,7 +520,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
-    "depositETH(address,uint16)"(
+    'depositETH(address,uint16)'(
       onBehalfOf: string,
       referralCode: BigNumberish,
       overrides?: PayableOverrides
@@ -532,7 +532,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
-    "liquidateETH(address,uint256)"(
+    'liquidateETH(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: PayableOverrides
@@ -544,7 +544,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
-    "redeemETH(address,uint256)"(
+    'redeemETH(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: PayableOverrides
@@ -557,7 +557,7 @@ export class IWETHGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
-    "repayETH(address,uint256,uint256)"(
+    'repayETH(address,uint256,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       amount: BigNumberish,
@@ -570,7 +570,7 @@ export class IWETHGateway extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "withdrawETH(uint256,address)"(
+    'withdrawETH(uint256,address)'(
       amount: BigNumberish,
       to: string,
       overrides?: Overrides

@@ -2,10 +2,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer } from "ethers";
-import { Provider } from "@ethersproject/providers";
+import { Contract, Signer } from 'ethers';
+import { Provider } from '@ethersproject/providers';
 
-import type { IPunks } from "../IPunks";
+import type { IPunks } from '../IPunks';
 
 export class IPunks__factory {
   static connect(address: string, signerOrProvider: Signer | Provider): IPunks {
@@ -17,139 +17,139 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "account",
-        type: "address",
+        internalType: 'address',
+        name: 'account',
+        type: 'address',
       },
     ],
-    name: "balanceOf",
+    name: 'balanceOf',
     outputs: [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "punkIndex",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'punkIndex',
+        type: 'uint256',
       },
     ],
-    name: "buyPunk",
+    name: 'buyPunk',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "punkIndex",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'punkIndex',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "minSalePriceInWei",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'minSalePriceInWei',
+        type: 'uint256',
       },
       {
-        internalType: "address",
-        name: "toAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'toAddress',
+        type: 'address',
       },
     ],
-    name: "offerPunkForSaleToAddress",
+    name: 'offerPunkForSaleToAddress',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "punkIndex",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'punkIndex',
+        type: 'uint256',
       },
     ],
-    name: "punkIndexToAddress",
+    name: 'punkIndexToAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "owner",
-        type: "address",
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "punkIndex",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'punkIndex',
+        type: 'uint256',
       },
     ],
-    name: "punksOfferedForSale",
+    name: 'punksOfferedForSale',
     outputs: [
       {
         components: [
           {
-            internalType: "bool",
-            name: "isForSale",
-            type: "bool",
+            internalType: 'bool',
+            name: 'isForSale',
+            type: 'bool',
           },
           {
-            internalType: "uint256",
-            name: "punkIndex",
-            type: "uint256",
+            internalType: 'uint256',
+            name: 'punkIndex',
+            type: 'uint256',
           },
           {
-            internalType: "address",
-            name: "seller",
-            type: "address",
+            internalType: 'address',
+            name: 'seller',
+            type: 'address',
           },
           {
-            internalType: "uint256",
-            name: "minValue",
-            type: "uint256",
+            internalType: 'uint256',
+            name: 'minValue',
+            type: 'uint256',
           },
           {
-            internalType: "address",
-            name: "onlySellTo",
-            type: "address",
+            internalType: 'address',
+            name: 'onlySellTo',
+            type: 'address',
           },
         ],
-        internalType: "struct IPunks.Offer",
-        name: "",
-        type: "tuple",
+        internalType: 'struct IPunks.Offer',
+        name: '',
+        type: 'tuple',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "to",
-        type: "address",
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "punkIndex",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'punkIndex',
+        type: 'uint256',
       },
     ],
-    name: "transferPunk",
+    name: 'transferPunk',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
 ];

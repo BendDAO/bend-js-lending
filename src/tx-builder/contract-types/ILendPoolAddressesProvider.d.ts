@@ -9,333 +9,333 @@ import {
   BigNumber,
   BigNumberish,
   PopulatedTransaction,
-} from "ethers";
+} from 'ethers';
 import {
   Contract,
   ContractTransaction,
   Overrides,
   CallOverrides,
-} from "@ethersproject/contracts";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
+} from '@ethersproject/contracts';
+import { BytesLike } from '@ethersproject/bytes';
+import { Listener, Provider } from '@ethersproject/providers';
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
 
 interface ILendPoolAddressesProviderInterface extends ethers.utils.Interface {
   functions: {
-    "getAddress(bytes32)": FunctionFragment;
-    "getBNFTRegistry()": FunctionFragment;
-    "getBendDataProvider()": FunctionFragment;
-    "getEmergencyAdmin()": FunctionFragment;
-    "getIncentivesController()": FunctionFragment;
-    "getLendPool()": FunctionFragment;
-    "getLendPoolConfigurator()": FunctionFragment;
-    "getLendPoolLiquidator()": FunctionFragment;
-    "getLendPoolLoan()": FunctionFragment;
-    "getMarketId()": FunctionFragment;
-    "getNFTOracle()": FunctionFragment;
-    "getPoolAdmin()": FunctionFragment;
-    "getReserveOracle()": FunctionFragment;
-    "getUIDataProvider()": FunctionFragment;
-    "getWalletBalanceProvider()": FunctionFragment;
-    "setAddress(bytes32,address)": FunctionFragment;
-    "setAddressAsProxy(bytes32,address,bytes)": FunctionFragment;
-    "setBNFTRegistry(address)": FunctionFragment;
-    "setBendDataProvider(address)": FunctionFragment;
-    "setEmergencyAdmin(address)": FunctionFragment;
-    "setIncentivesController(address)": FunctionFragment;
-    "setLendPoolConfiguratorImpl(address,bytes)": FunctionFragment;
-    "setLendPoolImpl(address,bytes)": FunctionFragment;
-    "setLendPoolLiquidator(address)": FunctionFragment;
-    "setLendPoolLoanImpl(address,bytes)": FunctionFragment;
-    "setMarketId(string)": FunctionFragment;
-    "setNFTOracle(address)": FunctionFragment;
-    "setPoolAdmin(address)": FunctionFragment;
-    "setReserveOracle(address)": FunctionFragment;
-    "setUIDataProvider(address)": FunctionFragment;
-    "setWalletBalanceProvider(address)": FunctionFragment;
+    'getAddress(bytes32)': FunctionFragment;
+    'getBNFTRegistry()': FunctionFragment;
+    'getBendDataProvider()': FunctionFragment;
+    'getEmergencyAdmin()': FunctionFragment;
+    'getIncentivesController()': FunctionFragment;
+    'getLendPool()': FunctionFragment;
+    'getLendPoolConfigurator()': FunctionFragment;
+    'getLendPoolLiquidator()': FunctionFragment;
+    'getLendPoolLoan()': FunctionFragment;
+    'getMarketId()': FunctionFragment;
+    'getNFTOracle()': FunctionFragment;
+    'getPoolAdmin()': FunctionFragment;
+    'getReserveOracle()': FunctionFragment;
+    'getUIDataProvider()': FunctionFragment;
+    'getWalletBalanceProvider()': FunctionFragment;
+    'setAddress(bytes32,address)': FunctionFragment;
+    'setAddressAsProxy(bytes32,address,bytes)': FunctionFragment;
+    'setBNFTRegistry(address)': FunctionFragment;
+    'setBendDataProvider(address)': FunctionFragment;
+    'setEmergencyAdmin(address)': FunctionFragment;
+    'setIncentivesController(address)': FunctionFragment;
+    'setLendPoolConfiguratorImpl(address,bytes)': FunctionFragment;
+    'setLendPoolImpl(address,bytes)': FunctionFragment;
+    'setLendPoolLiquidator(address)': FunctionFragment;
+    'setLendPoolLoanImpl(address,bytes)': FunctionFragment;
+    'setMarketId(string)': FunctionFragment;
+    'setNFTOracle(address)': FunctionFragment;
+    'setPoolAdmin(address)': FunctionFragment;
+    'setReserveOracle(address)': FunctionFragment;
+    'setUIDataProvider(address)': FunctionFragment;
+    'setWalletBalanceProvider(address)': FunctionFragment;
   };
 
   encodeFunctionData(
-    functionFragment: "getAddress",
+    functionFragment: 'getAddress',
     values: [BytesLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "getBNFTRegistry",
+    functionFragment: 'getBNFTRegistry',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getBendDataProvider",
+    functionFragment: 'getBendDataProvider',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getEmergencyAdmin",
+    functionFragment: 'getEmergencyAdmin',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getIncentivesController",
+    functionFragment: 'getIncentivesController',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getLendPool",
+    functionFragment: 'getLendPool',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getLendPoolConfigurator",
+    functionFragment: 'getLendPoolConfigurator',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getLendPoolLiquidator",
+    functionFragment: 'getLendPoolLiquidator',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getLendPoolLoan",
+    functionFragment: 'getLendPoolLoan',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getMarketId",
+    functionFragment: 'getMarketId',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getNFTOracle",
+    functionFragment: 'getNFTOracle',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getPoolAdmin",
+    functionFragment: 'getPoolAdmin',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getReserveOracle",
+    functionFragment: 'getReserveOracle',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getUIDataProvider",
+    functionFragment: 'getUIDataProvider',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getWalletBalanceProvider",
+    functionFragment: 'getWalletBalanceProvider',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "setAddress",
+    functionFragment: 'setAddress',
     values: [BytesLike, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "setAddressAsProxy",
+    functionFragment: 'setAddressAsProxy',
     values: [BytesLike, string, BytesLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "setBNFTRegistry",
+    functionFragment: 'setBNFTRegistry',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "setBendDataProvider",
+    functionFragment: 'setBendDataProvider',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "setEmergencyAdmin",
+    functionFragment: 'setEmergencyAdmin',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "setIncentivesController",
+    functionFragment: 'setIncentivesController',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "setLendPoolConfiguratorImpl",
+    functionFragment: 'setLendPoolConfiguratorImpl',
     values: [string, BytesLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "setLendPoolImpl",
+    functionFragment: 'setLendPoolImpl',
     values: [string, BytesLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "setLendPoolLiquidator",
+    functionFragment: 'setLendPoolLiquidator',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "setLendPoolLoanImpl",
+    functionFragment: 'setLendPoolLoanImpl',
     values: [string, BytesLike]
   ): string;
-  encodeFunctionData(functionFragment: "setMarketId", values: [string]): string;
+  encodeFunctionData(functionFragment: 'setMarketId', values: [string]): string;
   encodeFunctionData(
-    functionFragment: "setNFTOracle",
+    functionFragment: 'setNFTOracle',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "setPoolAdmin",
+    functionFragment: 'setPoolAdmin',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "setReserveOracle",
+    functionFragment: 'setReserveOracle',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "setUIDataProvider",
+    functionFragment: 'setUIDataProvider',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "setWalletBalanceProvider",
+    functionFragment: 'setWalletBalanceProvider',
     values: [string]
   ): string;
 
-  decodeFunctionResult(functionFragment: "getAddress", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getAddress', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "getBNFTRegistry",
+    functionFragment: 'getBNFTRegistry',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getBendDataProvider",
+    functionFragment: 'getBendDataProvider',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getEmergencyAdmin",
+    functionFragment: 'getEmergencyAdmin',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getIncentivesController",
+    functionFragment: 'getIncentivesController',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getLendPool",
+    functionFragment: 'getLendPool',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getLendPoolConfigurator",
+    functionFragment: 'getLendPoolConfigurator',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getLendPoolLiquidator",
+    functionFragment: 'getLendPoolLiquidator',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getLendPoolLoan",
+    functionFragment: 'getLendPoolLoan',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getMarketId",
+    functionFragment: 'getMarketId',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getNFTOracle",
+    functionFragment: 'getNFTOracle',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getPoolAdmin",
+    functionFragment: 'getPoolAdmin',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getReserveOracle",
+    functionFragment: 'getReserveOracle',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getUIDataProvider",
+    functionFragment: 'getUIDataProvider',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getWalletBalanceProvider",
+    functionFragment: 'getWalletBalanceProvider',
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "setAddress", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'setAddress', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "setAddressAsProxy",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setBNFTRegistry",
+    functionFragment: 'setAddressAsProxy',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setBendDataProvider",
+    functionFragment: 'setBNFTRegistry',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setEmergencyAdmin",
+    functionFragment: 'setBendDataProvider',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setIncentivesController",
+    functionFragment: 'setEmergencyAdmin',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setLendPoolConfiguratorImpl",
+    functionFragment: 'setIncentivesController',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setLendPoolImpl",
+    functionFragment: 'setLendPoolConfiguratorImpl',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setLendPoolLiquidator",
+    functionFragment: 'setLendPoolImpl',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setLendPoolLoanImpl",
+    functionFragment: 'setLendPoolLiquidator',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setMarketId",
+    functionFragment: 'setLendPoolLoanImpl',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setNFTOracle",
+    functionFragment: 'setMarketId',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setPoolAdmin",
+    functionFragment: 'setNFTOracle',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setReserveOracle",
+    functionFragment: 'setPoolAdmin',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setUIDataProvider",
+    functionFragment: 'setReserveOracle',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setWalletBalanceProvider",
+    functionFragment: 'setUIDataProvider',
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: 'setWalletBalanceProvider',
     data: BytesLike
   ): Result;
 
   events: {
-    "AddressSet(bytes32,address,bool,bytes)": EventFragment;
-    "BNFTRegistryUpdated(address)": EventFragment;
-    "BendDataProviderUpdated(address)": EventFragment;
-    "ConfigurationAdminUpdated(address)": EventFragment;
-    "EmergencyAdminUpdated(address)": EventFragment;
-    "IncentivesControllerUpdated(address)": EventFragment;
-    "LendPoolConfiguratorUpdated(address,bytes)": EventFragment;
-    "LendPoolLiquidatorUpdated(address)": EventFragment;
-    "LendPoolLoanUpdated(address,bytes)": EventFragment;
-    "LendPoolUpdated(address,bytes)": EventFragment;
-    "MarketIdSet(string)": EventFragment;
-    "NftOracleUpdated(address)": EventFragment;
-    "ProxyCreated(bytes32,address)": EventFragment;
-    "ReserveOracleUpdated(address)": EventFragment;
-    "UIDataProviderUpdated(address)": EventFragment;
-    "WalletBalanceProviderUpdated(address)": EventFragment;
+    'AddressSet(bytes32,address,bool,bytes)': EventFragment;
+    'BNFTRegistryUpdated(address)': EventFragment;
+    'BendDataProviderUpdated(address)': EventFragment;
+    'ConfigurationAdminUpdated(address)': EventFragment;
+    'EmergencyAdminUpdated(address)': EventFragment;
+    'IncentivesControllerUpdated(address)': EventFragment;
+    'LendPoolConfiguratorUpdated(address,bytes)': EventFragment;
+    'LendPoolLiquidatorUpdated(address)': EventFragment;
+    'LendPoolLoanUpdated(address,bytes)': EventFragment;
+    'LendPoolUpdated(address,bytes)': EventFragment;
+    'MarketIdSet(string)': EventFragment;
+    'NftOracleUpdated(address)': EventFragment;
+    'ProxyCreated(bytes32,address)': EventFragment;
+    'ReserveOracleUpdated(address)': EventFragment;
+    'UIDataProviderUpdated(address)': EventFragment;
+    'WalletBalanceProviderUpdated(address)': EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "AddressSet"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "BNFTRegistryUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "BendDataProviderUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ConfigurationAdminUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "EmergencyAdminUpdated"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'AddressSet'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'BNFTRegistryUpdated'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'BendDataProviderUpdated'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'ConfigurationAdminUpdated'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'EmergencyAdminUpdated'): EventFragment;
   getEvent(
-    nameOrSignatureOrTopic: "IncentivesControllerUpdated"
+    nameOrSignatureOrTopic: 'IncentivesControllerUpdated'
   ): EventFragment;
   getEvent(
-    nameOrSignatureOrTopic: "LendPoolConfiguratorUpdated"
+    nameOrSignatureOrTopic: 'LendPoolConfiguratorUpdated'
   ): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LendPoolLiquidatorUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LendPoolLoanUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LendPoolUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "MarketIdSet"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "NftOracleUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ProxyCreated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ReserveOracleUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "UIDataProviderUpdated"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'LendPoolLiquidatorUpdated'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'LendPoolLoanUpdated'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'LendPoolUpdated'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'MarketIdSet'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'NftOracleUpdated'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'ProxyCreated'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'ReserveOracleUpdated'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'UIDataProviderUpdated'): EventFragment;
   getEvent(
-    nameOrSignatureOrTopic: "WalletBalanceProviderUpdated"
+    nameOrSignatureOrTopic: 'WalletBalanceProviderUpdated'
   ): EventFragment;
 }
 
@@ -360,178 +360,122 @@ export class ILendPoolAddressesProvider extends Contract {
       0: string;
     }>;
 
-    "getAddress(bytes32)"(
+    'getAddress(bytes32)'(
       id: BytesLike,
       overrides?: CallOverrides
     ): Promise<{
       0: string;
     }>;
 
-    getBNFTRegistry(
-      overrides?: CallOverrides
-    ): Promise<{
+    getBNFTRegistry(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getBNFTRegistry()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getBNFTRegistry()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getBendDataProvider(
-      overrides?: CallOverrides
-    ): Promise<{
+    getBendDataProvider(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getBendDataProvider()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getBendDataProvider()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getEmergencyAdmin(
-      overrides?: CallOverrides
-    ): Promise<{
+    getEmergencyAdmin(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getEmergencyAdmin()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getEmergencyAdmin()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getIncentivesController(
-      overrides?: CallOverrides
-    ): Promise<{
+    getIncentivesController(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getIncentivesController()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getIncentivesController()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getLendPool(
-      overrides?: CallOverrides
-    ): Promise<{
+    getLendPool(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getLendPool()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getLendPool()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getLendPoolConfigurator(
-      overrides?: CallOverrides
-    ): Promise<{
+    getLendPoolConfigurator(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getLendPoolConfigurator()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getLendPoolConfigurator()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getLendPoolLiquidator(
-      overrides?: CallOverrides
-    ): Promise<{
+    getLendPoolLiquidator(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getLendPoolLiquidator()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getLendPoolLiquidator()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getLendPoolLoan(
-      overrides?: CallOverrides
-    ): Promise<{
+    getLendPoolLoan(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getLendPoolLoan()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getLendPoolLoan()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getMarketId(
-      overrides?: CallOverrides
-    ): Promise<{
+    getMarketId(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getMarketId()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getMarketId()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getNFTOracle(
-      overrides?: CallOverrides
-    ): Promise<{
+    getNFTOracle(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getNFTOracle()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getNFTOracle()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getPoolAdmin(
-      overrides?: CallOverrides
-    ): Promise<{
+    getPoolAdmin(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getPoolAdmin()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getPoolAdmin()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getReserveOracle(
-      overrides?: CallOverrides
-    ): Promise<{
+    getReserveOracle(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getReserveOracle()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getReserveOracle()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getUIDataProvider(
-      overrides?: CallOverrides
-    ): Promise<{
+    getUIDataProvider(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getUIDataProvider()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getUIDataProvider()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getWalletBalanceProvider(
-      overrides?: CallOverrides
-    ): Promise<{
+    getWalletBalanceProvider(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getWalletBalanceProvider()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getWalletBalanceProvider()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -541,7 +485,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setAddress(bytes32,address)"(
+    'setAddress(bytes32,address)'(
       id: BytesLike,
       newAddress: string,
       overrides?: Overrides
@@ -554,7 +498,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setAddressAsProxy(bytes32,address,bytes)"(
+    'setAddressAsProxy(bytes32,address,bytes)'(
       id: BytesLike,
       impl: string,
       encodedCallData: BytesLike,
@@ -566,7 +510,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setBNFTRegistry(address)"(
+    'setBNFTRegistry(address)'(
       factory: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -576,7 +520,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setBendDataProvider(address)"(
+    'setBendDataProvider(address)'(
       provider: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -586,7 +530,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setEmergencyAdmin(address)"(
+    'setEmergencyAdmin(address)'(
       admin: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -596,7 +540,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setIncentivesController(address)"(
+    'setIncentivesController(address)'(
       controller: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -607,7 +551,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setLendPoolConfiguratorImpl(address,bytes)"(
+    'setLendPoolConfiguratorImpl(address,bytes)'(
       configurator: string,
       encodedCallData: BytesLike,
       overrides?: Overrides
@@ -619,7 +563,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setLendPoolImpl(address,bytes)"(
+    'setLendPoolImpl(address,bytes)'(
       pool: string,
       encodedCallData: BytesLike,
       overrides?: Overrides
@@ -630,7 +574,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setLendPoolLiquidator(address)"(
+    'setLendPoolLiquidator(address)'(
       liquidator: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -641,7 +585,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setLendPoolLoanImpl(address,bytes)"(
+    'setLendPoolLoanImpl(address,bytes)'(
       loan: string,
       encodedCallData: BytesLike,
       overrides?: Overrides
@@ -652,7 +596,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setMarketId(string)"(
+    'setMarketId(string)'(
       marketId: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -662,7 +606,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setNFTOracle(address)"(
+    'setNFTOracle(address)'(
       nftOracle: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -672,7 +616,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setPoolAdmin(address)"(
+    'setPoolAdmin(address)'(
       admin: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -682,7 +626,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setReserveOracle(address)"(
+    'setReserveOracle(address)'(
       reserveOracle: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -692,7 +636,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setUIDataProvider(address)"(
+    'setUIDataProvider(address)'(
       provider: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -702,7 +646,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setWalletBalanceProvider(address)"(
+    'setWalletBalanceProvider(address)'(
       provider: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -710,66 +654,66 @@ export class ILendPoolAddressesProvider extends Contract {
 
   getAddress(id: BytesLike, overrides?: CallOverrides): Promise<string>;
 
-  "getAddress(bytes32)"(
+  'getAddress(bytes32)'(
     id: BytesLike,
     overrides?: CallOverrides
   ): Promise<string>;
 
   getBNFTRegistry(overrides?: CallOverrides): Promise<string>;
 
-  "getBNFTRegistry()"(overrides?: CallOverrides): Promise<string>;
+  'getBNFTRegistry()'(overrides?: CallOverrides): Promise<string>;
 
   getBendDataProvider(overrides?: CallOverrides): Promise<string>;
 
-  "getBendDataProvider()"(overrides?: CallOverrides): Promise<string>;
+  'getBendDataProvider()'(overrides?: CallOverrides): Promise<string>;
 
   getEmergencyAdmin(overrides?: CallOverrides): Promise<string>;
 
-  "getEmergencyAdmin()"(overrides?: CallOverrides): Promise<string>;
+  'getEmergencyAdmin()'(overrides?: CallOverrides): Promise<string>;
 
   getIncentivesController(overrides?: CallOverrides): Promise<string>;
 
-  "getIncentivesController()"(overrides?: CallOverrides): Promise<string>;
+  'getIncentivesController()'(overrides?: CallOverrides): Promise<string>;
 
   getLendPool(overrides?: CallOverrides): Promise<string>;
 
-  "getLendPool()"(overrides?: CallOverrides): Promise<string>;
+  'getLendPool()'(overrides?: CallOverrides): Promise<string>;
 
   getLendPoolConfigurator(overrides?: CallOverrides): Promise<string>;
 
-  "getLendPoolConfigurator()"(overrides?: CallOverrides): Promise<string>;
+  'getLendPoolConfigurator()'(overrides?: CallOverrides): Promise<string>;
 
   getLendPoolLiquidator(overrides?: CallOverrides): Promise<string>;
 
-  "getLendPoolLiquidator()"(overrides?: CallOverrides): Promise<string>;
+  'getLendPoolLiquidator()'(overrides?: CallOverrides): Promise<string>;
 
   getLendPoolLoan(overrides?: CallOverrides): Promise<string>;
 
-  "getLendPoolLoan()"(overrides?: CallOverrides): Promise<string>;
+  'getLendPoolLoan()'(overrides?: CallOverrides): Promise<string>;
 
   getMarketId(overrides?: CallOverrides): Promise<string>;
 
-  "getMarketId()"(overrides?: CallOverrides): Promise<string>;
+  'getMarketId()'(overrides?: CallOverrides): Promise<string>;
 
   getNFTOracle(overrides?: CallOverrides): Promise<string>;
 
-  "getNFTOracle()"(overrides?: CallOverrides): Promise<string>;
+  'getNFTOracle()'(overrides?: CallOverrides): Promise<string>;
 
   getPoolAdmin(overrides?: CallOverrides): Promise<string>;
 
-  "getPoolAdmin()"(overrides?: CallOverrides): Promise<string>;
+  'getPoolAdmin()'(overrides?: CallOverrides): Promise<string>;
 
   getReserveOracle(overrides?: CallOverrides): Promise<string>;
 
-  "getReserveOracle()"(overrides?: CallOverrides): Promise<string>;
+  'getReserveOracle()'(overrides?: CallOverrides): Promise<string>;
 
   getUIDataProvider(overrides?: CallOverrides): Promise<string>;
 
-  "getUIDataProvider()"(overrides?: CallOverrides): Promise<string>;
+  'getUIDataProvider()'(overrides?: CallOverrides): Promise<string>;
 
   getWalletBalanceProvider(overrides?: CallOverrides): Promise<string>;
 
-  "getWalletBalanceProvider()"(overrides?: CallOverrides): Promise<string>;
+  'getWalletBalanceProvider()'(overrides?: CallOverrides): Promise<string>;
 
   setAddress(
     id: BytesLike,
@@ -777,7 +721,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setAddress(bytes32,address)"(
+  'setAddress(bytes32,address)'(
     id: BytesLike,
     newAddress: string,
     overrides?: Overrides
@@ -790,7 +734,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setAddressAsProxy(bytes32,address,bytes)"(
+  'setAddressAsProxy(bytes32,address,bytes)'(
     id: BytesLike,
     impl: string,
     encodedCallData: BytesLike,
@@ -802,7 +746,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setBNFTRegistry(address)"(
+  'setBNFTRegistry(address)'(
     factory: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -812,7 +756,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setBendDataProvider(address)"(
+  'setBendDataProvider(address)'(
     provider: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -822,7 +766,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setEmergencyAdmin(address)"(
+  'setEmergencyAdmin(address)'(
     admin: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -832,7 +776,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setIncentivesController(address)"(
+  'setIncentivesController(address)'(
     controller: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -843,7 +787,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setLendPoolConfiguratorImpl(address,bytes)"(
+  'setLendPoolConfiguratorImpl(address,bytes)'(
     configurator: string,
     encodedCallData: BytesLike,
     overrides?: Overrides
@@ -855,7 +799,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setLendPoolImpl(address,bytes)"(
+  'setLendPoolImpl(address,bytes)'(
     pool: string,
     encodedCallData: BytesLike,
     overrides?: Overrides
@@ -866,7 +810,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setLendPoolLiquidator(address)"(
+  'setLendPoolLiquidator(address)'(
     liquidator: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -877,7 +821,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setLendPoolLoanImpl(address,bytes)"(
+  'setLendPoolLoanImpl(address,bytes)'(
     loan: string,
     encodedCallData: BytesLike,
     overrides?: Overrides
@@ -888,7 +832,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setMarketId(string)"(
+  'setMarketId(string)'(
     marketId: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -898,7 +842,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setNFTOracle(address)"(
+  'setNFTOracle(address)'(
     nftOracle: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -908,7 +852,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setPoolAdmin(address)"(
+  'setPoolAdmin(address)'(
     admin: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -918,7 +862,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setReserveOracle(address)"(
+  'setReserveOracle(address)'(
     reserveOracle: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -928,7 +872,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setUIDataProvider(address)"(
+  'setUIDataProvider(address)'(
     provider: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -938,7 +882,7 @@ export class ILendPoolAddressesProvider extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setWalletBalanceProvider(address)"(
+  'setWalletBalanceProvider(address)'(
     provider: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -946,66 +890,66 @@ export class ILendPoolAddressesProvider extends Contract {
   callStatic: {
     getAddress(id: BytesLike, overrides?: CallOverrides): Promise<string>;
 
-    "getAddress(bytes32)"(
+    'getAddress(bytes32)'(
       id: BytesLike,
       overrides?: CallOverrides
     ): Promise<string>;
 
     getBNFTRegistry(overrides?: CallOverrides): Promise<string>;
 
-    "getBNFTRegistry()"(overrides?: CallOverrides): Promise<string>;
+    'getBNFTRegistry()'(overrides?: CallOverrides): Promise<string>;
 
     getBendDataProvider(overrides?: CallOverrides): Promise<string>;
 
-    "getBendDataProvider()"(overrides?: CallOverrides): Promise<string>;
+    'getBendDataProvider()'(overrides?: CallOverrides): Promise<string>;
 
     getEmergencyAdmin(overrides?: CallOverrides): Promise<string>;
 
-    "getEmergencyAdmin()"(overrides?: CallOverrides): Promise<string>;
+    'getEmergencyAdmin()'(overrides?: CallOverrides): Promise<string>;
 
     getIncentivesController(overrides?: CallOverrides): Promise<string>;
 
-    "getIncentivesController()"(overrides?: CallOverrides): Promise<string>;
+    'getIncentivesController()'(overrides?: CallOverrides): Promise<string>;
 
     getLendPool(overrides?: CallOverrides): Promise<string>;
 
-    "getLendPool()"(overrides?: CallOverrides): Promise<string>;
+    'getLendPool()'(overrides?: CallOverrides): Promise<string>;
 
     getLendPoolConfigurator(overrides?: CallOverrides): Promise<string>;
 
-    "getLendPoolConfigurator()"(overrides?: CallOverrides): Promise<string>;
+    'getLendPoolConfigurator()'(overrides?: CallOverrides): Promise<string>;
 
     getLendPoolLiquidator(overrides?: CallOverrides): Promise<string>;
 
-    "getLendPoolLiquidator()"(overrides?: CallOverrides): Promise<string>;
+    'getLendPoolLiquidator()'(overrides?: CallOverrides): Promise<string>;
 
     getLendPoolLoan(overrides?: CallOverrides): Promise<string>;
 
-    "getLendPoolLoan()"(overrides?: CallOverrides): Promise<string>;
+    'getLendPoolLoan()'(overrides?: CallOverrides): Promise<string>;
 
     getMarketId(overrides?: CallOverrides): Promise<string>;
 
-    "getMarketId()"(overrides?: CallOverrides): Promise<string>;
+    'getMarketId()'(overrides?: CallOverrides): Promise<string>;
 
     getNFTOracle(overrides?: CallOverrides): Promise<string>;
 
-    "getNFTOracle()"(overrides?: CallOverrides): Promise<string>;
+    'getNFTOracle()'(overrides?: CallOverrides): Promise<string>;
 
     getPoolAdmin(overrides?: CallOverrides): Promise<string>;
 
-    "getPoolAdmin()"(overrides?: CallOverrides): Promise<string>;
+    'getPoolAdmin()'(overrides?: CallOverrides): Promise<string>;
 
     getReserveOracle(overrides?: CallOverrides): Promise<string>;
 
-    "getReserveOracle()"(overrides?: CallOverrides): Promise<string>;
+    'getReserveOracle()'(overrides?: CallOverrides): Promise<string>;
 
     getUIDataProvider(overrides?: CallOverrides): Promise<string>;
 
-    "getUIDataProvider()"(overrides?: CallOverrides): Promise<string>;
+    'getUIDataProvider()'(overrides?: CallOverrides): Promise<string>;
 
     getWalletBalanceProvider(overrides?: CallOverrides): Promise<string>;
 
-    "getWalletBalanceProvider()"(overrides?: CallOverrides): Promise<string>;
+    'getWalletBalanceProvider()'(overrides?: CallOverrides): Promise<string>;
 
     setAddress(
       id: BytesLike,
@@ -1013,7 +957,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setAddress(bytes32,address)"(
+    'setAddress(bytes32,address)'(
       id: BytesLike,
       newAddress: string,
       overrides?: CallOverrides
@@ -1026,7 +970,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setAddressAsProxy(bytes32,address,bytes)"(
+    'setAddressAsProxy(bytes32,address,bytes)'(
       id: BytesLike,
       impl: string,
       encodedCallData: BytesLike,
@@ -1035,7 +979,7 @@ export class ILendPoolAddressesProvider extends Contract {
 
     setBNFTRegistry(factory: string, overrides?: CallOverrides): Promise<void>;
 
-    "setBNFTRegistry(address)"(
+    'setBNFTRegistry(address)'(
       factory: string,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -1045,14 +989,14 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setBendDataProvider(address)"(
+    'setBendDataProvider(address)'(
       provider: string,
       overrides?: CallOverrides
     ): Promise<void>;
 
     setEmergencyAdmin(admin: string, overrides?: CallOverrides): Promise<void>;
 
-    "setEmergencyAdmin(address)"(
+    'setEmergencyAdmin(address)'(
       admin: string,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -1062,7 +1006,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setIncentivesController(address)"(
+    'setIncentivesController(address)'(
       controller: string,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -1073,7 +1017,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setLendPoolConfiguratorImpl(address,bytes)"(
+    'setLendPoolConfiguratorImpl(address,bytes)'(
       configurator: string,
       encodedCallData: BytesLike,
       overrides?: CallOverrides
@@ -1085,7 +1029,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setLendPoolImpl(address,bytes)"(
+    'setLendPoolImpl(address,bytes)'(
       pool: string,
       encodedCallData: BytesLike,
       overrides?: CallOverrides
@@ -1096,7 +1040,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setLendPoolLiquidator(address)"(
+    'setLendPoolLiquidator(address)'(
       liquidator: string,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -1107,7 +1051,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setLendPoolLoanImpl(address,bytes)"(
+    'setLendPoolLoanImpl(address,bytes)'(
       loan: string,
       encodedCallData: BytesLike,
       overrides?: CallOverrides
@@ -1115,21 +1059,21 @@ export class ILendPoolAddressesProvider extends Contract {
 
     setMarketId(marketId: string, overrides?: CallOverrides): Promise<void>;
 
-    "setMarketId(string)"(
+    'setMarketId(string)'(
       marketId: string,
       overrides?: CallOverrides
     ): Promise<void>;
 
     setNFTOracle(nftOracle: string, overrides?: CallOverrides): Promise<void>;
 
-    "setNFTOracle(address)"(
+    'setNFTOracle(address)'(
       nftOracle: string,
       overrides?: CallOverrides
     ): Promise<void>;
 
     setPoolAdmin(admin: string, overrides?: CallOverrides): Promise<void>;
 
-    "setPoolAdmin(address)"(
+    'setPoolAdmin(address)'(
       admin: string,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -1139,7 +1083,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setReserveOracle(address)"(
+    'setReserveOracle(address)'(
       reserveOracle: string,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -1149,7 +1093,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setUIDataProvider(address)"(
+    'setUIDataProvider(address)'(
       provider: string,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -1159,7 +1103,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setWalletBalanceProvider(address)"(
+    'setWalletBalanceProvider(address)'(
       provider: string,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -1216,66 +1160,66 @@ export class ILendPoolAddressesProvider extends Contract {
   estimateGas: {
     getAddress(id: BytesLike, overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getAddress(bytes32)"(
+    'getAddress(bytes32)'(
       id: BytesLike,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     getBNFTRegistry(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getBNFTRegistry()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getBNFTRegistry()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getBendDataProvider(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getBendDataProvider()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getBendDataProvider()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getEmergencyAdmin(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getEmergencyAdmin()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getEmergencyAdmin()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getIncentivesController(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getIncentivesController()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getIncentivesController()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getLendPool(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getLendPool()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getLendPool()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getLendPoolConfigurator(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getLendPoolConfigurator()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getLendPoolConfigurator()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getLendPoolLiquidator(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getLendPoolLiquidator()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getLendPoolLiquidator()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getLendPoolLoan(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getLendPoolLoan()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getLendPoolLoan()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getMarketId(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getMarketId()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getMarketId()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getNFTOracle(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getNFTOracle()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getNFTOracle()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getPoolAdmin(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getPoolAdmin()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getPoolAdmin()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getReserveOracle(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getReserveOracle()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getReserveOracle()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getUIDataProvider(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getUIDataProvider()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getUIDataProvider()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getWalletBalanceProvider(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getWalletBalanceProvider()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getWalletBalanceProvider()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     setAddress(
       id: BytesLike,
@@ -1283,7 +1227,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setAddress(bytes32,address)"(
+    'setAddress(bytes32,address)'(
       id: BytesLike,
       newAddress: string,
       overrides?: Overrides
@@ -1296,7 +1240,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setAddressAsProxy(bytes32,address,bytes)"(
+    'setAddressAsProxy(bytes32,address,bytes)'(
       id: BytesLike,
       impl: string,
       encodedCallData: BytesLike,
@@ -1305,7 +1249,7 @@ export class ILendPoolAddressesProvider extends Contract {
 
     setBNFTRegistry(factory: string, overrides?: Overrides): Promise<BigNumber>;
 
-    "setBNFTRegistry(address)"(
+    'setBNFTRegistry(address)'(
       factory: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -1315,14 +1259,14 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setBendDataProvider(address)"(
+    'setBendDataProvider(address)'(
       provider: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
     setEmergencyAdmin(admin: string, overrides?: Overrides): Promise<BigNumber>;
 
-    "setEmergencyAdmin(address)"(
+    'setEmergencyAdmin(address)'(
       admin: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -1332,7 +1276,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setIncentivesController(address)"(
+    'setIncentivesController(address)'(
       controller: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -1343,7 +1287,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setLendPoolConfiguratorImpl(address,bytes)"(
+    'setLendPoolConfiguratorImpl(address,bytes)'(
       configurator: string,
       encodedCallData: BytesLike,
       overrides?: Overrides
@@ -1355,7 +1299,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setLendPoolImpl(address,bytes)"(
+    'setLendPoolImpl(address,bytes)'(
       pool: string,
       encodedCallData: BytesLike,
       overrides?: Overrides
@@ -1366,7 +1310,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setLendPoolLiquidator(address)"(
+    'setLendPoolLiquidator(address)'(
       liquidator: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -1377,7 +1321,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setLendPoolLoanImpl(address,bytes)"(
+    'setLendPoolLoanImpl(address,bytes)'(
       loan: string,
       encodedCallData: BytesLike,
       overrides?: Overrides
@@ -1385,21 +1329,21 @@ export class ILendPoolAddressesProvider extends Contract {
 
     setMarketId(marketId: string, overrides?: Overrides): Promise<BigNumber>;
 
-    "setMarketId(string)"(
+    'setMarketId(string)'(
       marketId: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
     setNFTOracle(nftOracle: string, overrides?: Overrides): Promise<BigNumber>;
 
-    "setNFTOracle(address)"(
+    'setNFTOracle(address)'(
       nftOracle: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
     setPoolAdmin(admin: string, overrides?: Overrides): Promise<BigNumber>;
 
-    "setPoolAdmin(address)"(
+    'setPoolAdmin(address)'(
       admin: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -1409,7 +1353,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setReserveOracle(address)"(
+    'setReserveOracle(address)'(
       reserveOracle: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -1419,7 +1363,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setUIDataProvider(address)"(
+    'setUIDataProvider(address)'(
       provider: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -1429,7 +1373,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setWalletBalanceProvider(address)"(
+    'setWalletBalanceProvider(address)'(
       provider: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -1441,14 +1385,14 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getAddress(bytes32)"(
+    'getAddress(bytes32)'(
       id: BytesLike,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     getBNFTRegistry(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "getBNFTRegistry()"(
+    'getBNFTRegistry()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -1456,13 +1400,13 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getBendDataProvider()"(
+    'getBendDataProvider()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     getEmergencyAdmin(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "getEmergencyAdmin()"(
+    'getEmergencyAdmin()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -1470,19 +1414,19 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getIncentivesController()"(
+    'getIncentivesController()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     getLendPool(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "getLendPool()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    'getLendPool()'(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     getLendPoolConfigurator(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getLendPoolConfigurator()"(
+    'getLendPoolConfigurator()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -1490,37 +1434,37 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getLendPoolLiquidator()"(
+    'getLendPoolLiquidator()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     getLendPoolLoan(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "getLendPoolLoan()"(
+    'getLendPoolLoan()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     getMarketId(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "getMarketId()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    'getMarketId()'(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     getNFTOracle(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "getNFTOracle()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    'getNFTOracle()'(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     getPoolAdmin(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "getPoolAdmin()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    'getPoolAdmin()'(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     getReserveOracle(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "getReserveOracle()"(
+    'getReserveOracle()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     getUIDataProvider(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "getUIDataProvider()"(
+    'getUIDataProvider()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -1528,7 +1472,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getWalletBalanceProvider()"(
+    'getWalletBalanceProvider()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -1538,7 +1482,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setAddress(bytes32,address)"(
+    'setAddress(bytes32,address)'(
       id: BytesLike,
       newAddress: string,
       overrides?: Overrides
@@ -1551,7 +1495,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setAddressAsProxy(bytes32,address,bytes)"(
+    'setAddressAsProxy(bytes32,address,bytes)'(
       id: BytesLike,
       impl: string,
       encodedCallData: BytesLike,
@@ -1563,7 +1507,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setBNFTRegistry(address)"(
+    'setBNFTRegistry(address)'(
       factory: string,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -1573,7 +1517,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setBendDataProvider(address)"(
+    'setBendDataProvider(address)'(
       provider: string,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -1583,7 +1527,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setEmergencyAdmin(address)"(
+    'setEmergencyAdmin(address)'(
       admin: string,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -1593,7 +1537,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setIncentivesController(address)"(
+    'setIncentivesController(address)'(
       controller: string,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -1604,7 +1548,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setLendPoolConfiguratorImpl(address,bytes)"(
+    'setLendPoolConfiguratorImpl(address,bytes)'(
       configurator: string,
       encodedCallData: BytesLike,
       overrides?: Overrides
@@ -1616,7 +1560,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setLendPoolImpl(address,bytes)"(
+    'setLendPoolImpl(address,bytes)'(
       pool: string,
       encodedCallData: BytesLike,
       overrides?: Overrides
@@ -1627,7 +1571,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setLendPoolLiquidator(address)"(
+    'setLendPoolLiquidator(address)'(
       liquidator: string,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -1638,7 +1582,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setLendPoolLoanImpl(address,bytes)"(
+    'setLendPoolLoanImpl(address,bytes)'(
       loan: string,
       encodedCallData: BytesLike,
       overrides?: Overrides
@@ -1649,7 +1593,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setMarketId(string)"(
+    'setMarketId(string)'(
       marketId: string,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -1659,7 +1603,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setNFTOracle(address)"(
+    'setNFTOracle(address)'(
       nftOracle: string,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -1669,7 +1613,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setPoolAdmin(address)"(
+    'setPoolAdmin(address)'(
       admin: string,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -1679,7 +1623,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setReserveOracle(address)"(
+    'setReserveOracle(address)'(
       reserveOracle: string,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -1689,7 +1633,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setUIDataProvider(address)"(
+    'setUIDataProvider(address)'(
       provider: string,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -1699,7 +1643,7 @@ export class ILendPoolAddressesProvider extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setWalletBalanceProvider(address)"(
+    'setWalletBalanceProvider(address)'(
       provider: string,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;

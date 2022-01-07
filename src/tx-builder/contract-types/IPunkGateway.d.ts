@@ -9,96 +9,96 @@ import {
   BigNumber,
   BigNumberish,
   PopulatedTransaction,
-} from "ethers";
+} from 'ethers';
 import {
   Contract,
   ContractTransaction,
   Overrides,
   PayableOverrides,
   CallOverrides,
-} from "@ethersproject/contracts";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
+} from '@ethersproject/contracts';
+import { BytesLike } from '@ethersproject/bytes';
+import { Listener, Provider } from '@ethersproject/providers';
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
 
 interface IPunkGatewayInterface extends ethers.utils.Interface {
   functions: {
-    "auction(uint256,uint256,address)": FunctionFragment;
-    "auctionETH(uint256,address)": FunctionFragment;
-    "borrow(address,uint256,uint256,address,uint16)": FunctionFragment;
-    "borrowETH(uint256,uint256,address,uint16)": FunctionFragment;
-    "liquidate(uint256)": FunctionFragment;
-    "liquidateETH(uint256)": FunctionFragment;
-    "punks()": FunctionFragment;
-    "redeem(uint256)": FunctionFragment;
-    "redeemETH(uint256)": FunctionFragment;
-    "repay(uint256,uint256)": FunctionFragment;
-    "repayETH(uint256,uint256)": FunctionFragment;
-    "wrappedPunks()": FunctionFragment;
+    'auction(uint256,uint256,address)': FunctionFragment;
+    'auctionETH(uint256,address)': FunctionFragment;
+    'borrow(address,uint256,uint256,address,uint16)': FunctionFragment;
+    'borrowETH(uint256,uint256,address,uint16)': FunctionFragment;
+    'liquidate(uint256)': FunctionFragment;
+    'liquidateETH(uint256)': FunctionFragment;
+    'punks()': FunctionFragment;
+    'redeem(uint256)': FunctionFragment;
+    'redeemETH(uint256)': FunctionFragment;
+    'repay(uint256,uint256)': FunctionFragment;
+    'repayETH(uint256,uint256)': FunctionFragment;
+    'wrappedPunks()': FunctionFragment;
   };
 
   encodeFunctionData(
-    functionFragment: "auction",
+    functionFragment: 'auction',
     values: [BigNumberish, BigNumberish, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "auctionETH",
+    functionFragment: 'auctionETH',
     values: [BigNumberish, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "borrow",
+    functionFragment: 'borrow',
     values: [string, BigNumberish, BigNumberish, string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "borrowETH",
+    functionFragment: 'borrowETH',
     values: [BigNumberish, BigNumberish, string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "liquidate",
+    functionFragment: 'liquidate',
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "liquidateETH",
+    functionFragment: 'liquidateETH',
     values: [BigNumberish]
   ): string;
-  encodeFunctionData(functionFragment: "punks", values?: undefined): string;
+  encodeFunctionData(functionFragment: 'punks', values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "redeem",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "redeemETH",
+    functionFragment: 'redeem',
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "repay",
+    functionFragment: 'redeemETH',
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: 'repay',
     values: [BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "repayETH",
+    functionFragment: 'repayETH',
     values: [BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "wrappedPunks",
+    functionFragment: 'wrappedPunks',
     values?: undefined
   ): string;
 
-  decodeFunctionResult(functionFragment: "auction", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "auctionETH", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "borrow", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "borrowETH", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "liquidate", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'auction', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'auctionETH', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'borrow', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'borrowETH', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'liquidate', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "liquidateETH",
+    functionFragment: 'liquidateETH',
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "punks", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "redeem", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "redeemETH", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "repay", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "repayETH", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'punks', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'redeem', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'redeemETH', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'repay', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'repayETH', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "wrappedPunks",
+    functionFragment: 'wrappedPunks',
     data: BytesLike
   ): Result;
 
@@ -126,7 +126,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "auction(uint256,uint256,address)"(
+    'auction(uint256,uint256,address)'(
       punkIndex: BigNumberish,
       bidPrice: BigNumberish,
       onBehalfOf: string,
@@ -139,7 +139,7 @@ export class IPunkGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    "auctionETH(uint256,address)"(
+    'auctionETH(uint256,address)'(
       punkIndex: BigNumberish,
       onBehalfOf: string,
       overrides?: PayableOverrides
@@ -154,7 +154,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "borrow(address,uint256,uint256,address,uint16)"(
+    'borrow(address,uint256,uint256,address,uint16)'(
       reserveAsset: string,
       amount: BigNumberish,
       punkIndex: BigNumberish,
@@ -171,7 +171,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "borrowETH(uint256,uint256,address,uint16)"(
+    'borrowETH(uint256,uint256,address,uint16)'(
       amount: BigNumberish,
       punkIndex: BigNumberish,
       onBehalfOf: string,
@@ -184,7 +184,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "liquidate(uint256)"(
+    'liquidate(uint256)'(
       punkIndex: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -194,20 +194,16 @@ export class IPunkGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    "liquidateETH(uint256)"(
+    'liquidateETH(uint256)'(
       punkIndex: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    punks(
-      overrides?: CallOverrides
-    ): Promise<{
+    punks(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "punks()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'punks()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -216,7 +212,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "redeem(uint256)"(
+    'redeem(uint256)'(
       punkIndex: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -226,7 +222,7 @@ export class IPunkGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    "redeemETH(uint256)"(
+    'redeemETH(uint256)'(
       punkIndex: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
@@ -237,7 +233,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "repay(uint256,uint256)"(
+    'repay(uint256,uint256)'(
       punkIndex: BigNumberish,
       amount: BigNumberish,
       overrides?: Overrides
@@ -249,21 +245,17 @@ export class IPunkGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    "repayETH(uint256,uint256)"(
+    'repayETH(uint256,uint256)'(
       punkIndex: BigNumberish,
       amount: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    wrappedPunks(
-      overrides?: CallOverrides
-    ): Promise<{
+    wrappedPunks(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "wrappedPunks()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'wrappedPunks()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
   };
@@ -275,7 +267,7 @@ export class IPunkGateway extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "auction(uint256,uint256,address)"(
+  'auction(uint256,uint256,address)'(
     punkIndex: BigNumberish,
     bidPrice: BigNumberish,
     onBehalfOf: string,
@@ -288,7 +280,7 @@ export class IPunkGateway extends Contract {
     overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
-  "auctionETH(uint256,address)"(
+  'auctionETH(uint256,address)'(
     punkIndex: BigNumberish,
     onBehalfOf: string,
     overrides?: PayableOverrides
@@ -303,7 +295,7 @@ export class IPunkGateway extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "borrow(address,uint256,uint256,address,uint16)"(
+  'borrow(address,uint256,uint256,address,uint16)'(
     reserveAsset: string,
     amount: BigNumberish,
     punkIndex: BigNumberish,
@@ -320,7 +312,7 @@ export class IPunkGateway extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "borrowETH(uint256,uint256,address,uint16)"(
+  'borrowETH(uint256,uint256,address,uint16)'(
     amount: BigNumberish,
     punkIndex: BigNumberish,
     onBehalfOf: string,
@@ -333,7 +325,7 @@ export class IPunkGateway extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "liquidate(uint256)"(
+  'liquidate(uint256)'(
     punkIndex: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -343,21 +335,21 @@ export class IPunkGateway extends Contract {
     overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
-  "liquidateETH(uint256)"(
+  'liquidateETH(uint256)'(
     punkIndex: BigNumberish,
     overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
   punks(overrides?: CallOverrides): Promise<string>;
 
-  "punks()"(overrides?: CallOverrides): Promise<string>;
+  'punks()'(overrides?: CallOverrides): Promise<string>;
 
   redeem(
     punkIndex: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "redeem(uint256)"(
+  'redeem(uint256)'(
     punkIndex: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -367,7 +359,7 @@ export class IPunkGateway extends Contract {
     overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
-  "redeemETH(uint256)"(
+  'redeemETH(uint256)'(
     punkIndex: BigNumberish,
     overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
@@ -378,7 +370,7 @@ export class IPunkGateway extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "repay(uint256,uint256)"(
+  'repay(uint256,uint256)'(
     punkIndex: BigNumberish,
     amount: BigNumberish,
     overrides?: Overrides
@@ -390,7 +382,7 @@ export class IPunkGateway extends Contract {
     overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
-  "repayETH(uint256,uint256)"(
+  'repayETH(uint256,uint256)'(
     punkIndex: BigNumberish,
     amount: BigNumberish,
     overrides?: PayableOverrides
@@ -398,7 +390,7 @@ export class IPunkGateway extends Contract {
 
   wrappedPunks(overrides?: CallOverrides): Promise<string>;
 
-  "wrappedPunks()"(overrides?: CallOverrides): Promise<string>;
+  'wrappedPunks()'(overrides?: CallOverrides): Promise<string>;
 
   callStatic: {
     auction(
@@ -408,7 +400,7 @@ export class IPunkGateway extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "auction(uint256,uint256,address)"(
+    'auction(uint256,uint256,address)'(
       punkIndex: BigNumberish,
       bidPrice: BigNumberish,
       onBehalfOf: string,
@@ -421,7 +413,7 @@ export class IPunkGateway extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "auctionETH(uint256,address)"(
+    'auctionETH(uint256,address)'(
       punkIndex: BigNumberish,
       onBehalfOf: string,
       overrides?: CallOverrides
@@ -436,7 +428,7 @@ export class IPunkGateway extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "borrow(address,uint256,uint256,address,uint16)"(
+    'borrow(address,uint256,uint256,address,uint16)'(
       reserveAsset: string,
       amount: BigNumberish,
       punkIndex: BigNumberish,
@@ -453,7 +445,7 @@ export class IPunkGateway extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "borrowETH(uint256,uint256,address,uint16)"(
+    'borrowETH(uint256,uint256,address,uint16)'(
       amount: BigNumberish,
       punkIndex: BigNumberish,
       onBehalfOf: string,
@@ -466,7 +458,7 @@ export class IPunkGateway extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "liquidate(uint256)"(
+    'liquidate(uint256)'(
       punkIndex: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -476,21 +468,21 @@ export class IPunkGateway extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "liquidateETH(uint256)"(
+    'liquidateETH(uint256)'(
       punkIndex: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
     punks(overrides?: CallOverrides): Promise<string>;
 
-    "punks()"(overrides?: CallOverrides): Promise<string>;
+    'punks()'(overrides?: CallOverrides): Promise<string>;
 
     redeem(
       punkIndex: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "redeem(uint256)"(
+    'redeem(uint256)'(
       punkIndex: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -500,7 +492,7 @@ export class IPunkGateway extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "redeemETH(uint256)"(
+    'redeemETH(uint256)'(
       punkIndex: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -514,7 +506,7 @@ export class IPunkGateway extends Contract {
       1: boolean;
     }>;
 
-    "repay(uint256,uint256)"(
+    'repay(uint256,uint256)'(
       punkIndex: BigNumberish,
       amount: BigNumberish,
       overrides?: CallOverrides
@@ -532,7 +524,7 @@ export class IPunkGateway extends Contract {
       1: boolean;
     }>;
 
-    "repayETH(uint256,uint256)"(
+    'repayETH(uint256,uint256)'(
       punkIndex: BigNumberish,
       amount: BigNumberish,
       overrides?: CallOverrides
@@ -543,7 +535,7 @@ export class IPunkGateway extends Contract {
 
     wrappedPunks(overrides?: CallOverrides): Promise<string>;
 
-    "wrappedPunks()"(overrides?: CallOverrides): Promise<string>;
+    'wrappedPunks()'(overrides?: CallOverrides): Promise<string>;
   };
 
   filters: {};
@@ -556,7 +548,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "auction(uint256,uint256,address)"(
+    'auction(uint256,uint256,address)'(
       punkIndex: BigNumberish,
       bidPrice: BigNumberish,
       onBehalfOf: string,
@@ -569,7 +561,7 @@ export class IPunkGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<BigNumber>;
 
-    "auctionETH(uint256,address)"(
+    'auctionETH(uint256,address)'(
       punkIndex: BigNumberish,
       onBehalfOf: string,
       overrides?: PayableOverrides
@@ -584,7 +576,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "borrow(address,uint256,uint256,address,uint16)"(
+    'borrow(address,uint256,uint256,address,uint16)'(
       reserveAsset: string,
       amount: BigNumberish,
       punkIndex: BigNumberish,
@@ -601,7 +593,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "borrowETH(uint256,uint256,address,uint16)"(
+    'borrowETH(uint256,uint256,address,uint16)'(
       amount: BigNumberish,
       punkIndex: BigNumberish,
       onBehalfOf: string,
@@ -614,7 +606,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "liquidate(uint256)"(
+    'liquidate(uint256)'(
       punkIndex: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -624,18 +616,18 @@ export class IPunkGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<BigNumber>;
 
-    "liquidateETH(uint256)"(
+    'liquidateETH(uint256)'(
       punkIndex: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<BigNumber>;
 
     punks(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "punks()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'punks()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     redeem(punkIndex: BigNumberish, overrides?: Overrides): Promise<BigNumber>;
 
-    "redeem(uint256)"(
+    'redeem(uint256)'(
       punkIndex: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -645,7 +637,7 @@ export class IPunkGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<BigNumber>;
 
-    "redeemETH(uint256)"(
+    'redeemETH(uint256)'(
       punkIndex: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<BigNumber>;
@@ -656,7 +648,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "repay(uint256,uint256)"(
+    'repay(uint256,uint256)'(
       punkIndex: BigNumberish,
       amount: BigNumberish,
       overrides?: Overrides
@@ -668,7 +660,7 @@ export class IPunkGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<BigNumber>;
 
-    "repayETH(uint256,uint256)"(
+    'repayETH(uint256,uint256)'(
       punkIndex: BigNumberish,
       amount: BigNumberish,
       overrides?: PayableOverrides
@@ -676,7 +668,7 @@ export class IPunkGateway extends Contract {
 
     wrappedPunks(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "wrappedPunks()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'wrappedPunks()'(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
@@ -687,7 +679,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "auction(uint256,uint256,address)"(
+    'auction(uint256,uint256,address)'(
       punkIndex: BigNumberish,
       bidPrice: BigNumberish,
       onBehalfOf: string,
@@ -700,7 +692,7 @@ export class IPunkGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
-    "auctionETH(uint256,address)"(
+    'auctionETH(uint256,address)'(
       punkIndex: BigNumberish,
       onBehalfOf: string,
       overrides?: PayableOverrides
@@ -715,7 +707,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "borrow(address,uint256,uint256,address,uint16)"(
+    'borrow(address,uint256,uint256,address,uint16)'(
       reserveAsset: string,
       amount: BigNumberish,
       punkIndex: BigNumberish,
@@ -732,7 +724,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "borrowETH(uint256,uint256,address,uint16)"(
+    'borrowETH(uint256,uint256,address,uint16)'(
       amount: BigNumberish,
       punkIndex: BigNumberish,
       onBehalfOf: string,
@@ -745,7 +737,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "liquidate(uint256)"(
+    'liquidate(uint256)'(
       punkIndex: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -755,21 +747,21 @@ export class IPunkGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
-    "liquidateETH(uint256)"(
+    'liquidateETH(uint256)'(
       punkIndex: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
     punks(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "punks()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    'punks()'(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     redeem(
       punkIndex: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "redeem(uint256)"(
+    'redeem(uint256)'(
       punkIndex: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -779,7 +771,7 @@ export class IPunkGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
-    "redeemETH(uint256)"(
+    'redeemETH(uint256)'(
       punkIndex: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
@@ -790,7 +782,7 @@ export class IPunkGateway extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "repay(uint256,uint256)"(
+    'repay(uint256,uint256)'(
       punkIndex: BigNumberish,
       amount: BigNumberish,
       overrides?: Overrides
@@ -802,7 +794,7 @@ export class IPunkGateway extends Contract {
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
-    "repayETH(uint256,uint256)"(
+    'repayETH(uint256,uint256)'(
       punkIndex: BigNumberish,
       amount: BigNumberish,
       overrides?: PayableOverrides
@@ -810,6 +802,6 @@ export class IPunkGateway extends Contract {
 
     wrappedPunks(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "wrappedPunks()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    'wrappedPunks()'(overrides?: CallOverrides): Promise<PopulatedTransaction>;
   };
 }

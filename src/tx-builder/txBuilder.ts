@@ -97,5 +97,5 @@ export default class BaseTxBuilder {
       );
     }
     return this.punkServices[market];
-  }
+  };
 }

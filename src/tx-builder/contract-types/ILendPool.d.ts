@@ -9,292 +9,292 @@ import {
   BigNumber,
   BigNumberish,
   PopulatedTransaction,
-} from "ethers";
+} from 'ethers';
 import {
   Contract,
   ContractTransaction,
   Overrides,
   CallOverrides,
-} from "@ethersproject/contracts";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
+} from '@ethersproject/contracts';
+import { BytesLike } from '@ethersproject/bytes';
+import { Listener, Provider } from '@ethersproject/providers';
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
 
 interface ILendPoolInterface extends ethers.utils.Interface {
   functions: {
-    "MAX_NUMBER_NFTS()": FunctionFragment;
-    "MAX_NUMBER_RESERVES()": FunctionFragment;
-    "auction(address,uint256,uint256,address)": FunctionFragment;
-    "borrow(address,uint256,address,uint256,address,uint16)": FunctionFragment;
-    "deposit(address,uint256,address,uint16)": FunctionFragment;
-    "finalizeTransfer(address,address,address,uint256,uint256,uint256)": FunctionFragment;
-    "getAddressesProvider()": FunctionFragment;
-    "getNftAuctionData(address,uint256)": FunctionFragment;
-    "getNftCollateralData(address,address)": FunctionFragment;
-    "getNftConfiguration(address)": FunctionFragment;
-    "getNftData(address)": FunctionFragment;
-    "getNftDebtData(address,uint256)": FunctionFragment;
-    "getNftLiquidatePrice(address,uint256)": FunctionFragment;
-    "getNftsList()": FunctionFragment;
-    "getReserveConfiguration(address)": FunctionFragment;
-    "getReserveData(address)": FunctionFragment;
-    "getReserveNormalizedIncome(address)": FunctionFragment;
-    "getReserveNormalizedVariableDebt(address)": FunctionFragment;
-    "getReservesList()": FunctionFragment;
-    "initNft(address,address)": FunctionFragment;
-    "initReserve(address,address,address,address)": FunctionFragment;
-    "liquidate(address,uint256)": FunctionFragment;
-    "paused()": FunctionFragment;
-    "redeem(address,uint256)": FunctionFragment;
-    "repay(address,uint256,uint256)": FunctionFragment;
-    "setMaxNumberOfNfts(uint256)": FunctionFragment;
-    "setMaxNumberOfReserves(uint256)": FunctionFragment;
-    "setNftConfiguration(address,uint256)": FunctionFragment;
-    "setPause(bool)": FunctionFragment;
-    "setReserveConfiguration(address,uint256)": FunctionFragment;
-    "setReserveInterestRateAddress(address,address)": FunctionFragment;
-    "withdraw(address,uint256,address)": FunctionFragment;
+    'MAX_NUMBER_NFTS()': FunctionFragment;
+    'MAX_NUMBER_RESERVES()': FunctionFragment;
+    'auction(address,uint256,uint256,address)': FunctionFragment;
+    'borrow(address,uint256,address,uint256,address,uint16)': FunctionFragment;
+    'deposit(address,uint256,address,uint16)': FunctionFragment;
+    'finalizeTransfer(address,address,address,uint256,uint256,uint256)': FunctionFragment;
+    'getAddressesProvider()': FunctionFragment;
+    'getNftAuctionData(address,uint256)': FunctionFragment;
+    'getNftCollateralData(address,address)': FunctionFragment;
+    'getNftConfiguration(address)': FunctionFragment;
+    'getNftData(address)': FunctionFragment;
+    'getNftDebtData(address,uint256)': FunctionFragment;
+    'getNftLiquidatePrice(address,uint256)': FunctionFragment;
+    'getNftsList()': FunctionFragment;
+    'getReserveConfiguration(address)': FunctionFragment;
+    'getReserveData(address)': FunctionFragment;
+    'getReserveNormalizedIncome(address)': FunctionFragment;
+    'getReserveNormalizedVariableDebt(address)': FunctionFragment;
+    'getReservesList()': FunctionFragment;
+    'initNft(address,address)': FunctionFragment;
+    'initReserve(address,address,address,address)': FunctionFragment;
+    'liquidate(address,uint256)': FunctionFragment;
+    'paused()': FunctionFragment;
+    'redeem(address,uint256)': FunctionFragment;
+    'repay(address,uint256,uint256)': FunctionFragment;
+    'setMaxNumberOfNfts(uint256)': FunctionFragment;
+    'setMaxNumberOfReserves(uint256)': FunctionFragment;
+    'setNftConfiguration(address,uint256)': FunctionFragment;
+    'setPause(bool)': FunctionFragment;
+    'setReserveConfiguration(address,uint256)': FunctionFragment;
+    'setReserveInterestRateAddress(address,address)': FunctionFragment;
+    'withdraw(address,uint256,address)': FunctionFragment;
   };
 
   encodeFunctionData(
-    functionFragment: "MAX_NUMBER_NFTS",
+    functionFragment: 'MAX_NUMBER_NFTS',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "MAX_NUMBER_RESERVES",
+    functionFragment: 'MAX_NUMBER_RESERVES',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "auction",
+    functionFragment: 'auction',
     values: [string, BigNumberish, BigNumberish, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "borrow",
+    functionFragment: 'borrow',
     values: [string, BigNumberish, string, BigNumberish, string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "deposit",
+    functionFragment: 'deposit',
     values: [string, BigNumberish, string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "finalizeTransfer",
+    functionFragment: 'finalizeTransfer',
     values: [string, string, string, BigNumberish, BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "getAddressesProvider",
+    functionFragment: 'getAddressesProvider',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getNftAuctionData",
+    functionFragment: 'getNftAuctionData',
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "getNftCollateralData",
+    functionFragment: 'getNftCollateralData',
     values: [string, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "getNftConfiguration",
+    functionFragment: 'getNftConfiguration',
     values: [string]
   ): string;
-  encodeFunctionData(functionFragment: "getNftData", values: [string]): string;
+  encodeFunctionData(functionFragment: 'getNftData', values: [string]): string;
   encodeFunctionData(
-    functionFragment: "getNftDebtData",
+    functionFragment: 'getNftDebtData',
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "getNftLiquidatePrice",
+    functionFragment: 'getNftLiquidatePrice',
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "getNftsList",
+    functionFragment: 'getNftsList',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getReserveConfiguration",
+    functionFragment: 'getReserveConfiguration',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "getReserveData",
+    functionFragment: 'getReserveData',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "getReserveNormalizedIncome",
+    functionFragment: 'getReserveNormalizedIncome',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "getReserveNormalizedVariableDebt",
+    functionFragment: 'getReserveNormalizedVariableDebt',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "getReservesList",
+    functionFragment: 'getReservesList',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "initNft",
+    functionFragment: 'initNft',
     values: [string, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "initReserve",
+    functionFragment: 'initReserve',
     values: [string, string, string, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "liquidate",
+    functionFragment: 'liquidate',
     values: [string, BigNumberish]
   ): string;
-  encodeFunctionData(functionFragment: "paused", values?: undefined): string;
+  encodeFunctionData(functionFragment: 'paused', values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "redeem",
+    functionFragment: 'redeem',
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "repay",
+    functionFragment: 'repay',
     values: [string, BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "setMaxNumberOfNfts",
+    functionFragment: 'setMaxNumberOfNfts',
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "setMaxNumberOfReserves",
+    functionFragment: 'setMaxNumberOfReserves',
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "setNftConfiguration",
+    functionFragment: 'setNftConfiguration',
     values: [string, BigNumberish]
   ): string;
-  encodeFunctionData(functionFragment: "setPause", values: [boolean]): string;
+  encodeFunctionData(functionFragment: 'setPause', values: [boolean]): string;
   encodeFunctionData(
-    functionFragment: "setReserveConfiguration",
+    functionFragment: 'setReserveConfiguration',
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "setReserveInterestRateAddress",
+    functionFragment: 'setReserveInterestRateAddress',
     values: [string, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "withdraw",
+    functionFragment: 'withdraw',
     values: [string, BigNumberish, string]
   ): string;
 
   decodeFunctionResult(
-    functionFragment: "MAX_NUMBER_NFTS",
+    functionFragment: 'MAX_NUMBER_NFTS',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "MAX_NUMBER_RESERVES",
+    functionFragment: 'MAX_NUMBER_RESERVES',
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "auction", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "borrow", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "deposit", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'auction', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'borrow', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'deposit', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "finalizeTransfer",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getAddressesProvider",
+    functionFragment: 'finalizeTransfer',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getNftAuctionData",
+    functionFragment: 'getAddressesProvider',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getNftCollateralData",
+    functionFragment: 'getNftAuctionData',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getNftConfiguration",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "getNftData", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getNftDebtData",
+    functionFragment: 'getNftCollateralData',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getNftLiquidatePrice",
+    functionFragment: 'getNftConfiguration',
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: 'getNftData', data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: 'getNftDebtData',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getNftsList",
+    functionFragment: 'getNftLiquidatePrice',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getReserveConfiguration",
+    functionFragment: 'getNftsList',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getReserveData",
+    functionFragment: 'getReserveConfiguration',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getReserveNormalizedIncome",
+    functionFragment: 'getReserveData',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getReserveNormalizedVariableDebt",
+    functionFragment: 'getReserveNormalizedIncome',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getReservesList",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "initNft", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "initReserve",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "liquidate", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "paused", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "redeem", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "repay", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setMaxNumberOfNfts",
+    functionFragment: 'getReserveNormalizedVariableDebt',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setMaxNumberOfReserves",
+    functionFragment: 'getReservesList',
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: 'initNft', data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: 'initReserve',
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: 'liquidate', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'paused', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'redeem', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'repay', data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: 'setMaxNumberOfNfts',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setNftConfiguration",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "setPause", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setReserveConfiguration",
+    functionFragment: 'setMaxNumberOfReserves',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setReserveInterestRateAddress",
+    functionFragment: 'setNftConfiguration',
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'setPause', data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: 'setReserveConfiguration',
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: 'setReserveInterestRateAddress',
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: 'withdraw', data: BytesLike): Result;
 
   events: {
-    "Auction(address,address,uint256,address,uint256,address,address,uint256)": EventFragment;
-    "Borrow(address,address,uint256,address,uint256,address,uint256,uint256,uint16)": EventFragment;
-    "Deposit(address,address,uint256,address,uint16)": EventFragment;
-    "Liquidate(address,address,uint256,uint256,address,uint256,address,uint256)": EventFragment;
-    "Paused()": EventFragment;
-    "Redeem(address,address,uint256,uint256,address,uint256,address,uint256)": EventFragment;
-    "Repay(address,address,uint256,address,uint256,address,uint256)": EventFragment;
-    "ReserveDataUpdated(address,uint256,uint256,uint256,uint256)": EventFragment;
-    "Unpaused()": EventFragment;
-    "Withdraw(address,address,uint256,address)": EventFragment;
+    'Auction(address,address,uint256,address,uint256,address,address,uint256)': EventFragment;
+    'Borrow(address,address,uint256,address,uint256,address,uint256,uint256,uint16)': EventFragment;
+    'Deposit(address,address,uint256,address,uint16)': EventFragment;
+    'Liquidate(address,address,uint256,uint256,address,uint256,address,uint256)': EventFragment;
+    'Paused()': EventFragment;
+    'Redeem(address,address,uint256,uint256,address,uint256,address,uint256)': EventFragment;
+    'Repay(address,address,uint256,address,uint256,address,uint256)': EventFragment;
+    'ReserveDataUpdated(address,uint256,uint256,uint256,uint256)': EventFragment;
+    'Unpaused()': EventFragment;
+    'Withdraw(address,address,uint256,address)': EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "Auction"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Borrow"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Deposit"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Liquidate"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Paused"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Redeem"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Repay"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ReserveDataUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Unpaused"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Withdraw"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Auction'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Borrow'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Deposit'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Liquidate'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Paused'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Redeem'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Repay'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'ReserveDataUpdated'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Unpaused'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Withdraw'): EventFragment;
 }
 
 export class ILendPool extends Contract {
@@ -311,27 +311,19 @@ export class ILendPool extends Contract {
   interface: ILendPoolInterface;
 
   functions: {
-    MAX_NUMBER_NFTS(
-      overrides?: CallOverrides
-    ): Promise<{
+    MAX_NUMBER_NFTS(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "MAX_NUMBER_NFTS()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'MAX_NUMBER_NFTS()'(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    MAX_NUMBER_RESERVES(
-      overrides?: CallOverrides
-    ): Promise<{
+    MAX_NUMBER_RESERVES(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "MAX_NUMBER_RESERVES()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'MAX_NUMBER_RESERVES()'(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
@@ -343,7 +335,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "auction(address,uint256,uint256,address)"(
+    'auction(address,uint256,uint256,address)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       bidPrice: BigNumberish,
@@ -361,7 +353,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "borrow(address,uint256,address,uint256,address,uint16)"(
+    'borrow(address,uint256,address,uint256,address,uint16)'(
       reserveAsset: string,
       amount: BigNumberish,
       nftAsset: string,
@@ -379,7 +371,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "deposit(address,uint256,address,uint16)"(
+    'deposit(address,uint256,address,uint16)'(
       reserve: string,
       amount: BigNumberish,
       onBehalfOf: string,
@@ -399,7 +391,7 @@ export class ILendPool extends Contract {
       0: void;
     }>;
 
-    "finalizeTransfer(address,address,address,uint256,uint256,uint256)"(
+    'finalizeTransfer(address,address,address,uint256,uint256,uint256)'(
       asset: string,
       from: string,
       to: string,
@@ -411,15 +403,11 @@ export class ILendPool extends Contract {
       0: void;
     }>;
 
-    getAddressesProvider(
-      overrides?: CallOverrides
-    ): Promise<{
+    getAddressesProvider(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getAddressesProvider()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getAddressesProvider()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -440,7 +428,7 @@ export class ILendPool extends Contract {
       4: BigNumber;
     }>;
 
-    "getNftAuctionData(address,uint256)"(
+    'getNftAuctionData(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -478,7 +466,7 @@ export class ILendPool extends Contract {
       6: BigNumber;
     }>;
 
-    "getNftCollateralData(address,address)"(
+    'getNftCollateralData(address,address)'(
       nftAsset: string,
       reserveAsset: string,
       overrides?: CallOverrides
@@ -506,7 +494,7 @@ export class ILendPool extends Contract {
       0: { data: BigNumber; 0: BigNumber };
     }>;
 
-    "getNftConfiguration(address)"(
+    'getNftConfiguration(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<{
@@ -527,7 +515,7 @@ export class ILendPool extends Contract {
       };
     }>;
 
-    "getNftData(address)"(
+    'getNftData(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<{
@@ -560,7 +548,7 @@ export class ILendPool extends Contract {
       5: BigNumber;
     }>;
 
-    "getNftDebtData(address,uint256)"(
+    'getNftDebtData(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -590,7 +578,7 @@ export class ILendPool extends Contract {
       1: BigNumber;
     }>;
 
-    "getNftLiquidatePrice(address,uint256)"(
+    'getNftLiquidatePrice(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -601,15 +589,11 @@ export class ILendPool extends Contract {
       1: BigNumber;
     }>;
 
-    getNftsList(
-      overrides?: CallOverrides
-    ): Promise<{
+    getNftsList(overrides?: CallOverrides): Promise<{
       0: string[];
     }>;
 
-    "getNftsList()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getNftsList()'(overrides?: CallOverrides): Promise<{
       0: string[];
     }>;
 
@@ -620,7 +604,7 @@ export class ILendPool extends Contract {
       0: { data: BigNumber; 0: BigNumber };
     }>;
 
-    "getReserveConfiguration(address)"(
+    'getReserveConfiguration(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<{
@@ -655,7 +639,7 @@ export class ILendPool extends Contract {
       };
     }>;
 
-    "getReserveData(address)"(
+    'getReserveData(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<{
@@ -690,7 +674,7 @@ export class ILendPool extends Contract {
       0: BigNumber;
     }>;
 
-    "getReserveNormalizedIncome(address)"(
+    'getReserveNormalizedIncome(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<{
@@ -704,22 +688,18 @@ export class ILendPool extends Contract {
       0: BigNumber;
     }>;
 
-    "getReserveNormalizedVariableDebt(address)"(
+    'getReserveNormalizedVariableDebt(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<{
       0: BigNumber;
     }>;
 
-    getReservesList(
-      overrides?: CallOverrides
-    ): Promise<{
+    getReservesList(overrides?: CallOverrides): Promise<{
       0: string[];
     }>;
 
-    "getReservesList()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'getReservesList()'(overrides?: CallOverrides): Promise<{
       0: string[];
     }>;
 
@@ -729,7 +709,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "initNft(address,address)"(
+    'initNft(address,address)'(
       asset: string,
       bNftAddress: string,
       overrides?: Overrides
@@ -743,7 +723,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "initReserve(address,address,address,address)"(
+    'initReserve(address,address,address,address)'(
       asset: string,
       bTokenAddress: string,
       debtTokenAddress: string,
@@ -757,21 +737,17 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "liquidate(address,uint256)"(
+    'liquidate(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    paused(
-      overrides?: CallOverrides
-    ): Promise<{
+    paused(overrides?: CallOverrides): Promise<{
       0: boolean;
     }>;
 
-    "paused()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'paused()'(overrides?: CallOverrides): Promise<{
       0: boolean;
     }>;
 
@@ -781,7 +757,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "redeem(address,uint256)"(
+    'redeem(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: Overrides
@@ -794,7 +770,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "repay(address,uint256,uint256)"(
+    'repay(address,uint256,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       amount: BigNumberish,
@@ -806,7 +782,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setMaxNumberOfNfts(uint256)"(
+    'setMaxNumberOfNfts(uint256)'(
       val: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -816,7 +792,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setMaxNumberOfReserves(uint256)"(
+    'setMaxNumberOfReserves(uint256)'(
       val: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -827,7 +803,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setNftConfiguration(address,uint256)"(
+    'setNftConfiguration(address,uint256)'(
       asset: string,
       configuration: BigNumberish,
       overrides?: Overrides
@@ -835,7 +811,7 @@ export class ILendPool extends Contract {
 
     setPause(val: boolean, overrides?: Overrides): Promise<ContractTransaction>;
 
-    "setPause(bool)"(
+    'setPause(bool)'(
       val: boolean,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -846,7 +822,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setReserveConfiguration(address,uint256)"(
+    'setReserveConfiguration(address,uint256)'(
       asset: string,
       configuration: BigNumberish,
       overrides?: Overrides
@@ -858,7 +834,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setReserveInterestRateAddress(address,address)"(
+    'setReserveInterestRateAddress(address,address)'(
       asset: string,
       rateAddress: string,
       overrides?: Overrides
@@ -871,7 +847,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "withdraw(address,uint256,address)"(
+    'withdraw(address,uint256,address)'(
       reserve: string,
       amount: BigNumberish,
       to: string,
@@ -881,11 +857,11 @@ export class ILendPool extends Contract {
 
   MAX_NUMBER_NFTS(overrides?: CallOverrides): Promise<BigNumber>;
 
-  "MAX_NUMBER_NFTS()"(overrides?: CallOverrides): Promise<BigNumber>;
+  'MAX_NUMBER_NFTS()'(overrides?: CallOverrides): Promise<BigNumber>;
 
   MAX_NUMBER_RESERVES(overrides?: CallOverrides): Promise<BigNumber>;
 
-  "MAX_NUMBER_RESERVES()"(overrides?: CallOverrides): Promise<BigNumber>;
+  'MAX_NUMBER_RESERVES()'(overrides?: CallOverrides): Promise<BigNumber>;
 
   auction(
     nftAsset: string,
@@ -895,7 +871,7 @@ export class ILendPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "auction(address,uint256,uint256,address)"(
+  'auction(address,uint256,uint256,address)'(
     nftAsset: string,
     nftTokenId: BigNumberish,
     bidPrice: BigNumberish,
@@ -913,7 +889,7 @@ export class ILendPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "borrow(address,uint256,address,uint256,address,uint16)"(
+  'borrow(address,uint256,address,uint256,address,uint16)'(
     reserveAsset: string,
     amount: BigNumberish,
     nftAsset: string,
@@ -931,7 +907,7 @@ export class ILendPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "deposit(address,uint256,address,uint16)"(
+  'deposit(address,uint256,address,uint16)'(
     reserve: string,
     amount: BigNumberish,
     onBehalfOf: string,
@@ -949,7 +925,7 @@ export class ILendPool extends Contract {
     overrides?: CallOverrides
   ): Promise<void>;
 
-  "finalizeTransfer(address,address,address,uint256,uint256,uint256)"(
+  'finalizeTransfer(address,address,address,uint256,uint256,uint256)'(
     asset: string,
     from: string,
     to: string,
@@ -961,7 +937,7 @@ export class ILendPool extends Contract {
 
   getAddressesProvider(overrides?: CallOverrides): Promise<string>;
 
-  "getAddressesProvider()"(overrides?: CallOverrides): Promise<string>;
+  'getAddressesProvider()'(overrides?: CallOverrides): Promise<string>;
 
   getNftAuctionData(
     nftAsset: string,
@@ -980,7 +956,7 @@ export class ILendPool extends Contract {
     4: BigNumber;
   }>;
 
-  "getNftAuctionData(address,uint256)"(
+  'getNftAuctionData(address,uint256)'(
     nftAsset: string,
     nftTokenId: BigNumberish,
     overrides?: CallOverrides
@@ -1018,7 +994,7 @@ export class ILendPool extends Contract {
     6: BigNumber;
   }>;
 
-  "getNftCollateralData(address,address)"(
+  'getNftCollateralData(address,address)'(
     nftAsset: string,
     reserveAsset: string,
     overrides?: CallOverrides
@@ -1044,7 +1020,7 @@ export class ILendPool extends Contract {
     overrides?: CallOverrides
   ): Promise<{ data: BigNumber; 0: BigNumber }>;
 
-  "getNftConfiguration(address)"(
+  'getNftConfiguration(address)'(
     asset: string,
     overrides?: CallOverrides
   ): Promise<{ data: BigNumber; 0: BigNumber }>;
@@ -1061,7 +1037,7 @@ export class ILendPool extends Contract {
     2: number;
   }>;
 
-  "getNftData(address)"(
+  'getNftData(address)'(
     asset: string,
     overrides?: CallOverrides
   ): Promise<{
@@ -1092,7 +1068,7 @@ export class ILendPool extends Contract {
     5: BigNumber;
   }>;
 
-  "getNftDebtData(address,uint256)"(
+  'getNftDebtData(address,uint256)'(
     nftAsset: string,
     nftTokenId: BigNumberish,
     overrides?: CallOverrides
@@ -1122,7 +1098,7 @@ export class ILendPool extends Contract {
     1: BigNumber;
   }>;
 
-  "getNftLiquidatePrice(address,uint256)"(
+  'getNftLiquidatePrice(address,uint256)'(
     nftAsset: string,
     nftTokenId: BigNumberish,
     overrides?: CallOverrides
@@ -1135,14 +1111,14 @@ export class ILendPool extends Contract {
 
   getNftsList(overrides?: CallOverrides): Promise<string[]>;
 
-  "getNftsList()"(overrides?: CallOverrides): Promise<string[]>;
+  'getNftsList()'(overrides?: CallOverrides): Promise<string[]>;
 
   getReserveConfiguration(
     asset: string,
     overrides?: CallOverrides
   ): Promise<{ data: BigNumber; 0: BigNumber }>;
 
-  "getReserveConfiguration(address)"(
+  'getReserveConfiguration(address)'(
     asset: string,
     overrides?: CallOverrides
   ): Promise<{ data: BigNumber; 0: BigNumber }>;
@@ -1173,7 +1149,7 @@ export class ILendPool extends Contract {
     9: number;
   }>;
 
-  "getReserveData(address)"(
+  'getReserveData(address)'(
     asset: string,
     overrides?: CallOverrides
   ): Promise<{
@@ -1204,7 +1180,7 @@ export class ILendPool extends Contract {
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
-  "getReserveNormalizedIncome(address)"(
+  'getReserveNormalizedIncome(address)'(
     asset: string,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
@@ -1214,14 +1190,14 @@ export class ILendPool extends Contract {
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
-  "getReserveNormalizedVariableDebt(address)"(
+  'getReserveNormalizedVariableDebt(address)'(
     asset: string,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
   getReservesList(overrides?: CallOverrides): Promise<string[]>;
 
-  "getReservesList()"(overrides?: CallOverrides): Promise<string[]>;
+  'getReservesList()'(overrides?: CallOverrides): Promise<string[]>;
 
   initNft(
     asset: string,
@@ -1229,7 +1205,7 @@ export class ILendPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "initNft(address,address)"(
+  'initNft(address,address)'(
     asset: string,
     bNftAddress: string,
     overrides?: Overrides
@@ -1243,7 +1219,7 @@ export class ILendPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "initReserve(address,address,address,address)"(
+  'initReserve(address,address,address,address)'(
     asset: string,
     bTokenAddress: string,
     debtTokenAddress: string,
@@ -1257,7 +1233,7 @@ export class ILendPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "liquidate(address,uint256)"(
+  'liquidate(address,uint256)'(
     nftAsset: string,
     nftTokenId: BigNumberish,
     overrides?: Overrides
@@ -1265,7 +1241,7 @@ export class ILendPool extends Contract {
 
   paused(overrides?: CallOverrides): Promise<boolean>;
 
-  "paused()"(overrides?: CallOverrides): Promise<boolean>;
+  'paused()'(overrides?: CallOverrides): Promise<boolean>;
 
   redeem(
     nftAsset: string,
@@ -1273,7 +1249,7 @@ export class ILendPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "redeem(address,uint256)"(
+  'redeem(address,uint256)'(
     nftAsset: string,
     nftTokenId: BigNumberish,
     overrides?: Overrides
@@ -1286,7 +1262,7 @@ export class ILendPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "repay(address,uint256,uint256)"(
+  'repay(address,uint256,uint256)'(
     nftAsset: string,
     nftTokenId: BigNumberish,
     amount: BigNumberish,
@@ -1298,7 +1274,7 @@ export class ILendPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setMaxNumberOfNfts(uint256)"(
+  'setMaxNumberOfNfts(uint256)'(
     val: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -1308,7 +1284,7 @@ export class ILendPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setMaxNumberOfReserves(uint256)"(
+  'setMaxNumberOfReserves(uint256)'(
     val: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -1319,7 +1295,7 @@ export class ILendPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setNftConfiguration(address,uint256)"(
+  'setNftConfiguration(address,uint256)'(
     asset: string,
     configuration: BigNumberish,
     overrides?: Overrides
@@ -1327,7 +1303,7 @@ export class ILendPool extends Contract {
 
   setPause(val: boolean, overrides?: Overrides): Promise<ContractTransaction>;
 
-  "setPause(bool)"(
+  'setPause(bool)'(
     val: boolean,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -1338,7 +1314,7 @@ export class ILendPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setReserveConfiguration(address,uint256)"(
+  'setReserveConfiguration(address,uint256)'(
     asset: string,
     configuration: BigNumberish,
     overrides?: Overrides
@@ -1350,7 +1326,7 @@ export class ILendPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setReserveInterestRateAddress(address,address)"(
+  'setReserveInterestRateAddress(address,address)'(
     asset: string,
     rateAddress: string,
     overrides?: Overrides
@@ -1363,7 +1339,7 @@ export class ILendPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "withdraw(address,uint256,address)"(
+  'withdraw(address,uint256,address)'(
     reserve: string,
     amount: BigNumberish,
     to: string,
@@ -1373,11 +1349,11 @@ export class ILendPool extends Contract {
   callStatic: {
     MAX_NUMBER_NFTS(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "MAX_NUMBER_NFTS()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'MAX_NUMBER_NFTS()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     MAX_NUMBER_RESERVES(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "MAX_NUMBER_RESERVES()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'MAX_NUMBER_RESERVES()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     auction(
       nftAsset: string,
@@ -1387,7 +1363,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "auction(address,uint256,uint256,address)"(
+    'auction(address,uint256,uint256,address)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       bidPrice: BigNumberish,
@@ -1405,7 +1381,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "borrow(address,uint256,address,uint256,address,uint16)"(
+    'borrow(address,uint256,address,uint256,address,uint16)'(
       reserveAsset: string,
       amount: BigNumberish,
       nftAsset: string,
@@ -1423,7 +1399,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "deposit(address,uint256,address,uint16)"(
+    'deposit(address,uint256,address,uint16)'(
       reserve: string,
       amount: BigNumberish,
       onBehalfOf: string,
@@ -1441,7 +1417,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "finalizeTransfer(address,address,address,uint256,uint256,uint256)"(
+    'finalizeTransfer(address,address,address,uint256,uint256,uint256)'(
       asset: string,
       from: string,
       to: string,
@@ -1453,7 +1429,7 @@ export class ILendPool extends Contract {
 
     getAddressesProvider(overrides?: CallOverrides): Promise<string>;
 
-    "getAddressesProvider()"(overrides?: CallOverrides): Promise<string>;
+    'getAddressesProvider()'(overrides?: CallOverrides): Promise<string>;
 
     getNftAuctionData(
       nftAsset: string,
@@ -1472,7 +1448,7 @@ export class ILendPool extends Contract {
       4: BigNumber;
     }>;
 
-    "getNftAuctionData(address,uint256)"(
+    'getNftAuctionData(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -1510,7 +1486,7 @@ export class ILendPool extends Contract {
       6: BigNumber;
     }>;
 
-    "getNftCollateralData(address,address)"(
+    'getNftCollateralData(address,address)'(
       nftAsset: string,
       reserveAsset: string,
       overrides?: CallOverrides
@@ -1536,7 +1512,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<{ data: BigNumber; 0: BigNumber }>;
 
-    "getNftConfiguration(address)"(
+    'getNftConfiguration(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<{ data: BigNumber; 0: BigNumber }>;
@@ -1553,7 +1529,7 @@ export class ILendPool extends Contract {
       2: number;
     }>;
 
-    "getNftData(address)"(
+    'getNftData(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<{
@@ -1584,7 +1560,7 @@ export class ILendPool extends Contract {
       5: BigNumber;
     }>;
 
-    "getNftDebtData(address,uint256)"(
+    'getNftDebtData(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -1614,7 +1590,7 @@ export class ILendPool extends Contract {
       1: BigNumber;
     }>;
 
-    "getNftLiquidatePrice(address,uint256)"(
+    'getNftLiquidatePrice(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -1627,14 +1603,14 @@ export class ILendPool extends Contract {
 
     getNftsList(overrides?: CallOverrides): Promise<string[]>;
 
-    "getNftsList()"(overrides?: CallOverrides): Promise<string[]>;
+    'getNftsList()'(overrides?: CallOverrides): Promise<string[]>;
 
     getReserveConfiguration(
       asset: string,
       overrides?: CallOverrides
     ): Promise<{ data: BigNumber; 0: BigNumber }>;
 
-    "getReserveConfiguration(address)"(
+    'getReserveConfiguration(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<{ data: BigNumber; 0: BigNumber }>;
@@ -1665,7 +1641,7 @@ export class ILendPool extends Contract {
       9: number;
     }>;
 
-    "getReserveData(address)"(
+    'getReserveData(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<{
@@ -1696,7 +1672,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getReserveNormalizedIncome(address)"(
+    'getReserveNormalizedIncome(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -1706,14 +1682,14 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getReserveNormalizedVariableDebt(address)"(
+    'getReserveNormalizedVariableDebt(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     getReservesList(overrides?: CallOverrides): Promise<string[]>;
 
-    "getReservesList()"(overrides?: CallOverrides): Promise<string[]>;
+    'getReservesList()'(overrides?: CallOverrides): Promise<string[]>;
 
     initNft(
       asset: string,
@@ -1721,7 +1697,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "initNft(address,address)"(
+    'initNft(address,address)'(
       asset: string,
       bNftAddress: string,
       overrides?: CallOverrides
@@ -1735,7 +1711,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "initReserve(address,address,address,address)"(
+    'initReserve(address,address,address,address)'(
       asset: string,
       bTokenAddress: string,
       debtTokenAddress: string,
@@ -1749,7 +1725,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "liquidate(address,uint256)"(
+    'liquidate(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -1757,7 +1733,7 @@ export class ILendPool extends Contract {
 
     paused(overrides?: CallOverrides): Promise<boolean>;
 
-    "paused()"(overrides?: CallOverrides): Promise<boolean>;
+    'paused()'(overrides?: CallOverrides): Promise<boolean>;
 
     redeem(
       nftAsset: string,
@@ -1765,7 +1741,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "redeem(address,uint256)"(
+    'redeem(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -1781,7 +1757,7 @@ export class ILendPool extends Contract {
       1: boolean;
     }>;
 
-    "repay(address,uint256,uint256)"(
+    'repay(address,uint256,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       amount: BigNumberish,
@@ -1796,7 +1772,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setMaxNumberOfNfts(uint256)"(
+    'setMaxNumberOfNfts(uint256)'(
       val: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -1806,7 +1782,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setMaxNumberOfReserves(uint256)"(
+    'setMaxNumberOfReserves(uint256)'(
       val: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -1817,7 +1793,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setNftConfiguration(address,uint256)"(
+    'setNftConfiguration(address,uint256)'(
       asset: string,
       configuration: BigNumberish,
       overrides?: CallOverrides
@@ -1825,7 +1801,7 @@ export class ILendPool extends Contract {
 
     setPause(val: boolean, overrides?: CallOverrides): Promise<void>;
 
-    "setPause(bool)"(val: boolean, overrides?: CallOverrides): Promise<void>;
+    'setPause(bool)'(val: boolean, overrides?: CallOverrides): Promise<void>;
 
     setReserveConfiguration(
       asset: string,
@@ -1833,7 +1809,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setReserveConfiguration(address,uint256)"(
+    'setReserveConfiguration(address,uint256)'(
       asset: string,
       configuration: BigNumberish,
       overrides?: CallOverrides
@@ -1845,7 +1821,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setReserveInterestRateAddress(address,address)"(
+    'setReserveInterestRateAddress(address,address)'(
       asset: string,
       rateAddress: string,
       overrides?: CallOverrides
@@ -1858,7 +1834,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "withdraw(address,uint256,address)"(
+    'withdraw(address,uint256,address)'(
       reserve: string,
       amount: BigNumberish,
       to: string,
@@ -1953,11 +1929,11 @@ export class ILendPool extends Contract {
   estimateGas: {
     MAX_NUMBER_NFTS(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "MAX_NUMBER_NFTS()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'MAX_NUMBER_NFTS()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     MAX_NUMBER_RESERVES(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "MAX_NUMBER_RESERVES()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'MAX_NUMBER_RESERVES()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     auction(
       nftAsset: string,
@@ -1967,7 +1943,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "auction(address,uint256,uint256,address)"(
+    'auction(address,uint256,uint256,address)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       bidPrice: BigNumberish,
@@ -1985,7 +1961,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "borrow(address,uint256,address,uint256,address,uint16)"(
+    'borrow(address,uint256,address,uint256,address,uint16)'(
       reserveAsset: string,
       amount: BigNumberish,
       nftAsset: string,
@@ -2003,7 +1979,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "deposit(address,uint256,address,uint16)"(
+    'deposit(address,uint256,address,uint16)'(
       reserve: string,
       amount: BigNumberish,
       onBehalfOf: string,
@@ -2021,7 +1997,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "finalizeTransfer(address,address,address,uint256,uint256,uint256)"(
+    'finalizeTransfer(address,address,address,uint256,uint256,uint256)'(
       asset: string,
       from: string,
       to: string,
@@ -2033,7 +2009,7 @@ export class ILendPool extends Contract {
 
     getAddressesProvider(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getAddressesProvider()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getAddressesProvider()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getNftAuctionData(
       nftAsset: string,
@@ -2041,7 +2017,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getNftAuctionData(address,uint256)"(
+    'getNftAuctionData(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -2053,7 +2029,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getNftCollateralData(address,address)"(
+    'getNftCollateralData(address,address)'(
       nftAsset: string,
       reserveAsset: string,
       overrides?: CallOverrides
@@ -2064,14 +2040,14 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getNftConfiguration(address)"(
+    'getNftConfiguration(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     getNftData(asset: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getNftData(address)"(
+    'getNftData(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -2082,7 +2058,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getNftDebtData(address,uint256)"(
+    'getNftDebtData(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -2094,7 +2070,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getNftLiquidatePrice(address,uint256)"(
+    'getNftLiquidatePrice(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -2102,14 +2078,14 @@ export class ILendPool extends Contract {
 
     getNftsList(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getNftsList()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getNftsList()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getReserveConfiguration(
       asset: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getReserveConfiguration(address)"(
+    'getReserveConfiguration(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -2119,7 +2095,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getReserveData(address)"(
+    'getReserveData(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -2129,7 +2105,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getReserveNormalizedIncome(address)"(
+    'getReserveNormalizedIncome(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -2139,14 +2115,14 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getReserveNormalizedVariableDebt(address)"(
+    'getReserveNormalizedVariableDebt(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     getReservesList(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getReservesList()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'getReservesList()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     initNft(
       asset: string,
@@ -2154,7 +2130,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "initNft(address,address)"(
+    'initNft(address,address)'(
       asset: string,
       bNftAddress: string,
       overrides?: Overrides
@@ -2168,7 +2144,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "initReserve(address,address,address,address)"(
+    'initReserve(address,address,address,address)'(
       asset: string,
       bTokenAddress: string,
       debtTokenAddress: string,
@@ -2182,7 +2158,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "liquidate(address,uint256)"(
+    'liquidate(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: Overrides
@@ -2190,7 +2166,7 @@ export class ILendPool extends Contract {
 
     paused(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "paused()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'paused()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     redeem(
       nftAsset: string,
@@ -2198,7 +2174,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "redeem(address,uint256)"(
+    'redeem(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: Overrides
@@ -2211,7 +2187,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "repay(address,uint256,uint256)"(
+    'repay(address,uint256,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       amount: BigNumberish,
@@ -2223,7 +2199,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setMaxNumberOfNfts(uint256)"(
+    'setMaxNumberOfNfts(uint256)'(
       val: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -2233,7 +2209,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setMaxNumberOfReserves(uint256)"(
+    'setMaxNumberOfReserves(uint256)'(
       val: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -2244,7 +2220,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setNftConfiguration(address,uint256)"(
+    'setNftConfiguration(address,uint256)'(
       asset: string,
       configuration: BigNumberish,
       overrides?: Overrides
@@ -2252,7 +2228,7 @@ export class ILendPool extends Contract {
 
     setPause(val: boolean, overrides?: Overrides): Promise<BigNumber>;
 
-    "setPause(bool)"(val: boolean, overrides?: Overrides): Promise<BigNumber>;
+    'setPause(bool)'(val: boolean, overrides?: Overrides): Promise<BigNumber>;
 
     setReserveConfiguration(
       asset: string,
@@ -2260,7 +2236,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setReserveConfiguration(address,uint256)"(
+    'setReserveConfiguration(address,uint256)'(
       asset: string,
       configuration: BigNumberish,
       overrides?: Overrides
@@ -2272,7 +2248,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setReserveInterestRateAddress(address,address)"(
+    'setReserveInterestRateAddress(address,address)'(
       asset: string,
       rateAddress: string,
       overrides?: Overrides
@@ -2285,7 +2261,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "withdraw(address,uint256,address)"(
+    'withdraw(address,uint256,address)'(
       reserve: string,
       amount: BigNumberish,
       to: string,
@@ -2296,7 +2272,7 @@ export class ILendPool extends Contract {
   populateTransaction: {
     MAX_NUMBER_NFTS(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "MAX_NUMBER_NFTS()"(
+    'MAX_NUMBER_NFTS()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -2304,7 +2280,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "MAX_NUMBER_RESERVES()"(
+    'MAX_NUMBER_RESERVES()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -2316,7 +2292,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "auction(address,uint256,uint256,address)"(
+    'auction(address,uint256,uint256,address)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       bidPrice: BigNumberish,
@@ -2334,7 +2310,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "borrow(address,uint256,address,uint256,address,uint16)"(
+    'borrow(address,uint256,address,uint256,address,uint16)'(
       reserveAsset: string,
       amount: BigNumberish,
       nftAsset: string,
@@ -2352,7 +2328,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "deposit(address,uint256,address,uint16)"(
+    'deposit(address,uint256,address,uint16)'(
       reserve: string,
       amount: BigNumberish,
       onBehalfOf: string,
@@ -2370,7 +2346,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "finalizeTransfer(address,address,address,uint256,uint256,uint256)"(
+    'finalizeTransfer(address,address,address,uint256,uint256,uint256)'(
       asset: string,
       from: string,
       to: string,
@@ -2384,7 +2360,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getAddressesProvider()"(
+    'getAddressesProvider()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -2394,7 +2370,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getNftAuctionData(address,uint256)"(
+    'getNftAuctionData(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -2406,7 +2382,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getNftCollateralData(address,address)"(
+    'getNftCollateralData(address,address)'(
       nftAsset: string,
       reserveAsset: string,
       overrides?: CallOverrides
@@ -2417,7 +2393,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getNftConfiguration(address)"(
+    'getNftConfiguration(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -2427,7 +2403,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getNftData(address)"(
+    'getNftData(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -2438,7 +2414,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getNftDebtData(address,uint256)"(
+    'getNftDebtData(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -2450,7 +2426,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getNftLiquidatePrice(address,uint256)"(
+    'getNftLiquidatePrice(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: CallOverrides
@@ -2458,14 +2434,14 @@ export class ILendPool extends Contract {
 
     getNftsList(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "getNftsList()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    'getNftsList()'(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     getReserveConfiguration(
       asset: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getReserveConfiguration(address)"(
+    'getReserveConfiguration(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -2475,7 +2451,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getReserveData(address)"(
+    'getReserveData(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -2485,7 +2461,7 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getReserveNormalizedIncome(address)"(
+    'getReserveNormalizedIncome(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -2495,14 +2471,14 @@ export class ILendPool extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getReserveNormalizedVariableDebt(address)"(
+    'getReserveNormalizedVariableDebt(address)'(
       asset: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     getReservesList(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "getReservesList()"(
+    'getReservesList()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -2512,7 +2488,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "initNft(address,address)"(
+    'initNft(address,address)'(
       asset: string,
       bNftAddress: string,
       overrides?: Overrides
@@ -2526,7 +2502,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "initReserve(address,address,address,address)"(
+    'initReserve(address,address,address,address)'(
       asset: string,
       bTokenAddress: string,
       debtTokenAddress: string,
@@ -2540,7 +2516,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "liquidate(address,uint256)"(
+    'liquidate(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: Overrides
@@ -2548,7 +2524,7 @@ export class ILendPool extends Contract {
 
     paused(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "paused()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    'paused()'(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     redeem(
       nftAsset: string,
@@ -2556,7 +2532,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "redeem(address,uint256)"(
+    'redeem(address,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       overrides?: Overrides
@@ -2569,7 +2545,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "repay(address,uint256,uint256)"(
+    'repay(address,uint256,uint256)'(
       nftAsset: string,
       nftTokenId: BigNumberish,
       amount: BigNumberish,
@@ -2581,7 +2557,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setMaxNumberOfNfts(uint256)"(
+    'setMaxNumberOfNfts(uint256)'(
       val: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -2591,7 +2567,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setMaxNumberOfReserves(uint256)"(
+    'setMaxNumberOfReserves(uint256)'(
       val: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -2602,7 +2578,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setNftConfiguration(address,uint256)"(
+    'setNftConfiguration(address,uint256)'(
       asset: string,
       configuration: BigNumberish,
       overrides?: Overrides
@@ -2613,7 +2589,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setPause(bool)"(
+    'setPause(bool)'(
       val: boolean,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -2624,7 +2600,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setReserveConfiguration(address,uint256)"(
+    'setReserveConfiguration(address,uint256)'(
       asset: string,
       configuration: BigNumberish,
       overrides?: Overrides
@@ -2636,7 +2612,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setReserveInterestRateAddress(address,address)"(
+    'setReserveInterestRateAddress(address,address)'(
       asset: string,
       rateAddress: string,
       overrides?: Overrides
@@ -2649,7 +2625,7 @@ export class ILendPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "withdraw(address,uint256,address)"(
+    'withdraw(address,uint256,address)'(
       reserve: string,
       amount: BigNumberish,
       to: string,

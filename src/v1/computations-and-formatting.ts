@@ -36,6 +36,7 @@ import {
   SECONDS_PER_YEAR,
   USD_DECIMALS,
 } from '../helpers/constants';
+import { ComputedUserNft, UserNftData } from '..';
 
 export function getEthAndUsdBalance(
   balance: BigNumberValue,
@@ -51,6 +52,18 @@ export function getEthAndUsdBalance(
     .dividedBy(usdPriceEth)
     .toFixed(0);
   return [balanceInEth.toString(), balanceInUsd];
+}
+
+export function getUsdBalance(
+  balanceEth: BigNumberValue,
+  usdPriceEth: BigNumberValue
+): string {
+  const balanceInEth = valueToZDBigNumber(balanceEth);
+  const balanceInUsd = balanceInEth
+    .multipliedBy(pow10(USD_DECIMALS))
+    .dividedBy(usdPriceEth)
+    .toFixed(0);
+  return balanceInUsd;
 }
 
 export function computeUserReserveData(
@@ -103,9 +116,36 @@ export function computeUserReserveData(
   };
 }
 
+export function computeUserNftData(
+  poolNft: NftData,
+  userNft: UserNftData,
+  usdPriceEth: BigNumberValue,
+  currentTimestamp: number
+): ComputedUserNft {
+  currentTimestamp;
+
+  const underlyingCollateralETH = valueToBigNumber(poolNft.price.priceInEth)
+    .multipliedBy(userNft.totalCollateral)
+    .toFixed(0);
+
+  const underlyingCollateralUSD = getUsdBalance(
+    underlyingCollateralETH,
+    usdPriceEth
+  );
+
+  return {
+    ...userNft,
+    underlyingCollateralETH,
+    underlyingCollateralUSD,
+  };
+}
+
 export function computeRawUserSummaryData(
   poolReservesData: ReserveData[],
   rawUserReserves: UserReserveData[],
+  poolNftsData: NftData[],
+  rawUserNfts: UserNftData[],
+  rawLoanDatas: LoanData[],
   userId: string,
   usdPriceEth: BigNumberValue,
   currentTimestamp: number
@@ -118,6 +158,7 @@ export function computeRawUserSummaryData(
   let totalRewardsETH = valueToBigNumber('0');
   let totalRewardsUSD = valueToBigNumber('0');
 
+  // Reserves: Liquidity & Borrows
   const userReservesData = rawUserReserves
     .map((userReserve) => {
       const poolReserve = poolReservesData.find(
@@ -138,19 +179,88 @@ export function computeRawUserSummaryData(
       totalLiquidityETH = totalLiquidityETH.plus(
         computedUserReserve.underlyingBalanceETH
       );
-      totalBorrowsETH = totalBorrowsETH
-        .plus(computedUserReserve.totalBorrowsETH);
+      totalBorrowsETH = totalBorrowsETH.plus(
+        computedUserReserve.totalBorrowsETH
+      );
 
-        totalCollateralETH = totalCollateralETH.plus(
-          computedUserReserve.underlyingBalanceETH
-        );
-
-        return computedUserReserve;
+      return computedUserReserve;
     })
     .sort((a, b) =>
       a.reserve.symbol > b.reserve.symbol
         ? 1
         : a.reserve.symbol < b.reserve.symbol
+        ? -1
+        : 0
+    );
+
+  // NFTs: Collaterals
+  const userNftsData = rawUserNfts
+    .map((userNft) => {
+      const poolNft = poolNftsData.find(
+        (nft) => nft.id === userNft.nftAsset.id
+      );
+      if (!poolNft) {
+        throw new Error(
+          'NFT is not registered on platform, please contact support'
+        );
+      }
+      const computedUserNft = computeUserNftData(
+        poolNft,
+        userNft,
+        usdPriceEth,
+        currentTimestamp
+      );
+
+      totalCollateralETH = totalCollateralETH.plus(
+        computedUserNft.underlyingCollateralETH
+      );
+
+      return computedUserNft;
+    })
+    .sort((a, b) =>
+      a.nftAsset.symbol > b.nftAsset.symbol
+        ? 1
+        : a.nftAsset.symbol < b.nftAsset.symbol
+        ? -1
+        : 0
+    );
+
+  // Loans:
+  const loansData = rawLoanDatas
+    .map((loanData) => {
+      const poolNft = poolNftsData.find(
+        (nft) => nft.id === loanData.nftAsset.id
+      );
+      if (!poolNft) {
+        throw new Error(
+          'NFT is not registered on platform, please contact support'
+        );
+      }
+      const poolReserve = poolReservesData.find(
+        (reserve) => reserve.id === loanData.reserveAsset.id
+      );
+      if (!poolReserve) {
+        throw new Error(
+          'Reserve is not registered on platform, please contact support'
+        );
+      }
+
+      const computedLoan = computeLoanData(
+        poolReserve,
+        poolNft,
+        loanData,
+        usdPriceEth,
+        currentTimestamp
+      );
+
+      totalBorrowsETH = totalBorrowsETH.plus(computedLoan.currentAmount);
+
+      return computedLoan;
+    })
+    .sort((a, b) =>
+      a.nftAsset.symbol > b.nftAsset.symbol
+        ? 1
+        : a.nftAsset.symbol < b.nftAsset.symbol
         ? -1
         : 0
     );
@@ -187,14 +297,17 @@ export function computeRawUserSummaryData(
     totalRewardsUSD: totalRewardsUSD.toString(),
 
     reservesData: userReservesData,
-    nftsData: [],
-    loansData: [],
+    nftsData: userNftsData,
+    loansData: loansData,
   };
 }
 
 export function formatUserSummaryData(
   poolReservesData: ReserveData[],
   rawUserReserves: UserReserveData[],
+  poolNftsData: NftData[],
+  rawUserNfts: UserNftData[],
+  rawLoanDatas: LoanData[],
   userId: string,
   usdPriceEth: BigNumberValue,
   currentTimestamp: number
@@ -202,29 +315,25 @@ export function formatUserSummaryData(
   const userData = computeRawUserSummaryData(
     poolReservesData,
     rawUserReserves,
+    poolNftsData,
+    rawUserNfts,
+    rawLoanDatas,
     userId,
     usdPriceEth,
     currentTimestamp
   );
+
   const userReservesData = userData.reservesData.map(
     ({ reserve, ...userReserve }): ComputedUserReserve => {
-      const reserveDecimals = reserve.decimals;
-
       return {
         ...userReserve,
         reserve: {
           ...reserve,
-          reserveLiquidationBonus: normalize(
-            valueToBigNumber(reserve.reserveLiquidationBonus).minus(
-              pow10(LTV_PRECISION)
-            ),
-            4
-          ),
         },
 
         scaledBTokenBalance: normalize(
           userReserve.scaledBTokenBalance,
-          reserveDecimals
+          reserve.decimals
         ),
         variableBorrowIndex: normalize(
           userReserve.variableBorrowIndex,
@@ -233,7 +342,7 @@ export function formatUserSummaryData(
 
         underlyingBalance: normalize(
           userReserve.underlyingBalance,
-          reserveDecimals
+          reserve.decimals
         ),
         underlyingBalanceETH: normalize(
           userReserve.underlyingBalanceETH,
@@ -244,9 +353,48 @@ export function formatUserSummaryData(
           USD_DECIMALS
         ),
 
-        totalBorrows: normalize(userReserve.totalBorrows, reserveDecimals),
+        totalBorrows: normalize(userReserve.totalBorrows, reserve.decimals),
         totalBorrowsETH: normalize(userReserve.totalBorrowsETH, ETH_DECIMALS),
         totalBorrowsUSD: normalize(userReserve.totalBorrowsUSD, USD_DECIMALS),
+      };
+    }
+  );
+
+  const userNftsData = userData.nftsData.map(
+    ({ nftAsset, ...userNft }): ComputedUserNft => {
+      return {
+        ...userNft,
+        nftAsset: {
+          ...nftAsset,
+        },
+
+        underlyingCollateralETH: normalize(
+          userNft.underlyingCollateralETH,
+          ETH_DECIMALS
+        ),
+        underlyingCollateralUSD: normalize(
+          userNft.underlyingCollateralUSD,
+          USD_DECIMALS
+        ),
+      };
+    }
+  );
+
+  const loansData = userData.loansData.map(
+    ({ nftAsset, ...loanData }): ComputedLoanData => {
+      return {
+        ...loanData,
+        nftAsset: {
+          ...nftAsset,
+        },
+
+        currentAmount: normalize(
+          loanData.currentAmount,
+          loanData.reserveAsset.decimals
+        ),
+        currentAmountETH: normalize(loanData.currentAmountETH, USD_DECIMALS),
+        currentAmountUSD: normalize(loanData.currentAmountUSD, USD_DECIMALS),
+        healthFactor: normalize(loanData.healthFactor, ETH_DECIMALS),
       };
     }
   );
@@ -268,8 +416,8 @@ export function formatUserSummaryData(
     totalRewardsUSD: normalize(userData.totalRewardsUSD, USD_DECIMALS),
 
     reservesData: userReservesData,
-    nftsData: [],
-    loansData: [],
+    nftsData: userNftsData,
+    loansData: loansData,
   };
 }
 
@@ -426,17 +574,24 @@ export function calculateSupplies(
 export function computeLoanData(
   poolReserve: ReserveData,
   poolNft: NftData,
-  poolLoan: LoanData,
+  loanData: LoanData,
   usdPriceEth: BigNumberValue,
   currentTimestamp: number
 ): ComputedLoanData {
-  const currentAmount = getCompoundedBalance(
-    poolLoan.scaledAmount,
-    poolReserve.variableBorrowIndex,
-    poolReserve.variableBorrowRate,
-    poolReserve.lastUpdateTimestamp,
-    currentTimestamp
-  ).toString();
+  let currentAmount: string = '0';
+  if (loanData.state == 'Active') {
+    currentAmount = getCompoundedBalance(
+      loanData.scaledAmount,
+      poolReserve.variableBorrowIndex,
+      poolReserve.variableBorrowRate,
+      poolReserve.lastUpdateTimestamp,
+      currentTimestamp
+    ).toString();
+  } else if (loanData.state == 'Auction') {
+    currentAmount = loanData.bidBorrowAmount;
+  } else {
+    currentAmount = loanData.currentAmount;
+  }
 
   const [currentAmountETH, currentAmountUSD] = getEthAndUsdBalance(
     currentAmount,
@@ -454,7 +609,7 @@ export function computeLoanData(
   ).toString();
 
   return {
-    ...poolLoan,
+    ...loanData,
     currentAmount,
     currentAmountETH,
     currentAmountUSD,

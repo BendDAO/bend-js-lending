@@ -1,0 +1,11 @@
+fragment UserIncentiveData on UserIncentive {
+  asset {
+    id
+    emissionPerSecond
+    index
+  }
+
+  reward
+  lifetimeRewards
+  lastUpdateTimestamp
+}

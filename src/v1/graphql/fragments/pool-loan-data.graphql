@@ -1,17 +1,36 @@
 fragment LoanData on Loan {
   id
   loanId
+  state
   borrower
+
   nftAsset {
     id
+    underlyingAsset
+    name
+    symbol
+    lastUpdateTimestamp
+    bnftToken {
+      id
+    }
   }
   nftTokenId
+
   reserveAsset {
     id
+    underlyingAsset
+    name
+    symbol
+    decimals
+    liquidityRate
+    lastUpdateTimestamp
+    bToken {
+      id
+    }
   }
   scaledAmount
   currentAmount
-  state
+
   bidStartTimestamp
   bidderAddress
   bidPrice

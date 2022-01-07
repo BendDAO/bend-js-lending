@@ -10,6 +10,9 @@ fragment UserReserveData on UserReserve {
     bToken {
       id
     }
+    debtToken {
+      id
+    }
   }
   scaledBTokenBalance
   scaledVariableDebt

@@ -20,7 +20,6 @@ import {
   PunkERC20AuctionParamsType,
   PunkERC20RedeemParamsType,
   PunkERC20LiquidateParamsType,
-
   PunkETHBorrowParamsType,
   PunkETHRepayParamsType,
   PunkETHAuctionParamsType,
@@ -29,10 +28,7 @@ import {
 } from '../types/PunkGatewayMethodTypes';
 import { parseNumber } from '../utils/parsings';
 import { PunkValidator } from '../validators/methodValidators';
-import {
-  IsEthAddress,
-  IsPositiveAmount,
-} from '../validators/paramValidators';
+import { IsEthAddress, IsPositiveAmount } from '../validators/paramValidators';
 import BaseService from './BaseService';
 
 export default class PunkGatewayService
@@ -96,14 +92,19 @@ export default class PunkGatewayService
         : parseNumber(amount, decimals);
 
     // check punk is saled to gateway
-    const saled = await this.punkService.isPunkForSaleToAddress(user, punkIndex, this.punkGatewayAddress);
+    const saled = await this.punkService.isPunkForSaleToAddress(
+      user,
+      punkIndex,
+      this.punkGatewayAddress
+    );
     if (!saled) {
-      const approveTx: EthereumTransactionTypeExtended = this.punkService.offerPunkForSaleToAddress(
-        user,
-        punkIndex,
-        "0",
-        this.punkGatewayAddress
-      );
+      const approveTx: EthereumTransactionTypeExtended =
+        this.punkService.offerPunkForSaleToAddress(
+          user,
+          punkIndex,
+          '0',
+          this.punkGatewayAddress
+        );
       txs.push(approveTx);
     }
 
@@ -163,12 +164,13 @@ export default class PunkGatewayService
       amount
     );
     if (!approvedErc20) {
-      const approveTx: EthereumTransactionTypeExtended = this.erc20Service.approve(
-        user,
-        reserve,
-        this.punkGatewayAddress,
-        DEFAULT_APPROVE_AMOUNT
-      );
+      const approveTx: EthereumTransactionTypeExtended =
+        this.erc20Service.approve(
+          user,
+          reserve,
+          this.punkGatewayAddress,
+          DEFAULT_APPROVE_AMOUNT
+        );
       txs.push(approveTx);
     }
 
@@ -180,12 +182,13 @@ export default class PunkGatewayService
       this.punkGatewayAddress
     );
     if (!approvedErc721) {
-      const approveTx: EthereumTransactionTypeExtended = this.erc721Service.setApprovalForAll(
-        wpunkAddress,
-        user,
-        this.punkGatewayAddress,
-        true
-      );
+      const approveTx: EthereumTransactionTypeExtended =
+        this.erc721Service.setApprovalForAll(
+          wpunkAddress,
+          user,
+          this.punkGatewayAddress,
+          true
+        );
       txs.push(approveTx);
     }
 
@@ -214,13 +217,19 @@ export default class PunkGatewayService
     @IsPositiveAmount('punkIndex')
     @IsPositiveAmount('bidPrice')
     @IsEthAddress('onBehalfOf')
-    { user, punkIndex, reserve, bidPrice, onBehalfOf }: PunkERC20AuctionParamsType
+    {
+      user,
+      punkIndex,
+      reserve,
+      bidPrice,
+      onBehalfOf,
+    }: PunkERC20AuctionParamsType
   ): Promise<EthereumTransactionTypeExtended[]> {
     const txs: EthereumTransactionTypeExtended[] = [];
 
     const decimals: number = await this.erc20Service.decimalsOf(reserve);
     const convertedAmount: tStringDecimalUnits =
-    bidPrice === '-1'
+      bidPrice === '-1'
         ? constants.MaxUint256.toString()
         : parseNumber(bidPrice, decimals);
 
@@ -236,12 +245,13 @@ export default class PunkGatewayService
       convertedAmount
     );
     if (!approvedErc20) {
-      const approveTx: EthereumTransactionTypeExtended = this.erc20Service.approve(
-        user,
-        reserve,
-        this.punkGatewayAddress,
-        DEFAULT_APPROVE_AMOUNT
-      );
+      const approveTx: EthereumTransactionTypeExtended =
+        this.erc20Service.approve(
+          user,
+          reserve,
+          this.punkGatewayAddress,
+          DEFAULT_APPROVE_AMOUNT
+        );
       txs.push(approveTx);
     }
 
@@ -289,12 +299,13 @@ export default class PunkGatewayService
       convertedAmount
     );
     if (!approvedErc20) {
-      const approveTx: EthereumTransactionTypeExtended = this.erc20Service.approve(
-        user,
-        reserve,
-        this.punkGatewayAddress,
-        DEFAULT_APPROVE_AMOUNT
-      );
+      const approveTx: EthereumTransactionTypeExtended =
+        this.erc20Service.approve(
+          user,
+          reserve,
+          this.punkGatewayAddress,
+          DEFAULT_APPROVE_AMOUNT
+        );
       txs.push(approveTx);
     }
 
@@ -335,20 +346,19 @@ export default class PunkGatewayService
       this.punkGatewayAddress
     );
     if (!approvedErc721) {
-      const approveTx: EthereumTransactionTypeExtended = this.erc721Service.setApprovalForAll(
-        wpunkAddress,
-        user,
-        this.punkGatewayAddress,
-        true
-      );
+      const approveTx: EthereumTransactionTypeExtended =
+        this.erc721Service.setApprovalForAll(
+          wpunkAddress,
+          user,
+          this.punkGatewayAddress,
+          true
+        );
       txs.push(approveTx);
     }
 
     const txCallback: () => Promise<transactionType> = this.generateTxCallback({
       rawTxMethod: () =>
-        punkGatewayContract.populateTransaction.liquidate(
-          punkIndex
-        ),
+        punkGatewayContract.populateTransaction.liquidate(punkIndex),
       gasSurplus: 30,
       from: user,
       value: DEFAULT_NULL_VALUE_ON_TX,
@@ -384,14 +394,19 @@ export default class PunkGatewayService
     const txs: EthereumTransactionTypeExtended[] = [];
     const convertedAmount: tStringDecimalUnits = parseNumber(amount, 18);
 
-    const saled = await this.punkService.isPunkForSaleToAddress(user, punkIndex, this.punkGatewayAddress);
+    const saled = await this.punkService.isPunkForSaleToAddress(
+      user,
+      punkIndex,
+      this.punkGatewayAddress
+    );
     if (!saled) {
-      const approveTx: EthereumTransactionTypeExtended = this.punkService.offerPunkForSaleToAddress(
-        user,
-        punkIndex,
-        "0",
-        this.punkGatewayAddress
-      );
+      const approveTx: EthereumTransactionTypeExtended =
+        this.punkService.offerPunkForSaleToAddress(
+          user,
+          punkIndex,
+          '0',
+          this.punkGatewayAddress
+        );
       txs.push(approveTx);
     }
 
@@ -545,9 +560,7 @@ export default class PunkGatewayService
 
     const txCallback: () => Promise<transactionType> = this.generateTxCallback({
       rawTxMethod: () =>
-        punkGatewayContract.populateTransaction.liquidateETH(
-          punkIndex
-        ),
+        punkGatewayContract.populateTransaction.liquidateETH(punkIndex),
       gasSurplus: 30,
       from: user,
       value: '0',

@@ -9,75 +9,75 @@ import {
   BigNumber,
   BigNumberish,
   PopulatedTransaction,
-} from "ethers";
+} from 'ethers';
 import {
   Contract,
   ContractTransaction,
   Overrides,
   CallOverrides,
-} from "@ethersproject/contracts";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
+} from '@ethersproject/contracts';
+import { BytesLike } from '@ethersproject/bytes';
+import { Listener, Provider } from '@ethersproject/providers';
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
 
 interface IIncentivesControllerInterface extends ethers.utils.Interface {
   functions: {
-    "claimRewards(address[],uint256)": FunctionFragment;
-    "configureAssets(address[],uint256[])": FunctionFragment;
-    "getRewardsBalance(address[],address)": FunctionFragment;
-    "getUserUnclaimedRewards(address)": FunctionFragment;
-    "handleAction(address,uint256,uint256)": FunctionFragment;
+    'claimRewards(address[],uint256)': FunctionFragment;
+    'configureAssets(address[],uint256[])': FunctionFragment;
+    'getRewardsBalance(address[],address)': FunctionFragment;
+    'getUserUnclaimedRewards(address)': FunctionFragment;
+    'handleAction(address,uint256,uint256)': FunctionFragment;
   };
 
   encodeFunctionData(
-    functionFragment: "claimRewards",
+    functionFragment: 'claimRewards',
     values: [string[], BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "configureAssets",
+    functionFragment: 'configureAssets',
     values: [string[], BigNumberish[]]
   ): string;
   encodeFunctionData(
-    functionFragment: "getRewardsBalance",
+    functionFragment: 'getRewardsBalance',
     values: [string[], string]
   ): string;
   encodeFunctionData(
-    functionFragment: "getUserUnclaimedRewards",
+    functionFragment: 'getUserUnclaimedRewards',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "handleAction",
+    functionFragment: 'handleAction',
     values: [string, BigNumberish, BigNumberish]
   ): string;
 
   decodeFunctionResult(
-    functionFragment: "claimRewards",
+    functionFragment: 'claimRewards',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "configureAssets",
+    functionFragment: 'configureAssets',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getRewardsBalance",
+    functionFragment: 'getRewardsBalance',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getUserUnclaimedRewards",
+    functionFragment: 'getUserUnclaimedRewards',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "handleAction",
+    functionFragment: 'handleAction',
     data: BytesLike
   ): Result;
 
   events: {
-    "RewardsAccrued(address,uint256)": EventFragment;
-    "RewardsClaimed(address,uint256)": EventFragment;
+    'RewardsAccrued(address,uint256)': EventFragment;
+    'RewardsClaimed(address,uint256)': EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "RewardsAccrued"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "RewardsClaimed"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'RewardsAccrued'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'RewardsClaimed'): EventFragment;
 }
 
 export class IIncentivesController extends Contract {
@@ -100,7 +100,7 @@ export class IIncentivesController extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "claimRewards(address[],uint256)"(
+    'claimRewards(address[],uint256)'(
       _assets: string[],
       _amount: BigNumberish,
       overrides?: Overrides
@@ -112,7 +112,7 @@ export class IIncentivesController extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "configureAssets(address[],uint256[])"(
+    'configureAssets(address[],uint256[])'(
       _assets: string[],
       _emissionsPerSecond: BigNumberish[],
       overrides?: Overrides
@@ -126,7 +126,7 @@ export class IIncentivesController extends Contract {
       0: BigNumber;
     }>;
 
-    "getRewardsBalance(address[],address)"(
+    'getRewardsBalance(address[],address)'(
       _assets: string[],
       _user: string,
       overrides?: CallOverrides
@@ -141,7 +141,7 @@ export class IIncentivesController extends Contract {
       0: BigNumber;
     }>;
 
-    "getUserUnclaimedRewards(address)"(
+    'getUserUnclaimedRewards(address)'(
       _user: string,
       overrides?: CallOverrides
     ): Promise<{
@@ -155,7 +155,7 @@ export class IIncentivesController extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "handleAction(address,uint256,uint256)"(
+    'handleAction(address,uint256,uint256)'(
       _user: string,
       _totalSupply: BigNumberish,
       _userBalance: BigNumberish,
@@ -169,7 +169,7 @@ export class IIncentivesController extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "claimRewards(address[],uint256)"(
+  'claimRewards(address[],uint256)'(
     _assets: string[],
     _amount: BigNumberish,
     overrides?: Overrides
@@ -181,7 +181,7 @@ export class IIncentivesController extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "configureAssets(address[],uint256[])"(
+  'configureAssets(address[],uint256[])'(
     _assets: string[],
     _emissionsPerSecond: BigNumberish[],
     overrides?: Overrides
@@ -193,7 +193,7 @@ export class IIncentivesController extends Contract {
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
-  "getRewardsBalance(address[],address)"(
+  'getRewardsBalance(address[],address)'(
     _assets: string[],
     _user: string,
     overrides?: CallOverrides
@@ -204,7 +204,7 @@ export class IIncentivesController extends Contract {
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
-  "getUserUnclaimedRewards(address)"(
+  'getUserUnclaimedRewards(address)'(
     _user: string,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
@@ -216,7 +216,7 @@ export class IIncentivesController extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "handleAction(address,uint256,uint256)"(
+  'handleAction(address,uint256,uint256)'(
     _user: string,
     _totalSupply: BigNumberish,
     _userBalance: BigNumberish,
@@ -230,7 +230,7 @@ export class IIncentivesController extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "claimRewards(address[],uint256)"(
+    'claimRewards(address[],uint256)'(
       _assets: string[],
       _amount: BigNumberish,
       overrides?: CallOverrides
@@ -242,7 +242,7 @@ export class IIncentivesController extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "configureAssets(address[],uint256[])"(
+    'configureAssets(address[],uint256[])'(
       _assets: string[],
       _emissionsPerSecond: BigNumberish[],
       overrides?: CallOverrides
@@ -254,7 +254,7 @@ export class IIncentivesController extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getRewardsBalance(address[],address)"(
+    'getRewardsBalance(address[],address)'(
       _assets: string[],
       _user: string,
       overrides?: CallOverrides
@@ -265,7 +265,7 @@ export class IIncentivesController extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getUserUnclaimedRewards(address)"(
+    'getUserUnclaimedRewards(address)'(
       _user: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -277,7 +277,7 @@ export class IIncentivesController extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "handleAction(address,uint256,uint256)"(
+    'handleAction(address,uint256,uint256)'(
       _user: string,
       _totalSupply: BigNumberish,
       _userBalance: BigNumberish,
@@ -298,7 +298,7 @@ export class IIncentivesController extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "claimRewards(address[],uint256)"(
+    'claimRewards(address[],uint256)'(
       _assets: string[],
       _amount: BigNumberish,
       overrides?: Overrides
@@ -310,7 +310,7 @@ export class IIncentivesController extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "configureAssets(address[],uint256[])"(
+    'configureAssets(address[],uint256[])'(
       _assets: string[],
       _emissionsPerSecond: BigNumberish[],
       overrides?: Overrides
@@ -322,7 +322,7 @@ export class IIncentivesController extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getRewardsBalance(address[],address)"(
+    'getRewardsBalance(address[],address)'(
       _assets: string[],
       _user: string,
       overrides?: CallOverrides
@@ -333,7 +333,7 @@ export class IIncentivesController extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getUserUnclaimedRewards(address)"(
+    'getUserUnclaimedRewards(address)'(
       _user: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -345,7 +345,7 @@ export class IIncentivesController extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "handleAction(address,uint256,uint256)"(
+    'handleAction(address,uint256,uint256)'(
       _user: string,
       _totalSupply: BigNumberish,
       _userBalance: BigNumberish,
@@ -360,7 +360,7 @@ export class IIncentivesController extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "claimRewards(address[],uint256)"(
+    'claimRewards(address[],uint256)'(
       _assets: string[],
       _amount: BigNumberish,
       overrides?: Overrides
@@ -372,7 +372,7 @@ export class IIncentivesController extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "configureAssets(address[],uint256[])"(
+    'configureAssets(address[],uint256[])'(
       _assets: string[],
       _emissionsPerSecond: BigNumberish[],
       overrides?: Overrides
@@ -384,7 +384,7 @@ export class IIncentivesController extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getRewardsBalance(address[],address)"(
+    'getRewardsBalance(address[],address)'(
       _assets: string[],
       _user: string,
       overrides?: CallOverrides
@@ -395,7 +395,7 @@ export class IIncentivesController extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getUserUnclaimedRewards(address)"(
+    'getUserUnclaimedRewards(address)'(
       _user: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -407,7 +407,7 @@ export class IIncentivesController extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "handleAction(address,uint256,uint256)"(
+    'handleAction(address,uint256,uint256)'(
       _user: string,
       _totalSupply: BigNumberish,
       _userBalance: BigNumberish,

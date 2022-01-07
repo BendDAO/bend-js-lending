@@ -22,7 +22,10 @@ export default class CryptoPunksService
 
   readonly punkContract: IPunks;
 
-  constructor(config: Configuration, punkConfig: LendPoolMarketConfig | undefined) {
+  constructor(
+    config: Configuration,
+    punkConfig: LendPoolMarketConfig | undefined
+  ) {
     super(config, IPunks__factory);
 
     this.punkConfig = punkConfig;
@@ -40,7 +43,11 @@ export default class CryptoPunksService
 
     const txCallback: () => Promise<transactionType> = this.generateTxCallback({
       rawTxMethod: () =>
-      this.punkContract.populateTransaction.offerPunkForSaleToAddress(punkIndex, convertedAmount, toAddress),
+        this.punkContract.populateTransaction.offerPunkForSaleToAddress(
+          punkIndex,
+          convertedAmount,
+          toAddress
+        ),
       from: user,
     });
 
@@ -58,7 +65,9 @@ export default class CryptoPunksService
   ): Promise<boolean> => {
     user;
 
-    const { onlySellTo } = await this.punkContract.punksOfferedForSale(punkIndex);
+    const { onlySellTo } = await this.punkContract.punksOfferedForSale(
+      punkIndex
+    );
     return onlySellTo == toAddress;
   };
 }

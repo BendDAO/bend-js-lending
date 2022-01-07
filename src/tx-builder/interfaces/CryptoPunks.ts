@@ -1,7 +1,4 @@
-import {
-  tEthereumAddress,
-  EthereumTransactionTypeExtended,
-} from '../types';
+import { tEthereumAddress, EthereumTransactionTypeExtended } from '../types';
 
 export default interface ICryptoPunksServiceInterface {
   isPunkForSaleToAddress: (

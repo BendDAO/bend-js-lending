@@ -9,37 +9,37 @@ import {
   BigNumber,
   BigNumberish,
   PopulatedTransaction,
-} from "ethers";
+} from 'ethers';
 import {
   Contract,
   ContractTransaction,
   CallOverrides,
-} from "@ethersproject/contracts";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
+} from '@ethersproject/contracts';
+import { BytesLike } from '@ethersproject/bytes';
+import { Listener, Provider } from '@ethersproject/providers';
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
 
 interface IScaledBalanceTokenInterface extends ethers.utils.Interface {
   functions: {
-    "getScaledUserBalanceAndSupply(address)": FunctionFragment;
-    "scaledTotalSupply()": FunctionFragment;
+    'getScaledUserBalanceAndSupply(address)': FunctionFragment;
+    'scaledTotalSupply()': FunctionFragment;
   };
 
   encodeFunctionData(
-    functionFragment: "getScaledUserBalanceAndSupply",
+    functionFragment: 'getScaledUserBalanceAndSupply',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "scaledTotalSupply",
+    functionFragment: 'scaledTotalSupply',
     values?: undefined
   ): string;
 
   decodeFunctionResult(
-    functionFragment: "getScaledUserBalanceAndSupply",
+    functionFragment: 'getScaledUserBalanceAndSupply',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "scaledTotalSupply",
+    functionFragment: 'scaledTotalSupply',
     data: BytesLike
   ): Result;
 
@@ -68,7 +68,7 @@ export class IScaledBalanceToken extends Contract {
       1: BigNumber;
     }>;
 
-    "getScaledUserBalanceAndSupply(address)"(
+    'getScaledUserBalanceAndSupply(address)'(
       _user: string,
       overrides?: CallOverrides
     ): Promise<{
@@ -76,15 +76,11 @@ export class IScaledBalanceToken extends Contract {
       1: BigNumber;
     }>;
 
-    scaledTotalSupply(
-      overrides?: CallOverrides
-    ): Promise<{
+    scaledTotalSupply(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "scaledTotalSupply()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    'scaledTotalSupply()'(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
   };
@@ -97,7 +93,7 @@ export class IScaledBalanceToken extends Contract {
     1: BigNumber;
   }>;
 
-  "getScaledUserBalanceAndSupply(address)"(
+  'getScaledUserBalanceAndSupply(address)'(
     _user: string,
     overrides?: CallOverrides
   ): Promise<{
@@ -107,7 +103,7 @@ export class IScaledBalanceToken extends Contract {
 
   scaledTotalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
-  "scaledTotalSupply()"(overrides?: CallOverrides): Promise<BigNumber>;
+  'scaledTotalSupply()'(overrides?: CallOverrides): Promise<BigNumber>;
 
   callStatic: {
     getScaledUserBalanceAndSupply(
@@ -118,7 +114,7 @@ export class IScaledBalanceToken extends Contract {
       1: BigNumber;
     }>;
 
-    "getScaledUserBalanceAndSupply(address)"(
+    'getScaledUserBalanceAndSupply(address)'(
       _user: string,
       overrides?: CallOverrides
     ): Promise<{
@@ -128,7 +124,7 @@ export class IScaledBalanceToken extends Contract {
 
     scaledTotalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "scaledTotalSupply()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'scaledTotalSupply()'(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   filters: {};
@@ -139,14 +135,14 @@ export class IScaledBalanceToken extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getScaledUserBalanceAndSupply(address)"(
+    'getScaledUserBalanceAndSupply(address)'(
       _user: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     scaledTotalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "scaledTotalSupply()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'scaledTotalSupply()'(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
@@ -155,14 +151,14 @@ export class IScaledBalanceToken extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getScaledUserBalanceAndSupply(address)"(
+    'getScaledUserBalanceAndSupply(address)'(
       _user: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     scaledTotalSupply(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "scaledTotalSupply()"(
+    'scaledTotalSupply()'(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };

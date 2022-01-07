@@ -75,7 +75,6 @@ export type UserReserveData = {
     name: string;
     symbol: string;
     decimals: number;
-    reserveLiquidationBonus: string;
     lastUpdateTimestamp: number;
   };
 };
@@ -104,6 +103,7 @@ export type NftData = {
   auctionDuration: string;
   redeemFine: string;
   bnftAddress: string;
+
   totalCollateral: string;
   price: {
     priceInEth: string;
@@ -112,7 +112,7 @@ export type NftData = {
 
 export type UserNftData = {
   totalCollateral: string;
-  nft: {
+  nftAsset: {
     id: string;
     underlyingAsset: string;
     name: string;
@@ -121,13 +121,33 @@ export type UserNftData = {
   };
 };
 
-export type ComputedUserNft = UserNftData & {};
+export type ComputedUserNft = UserNftData & {
+  underlyingCollateralETH: string;
+  underlyingCollateralUSD: string;
+};
 
 export type LoanData = {
   id: string;
   loanId: string;
   borrower: string;
+  nftAsset: {
+    id: string;
+    underlyingAsset: string;
+    name: string;
+    symbol: string;
+    lastUpdateTimestamp: number;
+  };
+  nftTokenId: string;
+  reserveAsset: {
+    id: string;
+    underlyingAsset: string;
+    name: string;
+    symbol: string;
+    decimals: number;
+    lastUpdateTimestamp: number;
+  };
   scaledAmount: string;
+  currentAmount: string;
   state: string;
   bidStartTimestamp: string;
   bidPrice: string;

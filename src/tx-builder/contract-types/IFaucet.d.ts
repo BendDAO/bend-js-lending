@@ -9,31 +9,31 @@ import {
   BigNumber,
   BigNumberish,
   PopulatedTransaction,
-} from "ethers";
+} from 'ethers';
 import {
   Contract,
   ContractTransaction,
   PayableOverrides,
   CallOverrides,
-} from "@ethersproject/contracts";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
+} from '@ethersproject/contracts';
+import { BytesLike } from '@ethersproject/bytes';
+import { Listener, Provider } from '@ethersproject/providers';
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
 
 interface IFaucetInterface extends ethers.utils.Interface {
   functions: {
-    "getMinter(address)": FunctionFragment;
-    "mint(address,uint256)": FunctionFragment;
+    'getMinter(address)': FunctionFragment;
+    'mint(address,uint256)': FunctionFragment;
   };
 
-  encodeFunctionData(functionFragment: "getMinter", values: [string]): string;
+  encodeFunctionData(functionFragment: 'getMinter', values: [string]): string;
   encodeFunctionData(
-    functionFragment: "mint",
+    functionFragment: 'mint',
     values: [string, BigNumberish]
   ): string;
 
-  decodeFunctionResult(functionFragment: "getMinter", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "mint", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getMinter', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'mint', data: BytesLike): Result;
 
   events: {};
 }
@@ -59,7 +59,7 @@ export class IFaucet extends Contract {
       0: string;
     }>;
 
-    "getMinter(address)"(
+    'getMinter(address)'(
       _token: string,
       overrides?: CallOverrides
     ): Promise<{
@@ -72,7 +72,7 @@ export class IFaucet extends Contract {
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    "mint(address,uint256)"(
+    'mint(address,uint256)'(
       _token: string,
       _amount: BigNumberish,
       overrides?: PayableOverrides
@@ -81,7 +81,7 @@ export class IFaucet extends Contract {
 
   getMinter(_token: string, overrides?: CallOverrides): Promise<string>;
 
-  "getMinter(address)"(
+  'getMinter(address)'(
     _token: string,
     overrides?: CallOverrides
   ): Promise<string>;
@@ -92,7 +92,7 @@ export class IFaucet extends Contract {
     overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
-  "mint(address,uint256)"(
+  'mint(address,uint256)'(
     _token: string,
     _amount: BigNumberish,
     overrides?: PayableOverrides
@@ -101,7 +101,7 @@ export class IFaucet extends Contract {
   callStatic: {
     getMinter(_token: string, overrides?: CallOverrides): Promise<string>;
 
-    "getMinter(address)"(
+    'getMinter(address)'(
       _token: string,
       overrides?: CallOverrides
     ): Promise<string>;
@@ -112,7 +112,7 @@ export class IFaucet extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "mint(address,uint256)"(
+    'mint(address,uint256)'(
       _token: string,
       _amount: BigNumberish,
       overrides?: CallOverrides
@@ -124,7 +124,7 @@ export class IFaucet extends Contract {
   estimateGas: {
     getMinter(_token: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getMinter(address)"(
+    'getMinter(address)'(
       _token: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -135,7 +135,7 @@ export class IFaucet extends Contract {
       overrides?: PayableOverrides
     ): Promise<BigNumber>;
 
-    "mint(address,uint256)"(
+    'mint(address,uint256)'(
       _token: string,
       _amount: BigNumberish,
       overrides?: PayableOverrides
@@ -148,7 +148,7 @@ export class IFaucet extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getMinter(address)"(
+    'getMinter(address)'(
       _token: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -159,7 +159,7 @@ export class IFaucet extends Contract {
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
-    "mint(address,uint256)"(
+    'mint(address,uint256)'(
       _token: string,
       _amount: BigNumberish,
       overrides?: PayableOverrides

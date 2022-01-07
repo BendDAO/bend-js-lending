@@ -9,65 +9,65 @@ import {
   BigNumber,
   BigNumberish,
   PopulatedTransaction,
-} from "ethers";
+} from 'ethers';
 import {
   Contract,
   ContractTransaction,
   Overrides,
   CallOverrides,
-} from "@ethersproject/contracts";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
+} from '@ethersproject/contracts';
+import { BytesLike } from '@ethersproject/bytes';
+import { Listener, Provider } from '@ethersproject/providers';
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
 
 interface IPunksInterface extends ethers.utils.Interface {
   functions: {
-    "balanceOf(address)": FunctionFragment;
-    "buyPunk(uint256)": FunctionFragment;
-    "offerPunkForSaleToAddress(uint256,uint256,address)": FunctionFragment;
-    "punkIndexToAddress(uint256)": FunctionFragment;
-    "punksOfferedForSale(uint256)": FunctionFragment;
-    "transferPunk(address,uint256)": FunctionFragment;
+    'balanceOf(address)': FunctionFragment;
+    'buyPunk(uint256)': FunctionFragment;
+    'offerPunkForSaleToAddress(uint256,uint256,address)': FunctionFragment;
+    'punkIndexToAddress(uint256)': FunctionFragment;
+    'punksOfferedForSale(uint256)': FunctionFragment;
+    'transferPunk(address,uint256)': FunctionFragment;
   };
 
-  encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
+  encodeFunctionData(functionFragment: 'balanceOf', values: [string]): string;
   encodeFunctionData(
-    functionFragment: "buyPunk",
+    functionFragment: 'buyPunk',
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "offerPunkForSaleToAddress",
+    functionFragment: 'offerPunkForSaleToAddress',
     values: [BigNumberish, BigNumberish, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "punkIndexToAddress",
+    functionFragment: 'punkIndexToAddress',
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "punksOfferedForSale",
+    functionFragment: 'punksOfferedForSale',
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "transferPunk",
+    functionFragment: 'transferPunk',
     values: [string, BigNumberish]
   ): string;
 
-  decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "buyPunk", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'balanceOf', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'buyPunk', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "offerPunkForSaleToAddress",
+    functionFragment: 'offerPunkForSaleToAddress',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "punkIndexToAddress",
+    functionFragment: 'punkIndexToAddress',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "punksOfferedForSale",
+    functionFragment: 'punksOfferedForSale',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "transferPunk",
+    functionFragment: 'transferPunk',
     data: BytesLike
   ): Result;
 
@@ -95,7 +95,7 @@ export class IPunks extends Contract {
       0: BigNumber;
     }>;
 
-    "balanceOf(address)"(
+    'balanceOf(address)'(
       account: string,
       overrides?: CallOverrides
     ): Promise<{
@@ -107,7 +107,7 @@ export class IPunks extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "buyPunk(uint256)"(
+    'buyPunk(uint256)'(
       punkIndex: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -119,7 +119,7 @@ export class IPunks extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "offerPunkForSaleToAddress(uint256,uint256,address)"(
+    'offerPunkForSaleToAddress(uint256,uint256,address)'(
       punkIndex: BigNumberish,
       minSalePriceInWei: BigNumberish,
       toAddress: string,
@@ -134,7 +134,7 @@ export class IPunks extends Contract {
       0: string;
     }>;
 
-    "punkIndexToAddress(uint256)"(
+    'punkIndexToAddress(uint256)'(
       punkIndex: BigNumberish,
       overrides?: CallOverrides
     ): Promise<{
@@ -160,7 +160,7 @@ export class IPunks extends Contract {
       };
     }>;
 
-    "punksOfferedForSale(uint256)"(
+    'punksOfferedForSale(uint256)'(
       punkIndex: BigNumberish,
       overrides?: CallOverrides
     ): Promise<{
@@ -184,7 +184,7 @@ export class IPunks extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "transferPunk(address,uint256)"(
+    'transferPunk(address,uint256)'(
       to: string,
       punkIndex: BigNumberish,
       overrides?: Overrides
@@ -193,7 +193,7 @@ export class IPunks extends Contract {
 
   balanceOf(account: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-  "balanceOf(address)"(
+  'balanceOf(address)'(
     account: string,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
@@ -203,7 +203,7 @@ export class IPunks extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "buyPunk(uint256)"(
+  'buyPunk(uint256)'(
     punkIndex: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -215,7 +215,7 @@ export class IPunks extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "offerPunkForSaleToAddress(uint256,uint256,address)"(
+  'offerPunkForSaleToAddress(uint256,uint256,address)'(
     punkIndex: BigNumberish,
     minSalePriceInWei: BigNumberish,
     toAddress: string,
@@ -227,7 +227,7 @@ export class IPunks extends Contract {
     overrides?: CallOverrides
   ): Promise<string>;
 
-  "punkIndexToAddress(uint256)"(
+  'punkIndexToAddress(uint256)'(
     punkIndex: BigNumberish,
     overrides?: CallOverrides
   ): Promise<string>;
@@ -248,7 +248,7 @@ export class IPunks extends Contract {
     4: string;
   }>;
 
-  "punksOfferedForSale(uint256)"(
+  'punksOfferedForSale(uint256)'(
     punkIndex: BigNumberish,
     overrides?: CallOverrides
   ): Promise<{
@@ -270,7 +270,7 @@ export class IPunks extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "transferPunk(address,uint256)"(
+  'transferPunk(address,uint256)'(
     to: string,
     punkIndex: BigNumberish,
     overrides?: Overrides
@@ -279,14 +279,14 @@ export class IPunks extends Contract {
   callStatic: {
     balanceOf(account: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-    "balanceOf(address)"(
+    'balanceOf(address)'(
       account: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     buyPunk(punkIndex: BigNumberish, overrides?: CallOverrides): Promise<void>;
 
-    "buyPunk(uint256)"(
+    'buyPunk(uint256)'(
       punkIndex: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -298,7 +298,7 @@ export class IPunks extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "offerPunkForSaleToAddress(uint256,uint256,address)"(
+    'offerPunkForSaleToAddress(uint256,uint256,address)'(
       punkIndex: BigNumberish,
       minSalePriceInWei: BigNumberish,
       toAddress: string,
@@ -310,7 +310,7 @@ export class IPunks extends Contract {
       overrides?: CallOverrides
     ): Promise<string>;
 
-    "punkIndexToAddress(uint256)"(
+    'punkIndexToAddress(uint256)'(
       punkIndex: BigNumberish,
       overrides?: CallOverrides
     ): Promise<string>;
@@ -331,7 +331,7 @@ export class IPunks extends Contract {
       4: string;
     }>;
 
-    "punksOfferedForSale(uint256)"(
+    'punksOfferedForSale(uint256)'(
       punkIndex: BigNumberish,
       overrides?: CallOverrides
     ): Promise<{
@@ -353,7 +353,7 @@ export class IPunks extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "transferPunk(address,uint256)"(
+    'transferPunk(address,uint256)'(
       to: string,
       punkIndex: BigNumberish,
       overrides?: CallOverrides
@@ -365,14 +365,14 @@ export class IPunks extends Contract {
   estimateGas: {
     balanceOf(account: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-    "balanceOf(address)"(
+    'balanceOf(address)'(
       account: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     buyPunk(punkIndex: BigNumberish, overrides?: Overrides): Promise<BigNumber>;
 
-    "buyPunk(uint256)"(
+    'buyPunk(uint256)'(
       punkIndex: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -384,7 +384,7 @@ export class IPunks extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "offerPunkForSaleToAddress(uint256,uint256,address)"(
+    'offerPunkForSaleToAddress(uint256,uint256,address)'(
       punkIndex: BigNumberish,
       minSalePriceInWei: BigNumberish,
       toAddress: string,
@@ -396,7 +396,7 @@ export class IPunks extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "punkIndexToAddress(uint256)"(
+    'punkIndexToAddress(uint256)'(
       punkIndex: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -406,7 +406,7 @@ export class IPunks extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "punksOfferedForSale(uint256)"(
+    'punksOfferedForSale(uint256)'(
       punkIndex: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -417,7 +417,7 @@ export class IPunks extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "transferPunk(address,uint256)"(
+    'transferPunk(address,uint256)'(
       to: string,
       punkIndex: BigNumberish,
       overrides?: Overrides
@@ -430,7 +430,7 @@ export class IPunks extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "balanceOf(address)"(
+    'balanceOf(address)'(
       account: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -440,7 +440,7 @@ export class IPunks extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "buyPunk(uint256)"(
+    'buyPunk(uint256)'(
       punkIndex: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -452,7 +452,7 @@ export class IPunks extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "offerPunkForSaleToAddress(uint256,uint256,address)"(
+    'offerPunkForSaleToAddress(uint256,uint256,address)'(
       punkIndex: BigNumberish,
       minSalePriceInWei: BigNumberish,
       toAddress: string,
@@ -464,7 +464,7 @@ export class IPunks extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "punkIndexToAddress(uint256)"(
+    'punkIndexToAddress(uint256)'(
       punkIndex: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -474,7 +474,7 @@ export class IPunks extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "punksOfferedForSale(uint256)"(
+    'punksOfferedForSale(uint256)'(
       punkIndex: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -485,7 +485,7 @@ export class IPunks extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "transferPunk(address,uint256)"(
+    'transferPunk(address,uint256)'(
       to: string,
       punkIndex: BigNumberish,
       overrides?: Overrides
