@@ -1,0 +1,68 @@
+name: release-ci
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # cache yarn deps
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+
+      - name: prepare
+        id: prepare
+        shell: bash
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
+          git config user.name "GitHub Actions Build"
+          git config user.email "developerbend@gmail.com"
+
+      - name: install
+        id: install
+        run: |
+          yarn install --frozen-lockfile
+
+      - id: lint
+        name: lint
+        run: |
+          yarn lint
+
+      - id: test
+        name: test
+        run: |
+          yarn test
+
+      - id: build
+        name: build
+        run: |
+          yarn build
+
+      - id: prerelease
+        name: prerelease
+        if: |
+          github.event.pull_request.head.repo.full_name == github.repository &&
+          !contains(github.head_ref, 'dependabot') &&
+          !contains(github.event.head_commit.message, 'chore(release)') &&
+          github.ref != 'refs/heads/master'
+        run: |
+          yarn release --message "chore(release): Release v%s :tada: [ci skip]" --prerelease ${{ github.sha }}
+          yarn publish --tag canary
+
+      - id: release
+        name: release
+        if: |
+          contains(github.event.head_commit.message, 'chore(release)') &&
+          github.ref == 'refs/heads/master'
+        run: |
+          git tag v$(cat package.json | jq --raw-output '.version')
+          git push origin v$(cat package.json | jq --raw-output '.version')
+          yarn publish

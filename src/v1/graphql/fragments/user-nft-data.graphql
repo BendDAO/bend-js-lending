@@ -1,0 +1,14 @@
+fragment UserNftData on UserNft {
+  nft {
+    id
+    underlyingAsset
+    name
+    symbol
+    lastUpdateTimestamp
+    bnftToken {
+      id
+    }
+  }
+  totalCollateral
+  lastUpdateTimestamp
+}
