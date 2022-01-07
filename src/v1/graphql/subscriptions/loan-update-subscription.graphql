@@ -1,0 +1,5 @@
+subscription LoanUpdateSubscription($pool: String, $borrower: String) {
+  loans(where: {pool: $pool, borrower:$borrower}) {
+    ...LoanData
+  }
+}

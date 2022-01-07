@@ -1,0 +1,106 @@
+{
+  "version": "4.3.0",
+  "license": "MIT",
+  "name": "@bend/bend-js",
+  "description": "JavaScript SDK for Bend Protocol",
+  "keywords": [
+    "bend",
+    "protocol",
+    "lending",
+    "defi",
+    "nft",
+    "dao"
+  ],
+  "sideEffects": false,
+  "author": "Bend <developerbend@gmail.com>",
+  "contributors": [
+    {
+      "name": "R2D2@Foundation",
+      "email": "r2d2.foundation@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bend/bend-js.git"
+  },
+  "module": "dist/protocol-js.esm.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build && cp -R ./src/v1/graphql ./dist/graphql",
+    "test": "tsdx test",
+    "test:watch": "tsdx test --watch",
+    "lint": "tsdx lint",
+    "prettier:write": "prettier --write 'src/**/*.ts' 'benchmarks/**/*.js'",
+    "compile": "SKIP_LOAD=true hardhat compile",
+    "release": "standard-version",
+    "release:prod": "yarn release --message \"chore(release): Release v%s :tada:\" --skip.tag"
+  },
+  "devDependencies": {
+    "@openzeppelin/contracts": "^4.3.3",
+    "@typechain/ethers-v5": "^4.0.0",
+    "@types/bs58": "^4.0.1",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^12.7.5",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
+    "env-cmd": "^10.1.0",
+    "eslint-config-airbnb-typescript": "^9.0.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "ethers": "5.0.31",
+    "hardhat": "^2.0.3",
+    "hardhat-typechain": "^0.3.3",
+    "husky": "^7.0.4",
+    "jest": "^26.1.0",
+    "prettier": "2.5.1",
+    "ts-generator": "^0.1.1",
+    "ts-node": "^9.0.0",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.0.3",
+    "typechain": "^4.0.0",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "axios": "^0.21.0",
+    "bignumber.js": "^9.0.1",
+    "bs58": "^4.0.1",
+    "reflect-metadata": "^0.1.13",
+    "standard-version": "^9.1.0"
+  },
+  "peerDependencies": {
+    "ethers": "^5.0.24"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "eslint": {
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:import/typescript",
+      "plugin:prettier/recommended"
+    ]
+  },
+  "resolutions": {
+    "**/typescript": "^4.0.5",
+    "**/@typescript-eslint/eslint-plugin": "^4.6.1",
+    "**/@typescript-eslint/parser": "^4.6.1"
+  }
+}

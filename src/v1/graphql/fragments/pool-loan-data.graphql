@@ -1,0 +1,20 @@
+fragment LoanData on Loan {
+  id
+  loanId
+  borrower
+  nftAsset {
+    id
+  }
+  nftTokenId
+  reserveAsset {
+    id
+  }
+  scaledAmount
+  currentAmount
+  state
+  bidStartTimestamp
+  bidderAddress
+  bidPrice
+  bidBorrowAmount
+  lastUpdateTimestamp
+}

@@ -1,0 +1,18 @@
+fragment UserReserveData on UserReserve {
+  reserve {
+    id
+    underlyingAsset
+    name
+    symbol
+    decimals
+    liquidityRate
+    lastUpdateTimestamp
+    bToken {
+      id
+    }
+  }
+  scaledBTokenBalance
+  scaledVariableDebt
+  variableBorrowIndex
+  lastUpdateTimestamp
+}

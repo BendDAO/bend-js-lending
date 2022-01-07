@@ -1,0 +1,22 @@
+fragment NftData on NFT {
+  id
+  underlyingAsset
+  name
+  symbol
+  isActive
+  isFrozen
+  baseLTVasCollateral
+  liquidationThreshold
+  liquidationBonus
+  redeemDuration
+  auctionDuration
+  redeemFine
+  bnftToken {
+    id
+  }
+  totalCollateral
+  price {
+    priceInEth
+  }
+  lastUpdateTimestamp
+}
