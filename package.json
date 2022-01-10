@@ -1,5 +1,5 @@
 {
-  "version": "4.3.0",
+  "version": "1.0.0",
   "license": "MIT",
   "name": "@bend/bend-js",
   "description": "JavaScript SDK for Bend Protocol",
@@ -12,18 +12,18 @@
     "dao"
   ],
   "sideEffects": false,
-  "author": "Bend <developerbend@gmail.com>",
+  "author": "Developer Bend <developerbend@gmail.com>",
   "contributors": [
     {
-      "name": "R2D2@Foundation",
-      "email": "r2d2.foundation@gmail.com"
+      "name": "thorseldon@protonmail.com",
+      "email": "thorseldon@protonmail.com"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bend/bend-js.git"
+    "url": "git+https://github.com/BendDAO/bend-js.git"
   },
-  "module": "dist/protocol-js.esm.js",
+  "module": "dist/bend-js.esm.js",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
