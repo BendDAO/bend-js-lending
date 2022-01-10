@@ -1,6 +1,6 @@
 import IERC20ServiceInterface from './ERC20';
 import IERC721ServiceInterface from './ERC721';
-import ICryptoPunksServiceInterface from './ICryptoPunksServiceInterface';
+import ICryptoPunksServiceInterface from './CryptoPunks';
 import LendPoolInterface from './LendPool';
 import WETHGatewayInterface from './WETHGateway';
 import PunkGatewayInterface from './PunkGateway';

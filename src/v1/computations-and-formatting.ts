@@ -35,8 +35,9 @@ import {
   RAY_DECIMALS,
   SECONDS_PER_YEAR,
   USD_DECIMALS,
+  BEND_DECIMALS,
 } from '../helpers/constants';
-import { ComputedUserNft, UserNftData } from '..';
+import { ComputedUserNft, UserIncentive, UserNftData } from '..';
 
 export function getEthAndUsdBalance(
   balance: BigNumberValue,
@@ -146,6 +147,7 @@ export function computeRawUserSummaryData(
   poolNftsData: NftData[],
   rawUserNfts: UserNftData[],
   rawLoanDatas: LoanData[],
+  rawUserIncentives: UserIncentive[],
   userId: string,
   usdPriceEth: BigNumberValue,
   currentTimestamp: number
@@ -155,8 +157,6 @@ export function computeRawUserSummaryData(
   let totalBorrowsETH = valueToZDBigNumber('0');
 
   let totalRewards = valueToBigNumber('0');
-  let totalRewardsETH = valueToBigNumber('0');
-  let totalRewardsUSD = valueToBigNumber('0');
 
   // Reserves: Liquidity & Borrows
   const userReservesData = rawUserReserves
@@ -265,6 +265,20 @@ export function computeRawUserSummaryData(
         : 0
     );
 
+  // Incentives:
+  const userIncentives = rawUserIncentives
+    .map((userIncentive) => {
+      totalRewards = totalRewards.plus(userIncentive.reward);
+      return userIncentive;
+    })
+    .sort((a, b) =>
+      a.asset.index > b.asset.index
+        ? 1
+        : a.asset.index < b.asset.index
+        ? -1
+        : 0
+    );
+
   const totalCollateralUSD = totalCollateralETH
     .multipliedBy(pow10(USD_DECIMALS))
     .dividedBy(usdPriceEth)
@@ -293,12 +307,11 @@ export function computeRawUserSummaryData(
     totalBorrowsUSD,
 
     totalRewards: totalRewards.toString(),
-    totalRewardsETH: totalRewardsETH.toString(),
-    totalRewardsUSD: totalRewardsUSD.toString(),
 
     reservesData: userReservesData,
     nftsData: userNftsData,
     loansData: loansData,
+    incentivesData: userIncentives,
   };
 }
 
@@ -308,6 +321,7 @@ export function formatUserSummaryData(
   poolNftsData: NftData[],
   rawUserNfts: UserNftData[],
   rawLoanDatas: LoanData[],
+  rawUserIncentives: UserIncentive[],
   userId: string,
   usdPriceEth: BigNumberValue,
   currentTimestamp: number
@@ -318,6 +332,7 @@ export function formatUserSummaryData(
     poolNftsData,
     rawUserNfts,
     rawLoanDatas,
+    rawUserIncentives,
     userId,
     usdPriceEth,
     currentTimestamp
@@ -399,6 +414,20 @@ export function formatUserSummaryData(
     }
   );
 
+  const incentivesData = userData.incentivesData.map(
+    ({ asset, ...incentiveData }): UserIncentive => {
+      return {
+        ...incentiveData,
+        asset: {
+          ...asset,
+        },
+
+        lifetimeRewards: normalize(incentiveData.lifetimeRewards, BEND_DECIMALS),
+        reward: normalize(incentiveData.reward, BEND_DECIMALS),
+      };
+    }
+  );
+
   return {
     id: userData.id,
 
@@ -412,12 +441,11 @@ export function formatUserSummaryData(
     totalBorrowsUSD: normalize(userData.totalBorrowsUSD, USD_DECIMALS),
 
     totalRewards: normalize(userData.totalRewards, ETH_DECIMALS),
-    totalRewardsETH: normalize(userData.totalRewardsETH, ETH_DECIMALS),
-    totalRewardsUSD: normalize(userData.totalRewardsUSD, USD_DECIMALS),
 
     reservesData: userReservesData,
     nftsData: userNftsData,
     loansData: loansData,
+    incentivesData: incentivesData
   };
 }
 

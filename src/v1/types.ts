@@ -108,6 +108,7 @@ export type NftData = {
   price: {
     priceInEth: string;
   };
+  lastUpdateTimestamp: number;
 };
 
 export type UserNftData = {
@@ -124,6 +125,17 @@ export type UserNftData = {
 export type ComputedUserNft = UserNftData & {
   underlyingCollateralETH: string;
   underlyingCollateralUSD: string;
+};
+
+export type UserIncentive = {
+  asset: {
+    id: string;
+    emissionPerSecond: number;
+    index: number;
+  }
+  reward: string;
+  lifetimeRewards: string;
+  lastUpdateTimestamp: number;
 };
 
 export type LoanData = {
@@ -152,6 +164,7 @@ export type LoanData = {
   bidStartTimestamp: string;
   bidPrice: string;
   bidBorrowAmount: string;
+  lastUpdateTimestamp: number;
 };
 
 export type ComputedLoanData = LoanData & {
@@ -175,10 +188,9 @@ export type UserSummaryData = {
 
   // BEND Token Incentive
   totalRewards: string;
-  totalRewardsETH: string;
-  totalRewardsUSD: string;
 
   reservesData: ComputedUserReserve[];
   nftsData: ComputedUserNft[];
   loansData: ComputedLoanData[];
+  incentivesData: UserIncentive[];
 };

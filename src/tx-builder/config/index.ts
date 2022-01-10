@@ -48,5 +48,7 @@ export const gasLimitRecommendations: GasRecommendationType = {
 };
 
 export const cosntantAddressesByNetwork: ConstantAddressesByNetwork = {
-  [Network.mainnet]: {},
+  [Network.mainnet]: {
+    CRYPTO_PUNKS: '0x',
+  },
 };

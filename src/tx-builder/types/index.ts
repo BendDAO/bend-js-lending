@@ -25,7 +25,9 @@ export enum ChainId {
   fork = 1337,
 }
 export type ConstantAddressesByNetwork = {
-  [network: string]: {};
+  [network: string]: {
+    CRYPTO_PUNKS?: tEthereumAddress;
+  };
 };
 
 export type IncentivesConfig = {

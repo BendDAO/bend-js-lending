@@ -10,7 +10,7 @@ import {
 } from '../types';
 import { IPunks, IPunks__factory } from '../contract-types';
 import BaseService from './BaseService';
-import { parseNumber } from 'tx-builder/utils/parsings';
+import { parseNumber } from '../utils/parsings';
 
 export default class CryptoPunksService
   extends BaseService<IPunks>

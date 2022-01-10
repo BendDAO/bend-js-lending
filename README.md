@@ -93,7 +93,7 @@ Returns formatted summary of BEND user portfolio including: array of holdings, t
 - @param `usdPriceEth` Current price of USD in ETH in small units (10^18). For example, if ETH price in USD = $1900, usdPriceEth = (1 / 1900) * 10^18
    : Can also be fetched using this subscription: /src/[v1 or v2]/graphql/subscriptions/usd-price-eth-update-subscription.graphql
 - @param `currentTimestamp` Current Unix timestamp in seconds: Math.floor(Date.now() / 1000)
-- @param @optional `rewardsInfo` Information used to compute aTokenRewards (deposit rewards), vTokenRewards (variable debt rewards), and sTokenRewards (stable debt rewards). Object with format:
+- @param @optional `rewardsInfo` Information used to compute bTokenRewards (deposit rewards), debtTokenRewards (debt rewards). Object with format:
   ```
   {
     rewardTokenAddress: string;
@@ -195,7 +195,7 @@ having {tx, txType}
 
 ### deposit
 
-Deposits the underlying asset into the reserve. A corresponding amount of the overlying asset (aTokens) is minted.
+Deposits the underlying asset into the reserve. A corresponding amount of the overlying asset (bTokens) is minted.
 
 - @param `user` The ethereum address that will make the deposit
 - @param `reserve` The ethereum address of the reserve
@@ -217,20 +217,20 @@ If the `user` is not approved, an approval transaction will also be returned.
 
 ### withdraw
 
-Withdraws the underlying asset of an aToken asset.
+Withdraws the underlying asset of an bToken asset.
 
-- @param `user` The ethereum address that will receive the aTokens
+- @param `user` The ethereum address that will receive the bTokens
 - @param `reserve` The ethereum address of the reserve asset
-- @param `amount` The amount of aToken being redeemed
-- @param @optional `aTokenAddress` The ethereum address of the aToken. Only needed if the reserve is ETH mock address
-- @param @optional `onBehalfOf` The amount of aToken being redeemed. It will default to the user address
+- @param `amount` The amount of bToken being redeemed
+- @param @optional `bTokenAddress` The ethereum address of the bToken. Only needed if the reserve is ETH mock address
+- @param @optional `onBehalfOf` The amount of bToken being redeemed. It will default to the user address
 
 ```
 lendingPool.withdraw({
    user, // string,
    reserve, // string,
    amount, // string,
-   aTokenAddress, // ? string,
+   bTokenAddress, // ? string,
    onBehalfOf, // ? string
 });
 ```
@@ -239,23 +239,16 @@ lendingPool.withdraw({
 
 Borrow an `amount` of `reserve` asset.
 
-User must have a collaterised position (i.e. aTokens in their wallet)
+User must have a collaterised position (i.e. bTokens in their wallet)
 
 - @param `user` The ethereum address that will receive the borrowed amount
 - @param `reserve` The ethereum address of the reserve asset
 - @param `amount` The amount to be borrowed, in human readable units (e.g. 2.5 ETH)
-- @param `interestRateMode` Whether the borrow will incur a stable or variable interest rate (1 | 2)
 - @param @optional `debtTokenAddress` The ethereum address of the debt token of the asset you want to borrow. Only needed if the reserve is ETH mock address
 - @param @optional `onBehalfOf` The ethereum address for which user is borrowing. It will default to the user address
 - @param @optional `refferalCode` Integrators are assigned a referral code and can potentially receive rewards. It defaults to 0 (no referrer)
 
 ```
-enum InterestRate {
-  None = 'None',
-  Stable = 'Stable',
-  Variable = 'Variable',
-}
-
 lendingPool.borrow({
    user, // string,
    reserve, // string,
@@ -275,16 +268,9 @@ the target user is defined by `onBehalfOf`. If there is no repayment on behalf o
 - @param `user` The ethereum address that repays
 - @param `reserve` The ethereum address of the reserve on which the user borrowed
 - @param `amount` The amount to repay, or (-1) if the user wants to repay everything
-- @param `interestRateMode` Whether the borrow will incur a stable or variable interest rate (1 | 2)
 - @param @optional `onBehalfOf` The ethereum address for which user is repaying. It will default to the user address
 
 ```
-enum InterestRate {
-  None = 'None',
-  Stable = 'Stable',
-  Variable = 'Variable',
-}
-
 lendingPool.repay({
    user, // string,
    reserve, // string,
@@ -305,7 +291,7 @@ Users can invoke this function to liquidate an undercollateralized position.
 - @param `debtReserve` The ethereum address of the principal reserve
 - @param `collateralReserve` The address of the collateral to liquidated
 - @param `purchaseAmount` The amount of principal that the liquidator wants to repay
-- @param @optional `getAToken` Boolean to indicate if the user wants to receive the aToken instead of the asset. Defaults to false
+- @param @optional `getBToken` Boolean to indicate if the user wants to receive the bToken instead of the asset. Defaults to false
 
 ```
 lendingPool.liquidate({
@@ -314,7 +300,7 @@ lendingPool.liquidate({
   debtReserve, // string;
   collateralReserve, // string;
   purchaseAmount, // string;
-  getAToken, // ? boolean;
+  getbToken, // ? boolean;
 });
 ```
 

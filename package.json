@@ -39,7 +39,7 @@
     "compile": "SKIP_LOAD=true hardhat compile",
     "release": "standard-version",
     "release:prod": "yarn release --message \"chore(release): Release v%s :tada:\" --skip.tag",
-    "precommit": "npm run link && npm run prettier:write"
+    "precommit": "npm run prettier:write && npm run lint"
   },
   "devDependencies": {
     "@openzeppelin/contracts": "^4.3.3",
@@ -76,11 +76,6 @@
   },
   "peerDependencies": {
     "ethers": "^5.0.24"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run precommit"
-    }
   },
   "prettier": {
     "printWidth": 80,

@@ -1,5 +1,5 @@
 import { constants } from 'ethers';
-import ICryptoPunksServiceInterface from 'tx-builder/interfaces/CryptoPunks';
+import ICryptoPunksServiceInterface from '../interfaces/CryptoPunks';
 import { DEFAULT_APPROVE_AMOUNT, DEFAULT_NULL_VALUE_ON_TX } from '../..';
 import { IPunkGateway, IPunkGateway__factory } from '../contract-types';
 import IERC20ServiceInterface from '../interfaces/ERC20';
