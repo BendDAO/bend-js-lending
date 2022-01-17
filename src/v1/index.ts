@@ -1,2 +1,3 @@
 export * from './types';
-export * from './computations-and-formatting';
+export * from './computations';
+export * from './formatting';

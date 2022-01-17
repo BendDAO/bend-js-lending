@@ -132,7 +132,7 @@ export type UserIncentive = {
     id: string;
     emissionPerSecond: number;
     index: number;
-  }
+  };
   reward: string;
   lifetimeRewards: string;
   lastUpdateTimestamp: number;
@@ -162,6 +162,7 @@ export type LoanData = {
   currentAmount: string;
   state: string;
   bidStartTimestamp: string;
+  bidderAddress: string;
   bidPrice: string;
   bidBorrowAmount: string;
   lastUpdateTimestamp: number;
