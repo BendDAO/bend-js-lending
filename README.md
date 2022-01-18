@@ -24,8 +24,6 @@ The bend-js package gives developers access to methods for formatting data and e
       - [redeem](#redeem)
       - [liquidate](#liquidate)
    - b. [claimRewards](#claimRewards)
-   - c. [Faucets](#faucets)
-      - [mint](#mint)
 4. [Lint](#lint)
 5. [Build](#build)
 
@@ -301,37 +299,6 @@ lendingPool.liquidate({
   collateralReserve, // string;
   purchaseAmount, // string;
   getbToken, // ? boolean;
-});
-```
-
-## Faucets
-
-To use the testnet faucets which are compatible with Bend:
-
-```
-import { TxBuilder, Network, Market } from '@bend/bend-js'
-
-const httpProvider = new Web3.providers.HttpProvider(
-    process.env.ETHEREUM_URL ||
-      "https://rinkeby.infura.io/v3/<project_id>"
-  );
-const txBuilder = new TxBuilder(Network.main, httpProvider);
-const faucet = txBuilder.faucetService;
-```
-
-### mint
-
-Mint tokens for the usage on the Bend protocol on the Kovan network. The amount of minted tokens is fixed and depends on the token
-
-- @param `userAddress` The ethereum address of the wallet the minted tokens will go
-- @param `reserve` The ethereum address of the token you want to mint
-- @param `tokenSymbol` The symbol of the token you want to mint
-
-```
-faucet.mint({
-   userAddress, // string
-   reserve, // string
-   tokenSymbol, // string
 });
 ```
 

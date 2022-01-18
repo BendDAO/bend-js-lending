@@ -1,5 +1,10 @@
 import { ReserveData, NftData, LoanData } from '../v1/types';
-import { formatReserves, formatNfts, formatLoans, formatUserSummaryData } from '../v1/formatting';
+import {
+  formatReserves,
+  formatNfts,
+  formatLoans,
+  formatUserSummaryData,
+} from '../v1/formatting';
 import BigNumber from 'bignumber.js';
 import {
   mockReserve,
@@ -138,7 +143,12 @@ describe('computations and formattings', () => {
     });
 
     it('should allow omitting timestamp', () => {
-      const formattedMockLoan = formatLoans([mockReserve],[mockNft],[mockLoan], mockUsdPrice)[0];
+      const formattedMockLoan = formatLoans(
+        [mockReserve],
+        [mockNft],
+        [mockLoan],
+        mockUsdPrice
+      )[0];
       expect(formattedMockLoan).toMatchSnapshot();
     });
 
@@ -171,7 +181,7 @@ describe('computations and formattings', () => {
         [mockNft],
         [mockLoan],
         mockUsdPrice,
-        mockLoan.lastUpdateTimestamp + 1,
+        mockLoan.lastUpdateTimestamp + 1
       )[0];
       const second = formatLoans(
         [mockReserve],
@@ -181,7 +191,9 @@ describe('computations and formattings', () => {
         mockLoan.lastUpdateTimestamp + 2
       )[0];
 
-      expect(new BigNumber(second.currentAmount).gte(first.currentAmount)).toBe(true);
+      expect(new BigNumber(second.currentAmount).gte(first.currentAmount)).toBe(
+        true
+      );
     });
   });
 });

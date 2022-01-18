@@ -1,7 +1,4 @@
-import {
-  BigNumberValue,
-  normalize,
-} from '../helpers/bignumber';
+import { BigNumberValue, normalize } from '../helpers/bignumber';
 import { calculateAverageRate, PERCENT_PRECISION } from '../helpers/pool-math';
 import {
   ComputedUserReserve,
@@ -140,17 +137,20 @@ export function formatUserSummaryData(
           loanData.availableToBorrow,
           loanData.reserveAsset.decimals
         ),
-        availableToBorrowETH: normalize(loanData.availableToBorrowETH, ETH_DECIMALS),
-        availableToBorrowUSD: normalize(loanData.availableToBorrowUSD, USD_DECIMALS),
+        availableToBorrowETH: normalize(
+          loanData.availableToBorrowETH,
+          ETH_DECIMALS
+        ),
+        availableToBorrowUSD: normalize(
+          loanData.availableToBorrowUSD,
+          USD_DECIMALS
+        ),
 
         bidBorrowAmount: normalize(
           loanData.bidBorrowAmount,
           loanData.reserveAsset.decimals
         ),
-        bidPrice: normalize(
-          loanData.bidPrice,
-          loanData.reserveAsset.decimals
-        ),
+        bidPrice: normalize(loanData.bidPrice, loanData.reserveAsset.decimals),
       };
     }
   );
@@ -247,14 +247,17 @@ export function formatReserves(
 
       variableBorrowIndex: normalize(reserve.variableBorrowIndex, RAY_DECIMALS),
       variableBorrowRate: normalize(reserve.variableBorrowRate, RAY_DECIMALS),
-      variableBorrowAPY: normalize(computedReseveData.variableBorrowAPY, RAY_DECIMALS),
+      variableBorrowAPY: normalize(
+        computedReseveData.variableBorrowAPY,
+        RAY_DECIMALS
+      ),
     };
   });
 }
 
 export function formatNfts(
   nfts: NftData[],
-  currentTimestamp?: number,
+  currentTimestamp?: number
 ): ComputedNftData[] {
   return nfts.map((nft) => {
     const computedNftData = computeNftData(nft, currentTimestamp);
@@ -271,8 +274,14 @@ export function formatNfts(
         ...nft.price,
         priceInEth: normalize(nft.price.priceInEth, ETH_DECIMALS),
       },
-      baseLTVasCollateral: normalize(nft.baseLTVasCollateral, PERCENT_PRECISION),
-      liquidationThreshold: normalize(nft.liquidationThreshold, PERCENT_PRECISION),
+      baseLTVasCollateral: normalize(
+        nft.baseLTVasCollateral,
+        PERCENT_PRECISION
+      ),
+      liquidationThreshold: normalize(
+        nft.liquidationThreshold,
+        PERCENT_PRECISION
+      ),
       liquidationBonus: normalize(nft.liquidationBonus, PERCENT_PRECISION),
       redeemFine: normalize(nft.redeemFine, PERCENT_PRECISION),
     };
@@ -284,12 +293,10 @@ export function formatLoans(
   poolNftsData: NftData[],
   loans: LoanData[],
   usdPriceEth: BigNumberValue,
-  currentTimestamp?: number,
+  currentTimestamp?: number
 ): ComputedLoanData[] {
   return loans.map((loan) => {
-    const poolNft = poolNftsData.find(
-      (nft) => nft.id === loan.nftAsset.id
-    );
+    const poolNft = poolNftsData.find((nft) => nft.id === loan.nftAsset.id);
     if (!poolNft) {
       throw new Error(
         'NFT is not registered on platform, please contact support'
@@ -304,22 +311,52 @@ export function formatLoans(
       );
     }
 
-    const computedLoanData = computeLoanData(poolReserve, poolNft, loan, usdPriceEth, currentTimestamp || loan.lastUpdateTimestamp);
+    const computedLoanData = computeLoanData(
+      poolReserve,
+      poolNft,
+      loan,
+      usdPriceEth,
+      currentTimestamp || loan.lastUpdateTimestamp
+    );
 
     return {
       ...loan,
 
-      scaledAmount: normalize(computedLoanData.scaledAmount, poolReserve.decimals),
-      currentAmount: normalize(computedLoanData.currentAmount, poolReserve.decimals),
-      currentAmountETH: normalize(computedLoanData.currentAmountETH, ETH_DECIMALS),
-      currentAmountUSD: normalize(computedLoanData.currentAmountUSD, USD_DECIMALS),
-      availableToBorrow: normalize(computedLoanData.availableToBorrow, poolReserve.decimals),
-      availableToBorrowETH: normalize(computedLoanData.availableToBorrowETH, ETH_DECIMALS),
-      availableToBorrowUSD: normalize(computedLoanData.availableToBorrowUSD, USD_DECIMALS),
+      scaledAmount: normalize(
+        computedLoanData.scaledAmount,
+        poolReserve.decimals
+      ),
+      currentAmount: normalize(
+        computedLoanData.currentAmount,
+        poolReserve.decimals
+      ),
+      currentAmountETH: normalize(
+        computedLoanData.currentAmountETH,
+        ETH_DECIMALS
+      ),
+      currentAmountUSD: normalize(
+        computedLoanData.currentAmountUSD,
+        USD_DECIMALS
+      ),
+      availableToBorrow: normalize(
+        computedLoanData.availableToBorrow,
+        poolReserve.decimals
+      ),
+      availableToBorrowETH: normalize(
+        computedLoanData.availableToBorrowETH,
+        ETH_DECIMALS
+      ),
+      availableToBorrowUSD: normalize(
+        computedLoanData.availableToBorrowUSD,
+        USD_DECIMALS
+      ),
       healthFactor: computedLoanData.healthFactor,
 
-      bidBorrowAmount: normalize(computedLoanData.bidBorrowAmount, poolReserve.decimals),
-      bidPrice: normalize(computedLoanData.bidPrice, poolReserve.decimals)
+      bidBorrowAmount: normalize(
+        computedLoanData.bidBorrowAmount,
+        poolReserve.decimals
+      ),
+      bidPrice: normalize(computedLoanData.bidPrice, poolReserve.decimals),
     };
   });
 }

@@ -40,7 +40,6 @@ export type LendPoolMarketConfig = {
   WETH_GATEWAY?: tEthereumAddress;
   PUNK_GATEWAY?: tEthereumAddress;
   CRYPTO_PUNKS?: tEthereumAddress;
-  FAUCET?: tEthereumAddress;
 };
 
 export type LendPoolConfig = {
@@ -58,7 +57,6 @@ export type TxBuilderConfig = {
 
 export enum eEthereumTxType {
   ERC20_APPROVAL = 'ERC20_APPROVAL',
-  FAUCET_MINT = 'FAUCET_MINT',
   REWARD_ACTION = 'REWARD_ACTION',
   DLP_ACTION = 'DLP_ACTION',
 }
@@ -112,7 +110,6 @@ export type AddressModel = {
   LENDPOOL_ADDRESS: tEthereumAddress;
   WETH_GATEWAY: tEthereumAddress;
   PUNK_GATEWAY: tEthereumAddress;
-  FAUCET: tEthereumAddress;
   INCENTIVES_CONTROLLER: tEthereumAddress;
   INCENTIVES_CONTROLLER_REWARD_TOKEN: tEthereumAddress;
 };
@@ -121,7 +118,6 @@ export type tCommonContractAddressBetweenMarkets = Pick<
   AddressModel,
   | 'WETH_GATEWAY'
   | 'PUNK_GATEWAY'
-  | 'FAUCET'
   | 'INCENTIVES_CONTROLLER'
   | 'INCENTIVES_CONTROLLER_REWARD_TOKEN'
 >;
@@ -194,7 +190,6 @@ export type EnabledNetworksType = {
   };
   wethGateway: Network[];
   punkGateway: Network[];
-  faucet: Network[];
   incentivesController: Network[];
 };
 

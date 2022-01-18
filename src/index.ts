@@ -1,6 +1,7 @@
 // tx builder imports
 import IERC20ServiceInterface from './tx-builder/interfaces/ERC20';
-import FaucetInterface from './tx-builder/interfaces/Faucet';
+import IERC721ServiceInterface from './tx-builder/interfaces/ERC721';
+
 // math imports
 import * as v1 from './v1';
 
@@ -25,7 +26,6 @@ export { default as LendPoolInterface } from './tx-builder/interfaces/LendPool';
 export * from './tx-builder/types';
 export * from './tx-builder/types/WethGatewayMethodTypes';
 export * from './tx-builder/types/LendPoolMethodTypes';
-export * from './tx-builder/types/FaucetMethodTypes';
 export {
   ClaimRewardsMethodType,
   IncentivesControllerInterface,
@@ -33,4 +33,4 @@ export {
 
 export * from './tx-builder/config';
 
-export { IERC20ServiceInterface, FaucetInterface };
+export { IERC20ServiceInterface, IERC721ServiceInterface };

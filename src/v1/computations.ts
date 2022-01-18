@@ -27,11 +27,14 @@ import {
   ComputedLoanData,
   NftData,
 } from './types';
+import { ETH_DECIMALS, SECONDS_PER_YEAR } from '../helpers/constants';
 import {
-  ETH_DECIMALS,
-  SECONDS_PER_YEAR,
-} from '../helpers/constants';
-import { ComputedNftData, ComputedReserveData, ComputedUserNft, UserIncentive, UserNftData } from '..';
+  ComputedNftData,
+  ComputedReserveData,
+  ComputedUserNft,
+  UserIncentive,
+  UserNftData,
+} from '..';
 
 export function getEthAndUsdBalance(
   balance: BigNumberValue,
@@ -96,30 +99,30 @@ export function computeReserveData(
       ? totalDebt.dividedBy(totalLiquidity).toString()
       : '0';
 
-      const liquidityAPY = rayPow(
-        valueToZDBigNumber(poolReserve.liquidityRate)
-          .dividedBy(SECONDS_PER_YEAR)
-          .plus(RAY),
-        SECONDS_PER_YEAR
-      ).minus(RAY);
+  const liquidityAPY = rayPow(
+    valueToZDBigNumber(poolReserve.liquidityRate)
+      .dividedBy(SECONDS_PER_YEAR)
+      .plus(RAY),
+    SECONDS_PER_YEAR
+  ).minus(RAY);
 
-      const variableBorrowAPY = rayPow(
-        valueToZDBigNumber(poolReserve.variableBorrowRate)
-          .dividedBy(SECONDS_PER_YEAR)
-          .plus(RAY),
-        SECONDS_PER_YEAR
-      ).minus(RAY);
+  const variableBorrowAPY = rayPow(
+    valueToZDBigNumber(poolReserve.variableBorrowRate)
+      .dividedBy(SECONDS_PER_YEAR)
+      .plus(RAY),
+    SECONDS_PER_YEAR
+  ).minus(RAY);
 
-      return {
-        totalVariableDebt,
-        totalDebt: totalDebt.toString(),
-        totalLiquidity,
-        utilizationRate: utilizationRate.toString(),
+  return {
+    totalVariableDebt,
+    totalDebt: totalDebt.toString(),
+    totalLiquidity,
+    utilizationRate: utilizationRate.toString(),
 
-        liquidityAPY: liquidityAPY.toString(),
-        variableBorrowAPY: variableBorrowAPY.toString(),
+    liquidityAPY: liquidityAPY.toString(),
+    variableBorrowAPY: variableBorrowAPY.toString(),
 
-        ...poolReserve
+    ...poolReserve,
   };
 }
 
@@ -179,12 +182,16 @@ export function computeNftData(
 ): ComputedNftData {
   currentTimestamp;
 
-  const availableToBorrowETH = calculateAvailableBorrowsETH(poolNft.price.priceInEth, 0, poolNft.baseLTVasCollateral);
+  const availableToBorrowETH = calculateAvailableBorrowsETH(
+    poolNft.price.priceInEth,
+    0,
+    poolNft.baseLTVasCollateral
+  );
 
-      return {
-        availableToBorrowETH: availableToBorrowETH.toString(),
+  return {
+    availableToBorrowETH: availableToBorrowETH.toString(),
 
-        ...poolNft
+    ...poolNft,
   };
 }
 
@@ -466,9 +473,17 @@ export function computeLoanData(
   );
 
   const totalCollateralETH = poolNft.price.priceInEth;
-  const totalCollateral = getReserveBalance(totalCollateralETH, poolReserve.price.priceInEth, poolReserve.decimals);;
+  const totalCollateral = getReserveBalance(
+    totalCollateralETH,
+    poolReserve.price.priceInEth,
+    poolReserve.decimals
+  );
 
-  const availableToBorrow = calculateAvailableBorrowsETH(totalCollateral, currentAmount, poolNft.baseLTVasCollateral);
+  const availableToBorrow = calculateAvailableBorrowsETH(
+    totalCollateral,
+    currentAmount,
+    poolNft.baseLTVasCollateral
+  );
   const [availableToBorrowETH, availableToBorrowUSD] = getEthAndUsdBalance(
     availableToBorrow,
     poolReserve.price.priceInEth,

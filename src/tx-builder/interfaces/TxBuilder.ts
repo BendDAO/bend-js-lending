@@ -4,7 +4,6 @@ import ICryptoPunksServiceInterface from './CryptoPunks';
 import LendPoolInterface from './LendPool';
 import WETHGatewayInterface from './WETHGateway';
 import PunkGatewayInterface from './PunkGateway';
-import FaucetInterface from './Faucet';
 import { IncentivesControllerInterface } from '../services/IncentivesController';
 
 export default interface TxBuilderInterface {
@@ -17,5 +16,4 @@ export default interface TxBuilderInterface {
   getPunkGateway: (market: string) => PunkGatewayInterface;
 
   getCryptoPunks: (market: string) => ICryptoPunksServiceInterface;
-  getFaucet: (market: string) => FaucetInterface;
 }

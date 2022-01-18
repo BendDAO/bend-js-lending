@@ -1,11 +1,9 @@
 import { ethers, providers } from 'ethers';
-import FaucetInterface from './interfaces/Faucet';
 import IERC20ServiceInterface from './interfaces/ERC20';
 import IERC721ServiceInterface from './interfaces/ERC721';
 import ICryptoPunksServiceInterface from './interfaces/CryptoPunks';
 import ERC20Service from './services/ERC20';
 import ERC721Service from './services/ERC721';
-import FaucetService from './services/Faucet';
 import CryptoPunksService from './services/CryptoPunks';
 import {
   ChainId,
@@ -29,8 +27,6 @@ export default class BaseTxBuilder {
   public incentiveService: IncentivesControllerInterface;
 
   readonly punkServices: { [market: string]: ICryptoPunksServiceInterface };
-
-  readonly faucets: { [market: string]: FaucetInterface };
 
   readonly txBuilderConfig: TxBuilderConfig;
 
@@ -73,20 +69,8 @@ export default class BaseTxBuilder {
       this.txBuilderConfig.incentives?.[network]
     );
 
-    this.faucets = {};
     this.punkServices = {};
   }
-
-  public getFaucet = (market: string): FaucetInterface => {
-    if (!this.faucets[market]) {
-      const { network } = this.configuration;
-      this.faucets[market] = new FaucetService(
-        this.configuration,
-        this.txBuilderConfig.lendPool?.[network]?.[market]
-      );
-    }
-    return this.faucets[market];
-  };
 
   public getCryptoPunks = (market: string): ICryptoPunksServiceInterface => {
     if (!this.punkServices[market]) {

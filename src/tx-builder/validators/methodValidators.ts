@@ -4,7 +4,6 @@ import {
   amountGtThan0OrMinus1,
   amountGtThan0Validator,
   isEthAddressValidator,
-  optionalValidator,
 } from './validations';
 import { utils } from 'ethers';
 
@@ -57,32 +56,6 @@ export function IncentivesValidator(
     isEthAddressValidator(target, propertyName, arguments);
 
     // isEthAddressArrayValidator(target, propertyName, arguments);
-
-    return method?.apply(this, arguments);
-  };
-}
-
-export function FaucetValidator(
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  target: any,
-  propertyName: string,
-  descriptor: TypedPropertyDescriptor<any>
-): any {
-  const method = descriptor.value;
-  // eslint-disable-next-line no-param-reassign
-  descriptor.value = function () {
-    const FAUCET = this.faucetConfig?.FAUCET;
-
-    if (!FAUCET || (FAUCET && !utils.isAddress(FAUCET))) {
-      console.error(`[FaucetValidator] You need to pass valid addresses`);
-      return [];
-    }
-
-    const isParamOptional = optionalValidator(target, propertyName, arguments);
-
-    isEthAddressValidator(target, propertyName, arguments, isParamOptional);
-
-    amountGtThan0Validator(target, propertyName, arguments, isParamOptional);
 
     return method?.apply(this, arguments);
   };
