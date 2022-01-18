@@ -182,6 +182,9 @@ export type ComputedLoanData = LoanData & {
   availableToBorrowUSD: string;
 
   healthFactor: string;
+  liquidatePrice: string;
+  liquidatePriceETH: string;
+  liquidatePriceUSD: string;
 };
 
 export type UserSummaryData = {

@@ -14,6 +14,7 @@ import {
   getCompoundedBalance,
   calculateCompoundedInterest,
   getLinearBalance,
+  calculateLiquidatePriceETH,
 } from '../helpers/pool-math';
 import { RAY, rayPow, rayMul } from '../helpers/ray-math';
 import {
@@ -497,6 +498,18 @@ export function computeLoanData(
     poolNft.liquidationThreshold
   ).toString();
 
+  const liquidatePriceETH = calculateLiquidatePriceETH(
+    totalCollateralETH,
+    currentAmountETH,
+    poolNft.liquidationThreshold
+  );
+  const liquidatePriceUSD = getUsdBalance(liquidatePriceETH, usdPriceEth);
+  const liquidatePrice = getReserveBalance(
+    liquidatePriceETH,
+    poolReserve.price.priceInEth,
+    poolReserve.decimals
+  );
+
   return {
     ...loanData,
 
@@ -509,6 +522,9 @@ export function computeLoanData(
     availableToBorrowUSD,
 
     healthFactor,
+    liquidatePrice,
+    liquidatePriceETH: liquidatePriceETH.toString(),
+    liquidatePriceUSD,
   };
 }
 

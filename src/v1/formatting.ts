@@ -146,6 +146,13 @@ export function formatUserSummaryData(
           USD_DECIMALS
         ),
 
+        liquidatePrice: normalize(
+          loanData.liquidatePrice,
+          loanData.reserveAsset.decimals
+        ),
+        liquidatePriceETH: normalize(loanData.liquidatePriceETH, ETH_DECIMALS),
+        liquidatePriceUSD: normalize(loanData.liquidatePriceUSD, USD_DECIMALS),
+
         bidBorrowAmount: normalize(
           loanData.bidBorrowAmount,
           loanData.reserveAsset.decimals
@@ -350,7 +357,21 @@ export function formatLoans(
         computedLoanData.availableToBorrowUSD,
         USD_DECIMALS
       ),
+
       healthFactor: computedLoanData.healthFactor,
+
+      liquidatePrice: normalize(
+        computedLoanData.liquidatePrice,
+        poolReserve.decimals
+      ),
+      liquidatePriceETH: normalize(
+        computedLoanData.liquidatePriceETH,
+        ETH_DECIMALS
+      ),
+      liquidatePriceUSD: normalize(
+        computedLoanData.liquidatePriceUSD,
+        USD_DECIMALS
+      ),
 
       bidBorrowAmount: normalize(
         computedLoanData.bidBorrowAmount,

@@ -145,6 +145,23 @@ export function calculateAvailableBorrowsETH(
     : valueToZDBigNumber('0');
 }
 
+export function calculateLiquidatePriceETH(
+  collateralBalanceETH: BigNumberValue,
+  borrowBalanceETH: BigNumberValue,
+  currentLiquidationThreshold: BigNumberValue
+): BigNumber {
+  if (valueToBigNumber(borrowBalanceETH).eq(0)) {
+    return valueToBigNumber('-1'); // invalid number
+  }
+  let luiquidatePrice = valueToBigNumber(collateralBalanceETH)
+    .multipliedBy(currentLiquidationThreshold)
+    .dividedBy(pow10(PERCENT_PRECISION));
+
+  return luiquidatePrice.gt(borrowBalanceETH)
+    ? valueToZDBigNumber(luiquidatePrice)
+    : valueToZDBigNumber(borrowBalanceETH);
+}
+
 export function calculateAverageRate(
   index0: string,
   index1: string,

@@ -31,6 +31,9 @@ Object {
       "healthFactor": "21.96336384167706154501",
       "id": "50xe55870ebb007a50b0dfabadb1a21e4bfcee5299b",
       "lastUpdateTimestamp": 1641216645,
+      "liquidatePrice": "44.64",
+      "liquidatePriceETH": "44.64",
+      "liquidatePriceUSD": "189768.13963761",
       "loanId": "5",
       "nftAsset": Object {
         "id": "0x74e4418a41169fb951ca886976ccd8b36968c4ab0xe55870ebb007a50b0dfabadb1a21e4bfcee5299b",
@@ -113,6 +116,9 @@ Object {
   "healthFactor": "21.96336384167706154501",
   "id": "50xe55870ebb007a50b0dfabadb1a21e4bfcee5299b",
   "lastUpdateTimestamp": 1641216645,
+  "liquidatePrice": "44.64",
+  "liquidatePriceETH": "44.64",
+  "liquidatePriceUSD": "189768.13963761",
   "loanId": "5",
   "nftAsset": Object {
     "id": "0x74e4418a41169fb951ca886976ccd8b36968c4ab0xe55870ebb007a50b0dfabadb1a21e4bfcee5299b",
@@ -151,6 +157,9 @@ Object {
   "healthFactor": "21.96336384167706154501",
   "id": "50xe55870ebb007a50b0dfabadb1a21e4bfcee5299b",
   "lastUpdateTimestamp": 1641216645,
+  "liquidatePrice": "44.64",
+  "liquidatePriceETH": "44.64",
+  "liquidatePriceUSD": "189768.13963761",
   "loanId": "5",
   "nftAsset": Object {
     "id": "0x74e4418a41169fb951ca886976ccd8b36968c4ab0xe55870ebb007a50b0dfabadb1a21e4bfcee5299b",
