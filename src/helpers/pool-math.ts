@@ -9,7 +9,7 @@ import {
 import * as RayMath from './ray-math';
 import { SECONDS_PER_YEAR } from './constants';
 
-export const LTV_PRECISION = 4;
+export const PERCENT_PRECISION = 4;
 
 export function calculateCompoundedInterest(
   rate: BigNumberValue,
@@ -110,7 +110,7 @@ export function calculateHealthFactorFromBalances(
   }
   return valueToBigNumber(collateralBalanceETH)
     .multipliedBy(currentLiquidationThreshold)
-    .dividedBy(pow10(LTV_PRECISION))
+    .dividedBy(pow10(PERCENT_PRECISION))
     .div(borrowBalanceETH);
 }
 
@@ -123,7 +123,7 @@ export function calculateHealthFactorFromBalancesBigUnits(
     collateralBalanceETH,
     borrowBalanceETH,
     new BigNumber(currentLiquidationThreshold)
-      .multipliedBy(pow10(LTV_PRECISION))
+      .multipliedBy(pow10(PERCENT_PRECISION))
       .decimalPlaces(0, BigNumber.ROUND_DOWN)
   );
 }
@@ -138,7 +138,7 @@ export function calculateAvailableBorrowsETH(
   }
   const availableBorrowsETH = valueToZDBigNumber(collateralBalanceETH)
     .multipliedBy(currentLtv)
-    .dividedBy(pow10(LTV_PRECISION))
+    .dividedBy(pow10(PERCENT_PRECISION))
     .minus(borrowBalanceETH);
   return availableBorrowsETH.gt('0')
     ? availableBorrowsETH

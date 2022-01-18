@@ -1,11 +1,8 @@
 import {
   BigNumberValue,
-  valueToBigNumber,
-  valueToZDBigNumber,
   normalize,
 } from '../helpers/bignumber';
-import { calculateAverageRate, LTV_PRECISION } from '../helpers/pool-math';
-import { RAY, rayPow } from '../helpers/ray-math';
+import { calculateAverageRate, PERCENT_PRECISION } from '../helpers/pool-math';
 import {
   ComputedUserReserve,
   ReserveData,
@@ -20,14 +17,16 @@ import {
 import {
   ETH_DECIMALS,
   RAY_DECIMALS,
-  SECONDS_PER_YEAR,
   USD_DECIMALS,
   BEND_DECIMALS,
 } from '../helpers/constants';
 import {
-  calculateReserveDebt,
+  ComputedNftData,
   ComputedUserNft,
+  computeLoanData,
+  computeNftData,
   computeRawUserSummaryData,
+  computeReserveData,
   UserIncentive,
   UserNftData,
 } from '..';
@@ -126,12 +125,32 @@ export function formatUserSummaryData(
           ...nftAsset,
         },
 
+        scaledAmount: normalize(
+          loanData.scaledAmount,
+          loanData.reserveAsset.decimals
+        ),
         currentAmount: normalize(
           loanData.currentAmount,
           loanData.reserveAsset.decimals
         ),
         currentAmountETH: normalize(loanData.currentAmountETH, ETH_DECIMALS),
         currentAmountUSD: normalize(loanData.currentAmountUSD, USD_DECIMALS),
+
+        availableToBorrow: normalize(
+          loanData.availableToBorrow,
+          loanData.reserveAsset.decimals
+        ),
+        availableToBorrowETH: normalize(loanData.availableToBorrowETH, ETH_DECIMALS),
+        availableToBorrowUSD: normalize(loanData.availableToBorrowUSD, USD_DECIMALS),
+
+        bidBorrowAmount: normalize(
+          loanData.bidBorrowAmount,
+          loanData.reserveAsset.decimals
+        ),
+        bidPrice: normalize(
+          loanData.bidPrice,
+          loanData.reserveAsset.decimals
+        ),
       };
     }
   );
@@ -180,57 +199,30 @@ export function formatReserves(
   reserveIndexes30DaysAgo?: ReserveRatesData[]
 ): ComputedReserveData[] {
   return reserves.map((reserve) => {
+    const computedReseveData = computeReserveData(reserve, currentTimestamp);
+
     const reserve30DaysAgo = reserveIndexes30DaysAgo?.find(
       (res) => res.id === reserve.id
     )?.paramsHistory?.[0];
 
-    const availableLiquidity = normalize(
-      reserve.availableLiquidity,
-      reserve.decimals
-    );
-
-    const { totalVariableDebt } = calculateReserveDebt(
-      reserve,
-      currentTimestamp || reserve.lastUpdateTimestamp
-    );
-
-    const totalDebt = valueToBigNumber(totalVariableDebt);
-
-    const totalLiquidity = totalDebt.plus(availableLiquidity).toString();
-    const utilizationRate =
-      totalLiquidity !== '0'
-        ? totalDebt.dividedBy(totalLiquidity).toString()
-        : '0';
-
-    const supplyAPY = rayPow(
-      valueToZDBigNumber(reserve.liquidityRate)
-        .dividedBy(SECONDS_PER_YEAR)
-        .plus(RAY),
-      SECONDS_PER_YEAR
-    ).minus(RAY);
-
-    const variableBorrowAPY = rayPow(
-      valueToZDBigNumber(reserve.variableBorrowRate)
-        .dividedBy(SECONDS_PER_YEAR)
-        .plus(RAY),
-      SECONDS_PER_YEAR
-    ).minus(RAY);
-
     return {
       ...reserve,
-      totalVariableDebt,
-      totalLiquidity,
-      availableLiquidity,
-      utilizationRate,
-      totalDebt: totalDebt.toString(),
+
+      totalScaledVariableDebt: normalize(
+        reserve.totalScaledVariableDebt,
+        reserve.decimals
+      ),
+      totalVariableDebt: computedReseveData.totalVariableDebt,
+      totalDebt: computedReseveData.totalDebt.toString(),
+      availableLiquidity: computedReseveData.availableLiquidity,
+      totalLiquidity: computedReseveData.totalLiquidity,
+      utilizationRate: computedReseveData.utilizationRate,
+
       price: {
         ...reserve.price,
         priceInEth: normalize(reserve.price.priceInEth, ETH_DECIMALS),
       },
-      reserveFactor: normalize(reserve.reserveFactor, LTV_PRECISION),
-
-      variableBorrowAPR: normalize(reserve.variableBorrowRate, RAY_DECIMALS),
-      variableBorrowAPY: normalize(variableBorrowAPY, RAY_DECIMALS),
+      reserveFactor: normalize(reserve.reserveFactor, PERCENT_PRECISION),
 
       avg30DaysVariableBorrowRate: reserve30DaysAgo
         ? calculateAverageRate(
@@ -240,7 +232,6 @@ export function formatReserves(
             reserve.lastUpdateTimestamp
           )
         : undefined,
-
       avg30DaysLiquidityRate: reserve30DaysAgo
         ? calculateAverageRate(
             reserve30DaysAgo.liquidityIndex,
@@ -250,18 +241,85 @@ export function formatReserves(
           )
         : undefined,
 
-      supplyAPR: normalize(reserve.liquidityRate, RAY_DECIMALS),
-      supplyAPY: normalize(supplyAPY, RAY_DECIMALS),
-
       liquidityIndex: normalize(reserve.liquidityIndex, RAY_DECIMALS),
       liquidityRate: normalize(reserve.liquidityRate, RAY_DECIMALS),
+      liquidityAPY: normalize(computedReseveData.liquidityAPY, RAY_DECIMALS),
 
-      totalScaledVariableDebt: normalize(
-        reserve.totalScaledVariableDebt,
-        reserve.decimals
-      ),
       variableBorrowIndex: normalize(reserve.variableBorrowIndex, RAY_DECIMALS),
       variableBorrowRate: normalize(reserve.variableBorrowRate, RAY_DECIMALS),
+      variableBorrowAPY: normalize(computedReseveData.variableBorrowAPY, RAY_DECIMALS),
+    };
+  });
+}
+
+export function formatNfts(
+  nfts: NftData[],
+  currentTimestamp?: number,
+): ComputedNftData[] {
+  return nfts.map((nft) => {
+    const computedNftData = computeNftData(nft, currentTimestamp);
+
+    return {
+      ...nft,
+
+      availableToBorrowETH: normalize(
+        computedNftData.availableToBorrowETH,
+        ETH_DECIMALS
+      ),
+
+      price: {
+        ...nft.price,
+        priceInEth: normalize(nft.price.priceInEth, ETH_DECIMALS),
+      },
+      baseLTVasCollateral: normalize(nft.baseLTVasCollateral, PERCENT_PRECISION),
+      liquidationThreshold: normalize(nft.liquidationThreshold, PERCENT_PRECISION),
+      liquidationBonus: normalize(nft.liquidationBonus, PERCENT_PRECISION),
+      redeemFine: normalize(nft.redeemFine, PERCENT_PRECISION),
+    };
+  });
+}
+
+export function formatLoans(
+  poolReservesData: ReserveData[],
+  poolNftsData: NftData[],
+  loans: LoanData[],
+  usdPriceEth: BigNumberValue,
+  currentTimestamp?: number,
+): ComputedLoanData[] {
+  return loans.map((loan) => {
+    const poolNft = poolNftsData.find(
+      (nft) => nft.id === loan.nftAsset.id
+    );
+    if (!poolNft) {
+      throw new Error(
+        'NFT is not registered on platform, please contact support'
+      );
+    }
+    const poolReserve = poolReservesData.find(
+      (reserve) => reserve.id === loan.reserveAsset.id
+    );
+    if (!poolReserve) {
+      throw new Error(
+        'Reserve is not registered on platform, please contact support'
+      );
+    }
+
+    const computedLoanData = computeLoanData(poolReserve, poolNft, loan, usdPriceEth, currentTimestamp || loan.lastUpdateTimestamp);
+
+    return {
+      ...loan,
+
+      scaledAmount: normalize(computedLoanData.scaledAmount, poolReserve.decimals),
+      currentAmount: normalize(computedLoanData.currentAmount, poolReserve.decimals),
+      currentAmountETH: normalize(computedLoanData.currentAmountETH, ETH_DECIMALS),
+      currentAmountUSD: normalize(computedLoanData.currentAmountUSD, USD_DECIMALS),
+      availableToBorrow: normalize(computedLoanData.availableToBorrow, poolReserve.decimals),
+      availableToBorrowETH: normalize(computedLoanData.availableToBorrowETH, ETH_DECIMALS),
+      availableToBorrowUSD: normalize(computedLoanData.availableToBorrowUSD, USD_DECIMALS),
+      healthFactor: computedLoanData.healthFactor,
+
+      bidBorrowAmount: normalize(computedLoanData.bidBorrowAmount, poolReserve.decimals),
+      bidPrice: normalize(computedLoanData.bidPrice, poolReserve.decimals)
     };
   });
 }

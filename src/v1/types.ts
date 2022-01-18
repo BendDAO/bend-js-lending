@@ -51,13 +51,13 @@ export type ReserveData = {
 };
 
 export type ComputedReserveData = {
-  utilizationRate: string;
+  totalVariableDebt: string;
   totalDebt: string;
   totalLiquidity: string;
-  supplyAPY: string;
-  supplyAPR: string;
+  utilizationRate: string;
+
+  liquidityAPY: string;
   variableBorrowAPY: string;
-  variableBorrowAPR: string;
 } & ReserveData;
 
 export type Supplies = {
@@ -110,6 +110,10 @@ export type NftData = {
   };
   lastUpdateTimestamp: number;
 };
+
+export type ComputedNftData = {
+  availableToBorrowETH: string;
+} & NftData;
 
 export type UserNftData = {
   totalCollateral: string;
@@ -172,6 +176,11 @@ export type ComputedLoanData = LoanData & {
   currentAmount: string;
   currentAmountETH: string;
   currentAmountUSD: string;
+
+  availableToBorrow: string;
+  availableToBorrowETH: string;
+  availableToBorrowUSD: string;
+
   healthFactor: string;
 };
 

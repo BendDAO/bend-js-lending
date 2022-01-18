@@ -1,5 +1,5 @@
-import { ReserveData } from '../v1/types';
-import { formatReserves, formatUserSummaryData } from '../v1/formatting';
+import { ReserveData, NftData, LoanData } from '../v1/types';
+import { formatReserves, formatNfts, formatLoans, formatUserSummaryData } from '../v1/formatting';
 import BigNumber from 'bignumber.js';
 import {
   mockReserve,
@@ -9,6 +9,7 @@ import {
   mockUserIncentive,
   mockLoan,
   mockUserId,
+  mockUsdPrice,
 } from './mock-data';
 
 describe('computations and formattings', () => {
@@ -21,7 +22,7 @@ describe('computations and formattings', () => {
       [mockLoan],
       [mockUserIncentive],
       mockUserId,
-      '598881655557838',
+      mockUsdPrice,
       mockUserReserve.reserve.lastUpdateTimestamp + 2000
     );
     expect(formattedMockReserve).toMatchSnapshot();
@@ -89,6 +90,98 @@ describe('computations and formattings', () => {
       )[0];
 
       expect(new BigNumber(second.totalDebt).gte(first.totalDebt)).toBe(true);
+    });
+  });
+
+  describe('formatNfts', () => {
+    it('should return plausible results', () => {
+      const formattedMockNft = formatNfts(
+        [mockNft],
+        mockReserve.lastUpdateTimestamp + 2000
+      )[0];
+      expect(formattedMockNft).toMatchSnapshot();
+    });
+
+    it('should allow omitting timestamp', () => {
+      const formattedMockNft = formatNfts([mockNft])[0];
+      expect(formattedMockNft).toMatchSnapshot();
+    });
+
+    it('should return proper values for new nfts', () => {
+      const newNft: Partial<NftData> = {
+        totalCollateral: '7',
+        redeemFine: '2345',
+      };
+      const formattedMockNft = formatNfts(
+        [
+          {
+            ...mockNft,
+            ...newNft,
+          },
+        ],
+        mockNft.lastUpdateTimestamp
+      )[0];
+      expect(formattedMockNft.totalCollateral).toBe('7');
+    });
+  });
+
+  describe('formatLoans', () => {
+    it('should return plausible results', () => {
+      const formattedMockLoan = formatLoans(
+        [mockReserve],
+        [mockNft],
+        [mockLoan],
+        mockUsdPrice,
+        mockLoan.lastUpdateTimestamp + 2000
+      )[0];
+      expect(formattedMockLoan).toMatchSnapshot();
+    });
+
+    it('should allow omitting timestamp', () => {
+      const formattedMockLoan = formatLoans([mockReserve],[mockNft],[mockLoan], mockUsdPrice)[0];
+      expect(formattedMockLoan).toMatchSnapshot();
+    });
+
+    it('should return proper values for new nfts', () => {
+      const newLoan: Partial<LoanData> = {
+        nftTokenId: '12345',
+        currentAmount: '11223344556677889900',
+      };
+      const formattedMockLoan = formatLoans(
+        [mockReserve],
+        [mockNft],
+        [
+          {
+            ...mockLoan,
+            ...newLoan,
+          },
+        ],
+        mockUsdPrice,
+        mockReserve.lastUpdateTimestamp
+      )[0];
+      expect(formattedMockLoan.nftTokenId).toBe('12345');
+    });
+
+    it('should increase over time', () => {
+      /**
+       * tests against a regression which switched two dates
+       */
+      const first = formatLoans(
+        [mockReserve],
+        [mockNft],
+        [mockLoan],
+        mockUsdPrice,
+        mockLoan.lastUpdateTimestamp + 1,
+      )[0];
+      const second = formatLoans(
+        [mockReserve],
+        [mockNft],
+        [mockLoan],
+        mockUsdPrice,
+        mockLoan.lastUpdateTimestamp + 2
+      )[0];
+
+      expect(new BigNumber(second.currentAmount).gte(first.currentAmount)).toBe(true);
     });
   });
 });

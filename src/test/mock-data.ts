@@ -9,6 +9,8 @@ import {
 
 export const mockUserId = '0x20000b9b01e93a39db9d286e9264eff7f2af16e9';
 
+export const mockUsdPrice = '425107839690';
+
 export const mockReserve: ReserveData = {
   availableLiquidity: '30176110452260548839',
   bTokenAddress: '0x1bbce5469b8bcc5078ae2398476350936d1393af',
@@ -64,7 +66,7 @@ export const mockNft: NftData = {
   liquidationThreshold: '9000',
   name: 'Wrapped Cryptopunks',
   price: {
-    priceInEth: '49600000000000000',
+    priceInEth: '49600000000000000000',
   },
   redeemDuration: '2',
   redeemFine: '100',
@@ -84,10 +86,10 @@ export const mockUserNft: UserNftData = {
 };
 
 export const mockLoan: LoanData = {
-  bidBorrowAmount: '0',
-  bidPrice: '0',
-  bidStartTimestamp: '0',
-  bidderAddress: '0x00',
+  bidBorrowAmount: '2032475549819576882',
+  bidPrice: '2132475549819576882',
+  bidStartTimestamp: '1642216645',
+  bidderAddress: '0x20000b9b01e93a39db9d286e9264eff7f2af16e9',
   borrower: '0x20000b9b01e93a39db9d286e9264eff7f2af16e9',
   currentAmount: '2032475549819576882',
   id: '50xe55870ebb007a50b0dfabadb1a21e4bfcee5299b',
@@ -110,7 +112,7 @@ export const mockLoan: LoanData = {
     underlyingAsset: '0xad1908f909b5c5d2b1032a215d611773f26f089f',
   },
   scaledAmount: '2012908826592418942',
-  state: 'Active',
+  state: 'Auction',
 };
 
 export const mockUserIncentive: UserIncentive = {
