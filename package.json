@@ -57,7 +57,7 @@
     "ethers": "5.0.31",
     "hardhat": "^2.0.3",
     "hardhat-typechain": "^0.3.3",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "jest": "^26.1.0",
     "prettier": "2.5.1",
     "ts-generator": "^0.1.1",
