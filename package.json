@@ -72,7 +72,7 @@
     "bignumber.js": "^9.0.1",
     "bs58": "^4.0.1",
     "reflect-metadata": "^0.1.13",
-    "standard-version": "^9.1.0"
+    "standard-version": "^9.5.0"
   },
   "peerDependencies": {
     "ethers": "^5.0.24"
